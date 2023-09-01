@@ -1,0 +1,129 @@
+<div
+  *ngIf="item"
+  [ngClass]="{ item_galeria: inGallery, item_carrito: !inGallery, item_conDigital:!inGallery&&contieneDigital(),'imagen_vertical':imagenVertical }"
+>
+  <img
+    src="../../../assets/img/flaticon/cross-sm.svg "
+    alt=""
+    class="cruz"
+    (click)="eliminarElemento()"
+  />
+  <div class="fotos" [ngClass]="{'fotosSinExtra':!contieneExtras()}">
+    <div class="carpeta">
+      <img
+        (contextmenu)="prohibirDescarga($event)"
+        src="../../../assets/img/fotos/individuales/{{
+          item.i.cod_institucion
+        }}/{{ item.p.ruta }}"
+        alt=""
+        class="individual"
+        id="_{{item.f.id_carpeta}}-{{item.p.id_foto}}"
+        [ngClass]="{}"
+        (load)="checkImagenVertical(item.f.id_carpeta,item.p.id_foto)"
+      />
+      <img
+        (contextmenu)="prohibirDescarga($event)"
+        *ngIf="item.f.grupal !== 0"
+        src="../../../assets/img/fotos/portadas/{{ item.i.path_foto_grupal }}"
+        alt=""
+        class="grupal"
+      />
+    </div>
+    <div
+      class="plus"
+      *ngIf="contieneExtras()"
+      [ngClass]="{
+        plus_3extras: item.f.individual === 5,
+        plus_2extras: item.f.individual === 4
+      }"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="Capa_1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512 512"
+        xml:space="preserve"
+        width="512"
+        height="512"
+      >
+        <g>
+          <path
+            d="M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z"
+          />
+        </g>
+      </svg>
+    </div>
+    <div class="copias" *ngIf="contieneExtras()">
+      <img
+        *ngFor="let i of extras()"
+        src="../../../assets/img/fotos/individuales/{{
+          item.p.cod_institucion
+        }}/{{ item.p.ruta }}"
+        alt="Foto individual"
+        class="extra c{{ i }}"
+        [ngClass]="{ extraInGaleria: inGallery }"
+        (contextmenu)="prohibirDescarga($event)"
+      />
+    </div>
+  </div>
+
+  <div class="contenedor_info" *ngIf="!inGallery">
+    <h2>{{ item.f.nombre }}</h2>
+    <div class="info_alumno">
+      <!--<h3 class="alumno">{{ item.p.nombres }} {{ item.p.apellido }}</h3>-->
+      <h3>{{ item.i.nombre }}</h3>
+    </div>
+  </div>
+  <div class="contenedor_precio">
+    <h2 class="precio">${{ hacerCuenta(item.f.precio, item.q) }}</h2>
+    <div class="quantity">
+      <button (click)="cambiarCantidad(item, -1)">
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          height="14"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            stroke="#47484b"
+            d="M20 12L4 12"
+          ></path>
+        </svg>
+      </button>
+      <input type="text" disabled value="{{ item.q }}" />
+      <button (click)="cambiarCantidad(item, 1)">
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          height="14"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            stroke="#47484b"
+            d="M12 4V20M20 12H4"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0">
+    <h4>QUIERO RECIBIR LA FOTO DIGITAL EN MI MAIL (${{item.f.digital}})</h4>
+    <div class="toggle-switch" >
+      <input class="toggle-input" id="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}" type="checkbox"
+      (click)="agregarDigital(item)">
+      <label class="toggle-label" for="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}"></label>
+    </div>    
+  </div>
+</div>
+

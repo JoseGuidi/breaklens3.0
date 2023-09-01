@@ -1,0 +1,32 @@
+<div class="fondo" *ngIf="menuVisible" (click)="cambiarMenu()"></div>
+<header
+  (window:resize)="onResize($event)"
+  (window:scroll)="onScroll($event)"
+    
+>
+  <div class="header">
+    <div class="contenedor_top" [ngClass]="{ menuVisible: menuVisible }">
+      <img
+        class="logo"
+        src="../../../assets/img/logos/logoNegro.png"
+        alt="Logo "
+        (click)="scrollTo('index')"
+      />
+      <!--<label for="burger" class="burger" > 
+      <input id="burger" type="checkbox" [checked]="menuVisible" (click)="cambiarMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>-->
+    </div>
+    <!--<div *ngIf="!primeraVez">
+    <nav [ngClass]="{'menuVisible':menuVisible&&!primeraVez,'menuOculto':!menuVisible&&!primeraVez}">
+       <app-breadcrumb *ngIf="menuVisible"></app-breadcrumb>
+    </nav>
+  </div>-->
+
+    <nav>
+      <app-breadcrumb></app-breadcrumb>
+    </nav>
+  </div>
+</header>

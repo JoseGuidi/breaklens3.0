@@ -1,0 +1,76 @@
+<app-header id="index"></app-header>
+<div class="contenedor_grande">
+  <!--
+  <div class="abrirMenu" *ngIf="!menuVisible" (click)="onClickMenu(true)">
+    <label for="">></label>
+  </div>
+  <div class="navbar" *ngIf="menuVisible">
+    <ul>
+      <li class="close">
+        <img src="../../../assets/img/feather_1/x.svg" alt="" (click)="onClickMenu(false)">
+      </li>
+      
+      
+        <li *ngFor="let sect of listaDeSections" (mouseenter)="onHoverIcon(true,sect)" (mouseleave)="onHoverIcon(false,sect)" (click)="scrollTo(sect.id_section)">
+          <img src="../../../assets/img/feather_1/{{sect.file_name}}" alt="">
+          <span  [ngClass]="{'aparecerSpan':debeAparecer(sect), 'ocultarSpan':debeAparecer(sect)}">{{sect.label}}</span>
+        </li>
+      
+      
+    </ul>
+  </div>
+-->
+  <div class="contenedor_celeste">
+    <div class="derecha">
+      <div class="candado">
+        <img src="../../assets/img/candado.png" alt="candado" />
+        <h2>Acceso seguro a tus fotos</h2>
+      </div>
+      <app-form-institucion></app-form-institucion>
+
+      <div class="notifications-container">
+        <div class="infoNotif">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg
+                class="info-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <div class="info-prompt-wrap">
+              <p class="">
+                ¿Como se mi código? Podes solicitárselo a tu fotógrafo o a la
+                institución que pertenezcas.
+                <a class="info-prompt-link" (click)="scrollTo('tutorial')"
+                  >De todas formas te dejamos un tutorial. →</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-form-seguimiento></app-form-seguimiento>
+<div class="contenedor_secciones" id="about">
+  <!--<app-about id="about"></app-about>-->
+  <app-info-extra ></app-info-extra>
+  <app-tutorial id="tutorial"></app-tutorial>
+  <!--
+  -->
+  <app-opiniones id="comentarios"></app-opiniones>
+</div>
+<div class="navbar_checkpoint">
+  <app-navbar-checkpoint> </app-navbar-checkpoint>
+</div>
+<app-footer id="contact" class="footer"></app-footer>

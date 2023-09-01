@@ -1,0 +1,318 @@
+/* nuevos item cart*/
+.subcontenedor_item *{
+  width: 100%;
+}
+
+.contenedor_carrito {
+  height: 67vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
+  border-radius: 12px;
+  width: 90vw;
+  position: relative;
+  max-width: 500px;
+}
+.contenedor_carrito::-webkit-scrollbar {
+  display: none;
+}
+.contenedor_vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.contenedor_vacio img {
+  width: 100px;
+  transform: translateX(-5px);
+}
+.contenedor_vacio h1 {
+  font-size: 20px;
+  color: #333333;
+}
+.contenedor_vacio h2 {
+  font-size: 15px;
+  color: #747373;
+  font-weight: 400;
+}
+.contenedor_carrito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eeeeee;
+
+  // solucion sombra
+  box-shadow: 20px 10px 60px #8b8b8b, -1px -1px 30px #000000;
+}
+.contenedor_items {
+  width: 100%;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.divFor{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.subcontenedor_item {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 10px;
+  border: none;
+  max-width: 395px;
+  border-top: #0c2535 8px solid;
+  box-shadow: 2px 2px 15px #a0a0a0
+}
+.cruz {
+  width: 25px;
+  position: absolute;
+  top: calc(20px + 15px);
+  right: 5px;
+  cursor: pointer;
+}
+h2.nombreCarpeta {
+  width: 100%;
+  text-align: center;
+}
+h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.7vh;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+.contenido{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+.contenedor_fotos {
+  display: flex;
+  align-items: center;
+  gap: 0 0.6vw;
+}
+.contenedor_fotos img.individual {
+  height: 150px;
+}
+.cont_individual{
+  position: relative;
+}
+div.contenidoIndividual {
+  width: 100%;
+}
+.cont_individual label{
+  position: absolute;
+  font-family: "Roboto",sans-serif;
+  font-size: 1.4vh;
+  padding: 2px 6px;
+  text-align: center;
+  top: -5px;
+  left: -5px;
+  background-color: #0c2535b0;
+  border-radius: 50%;
+  color: #fff;
+}
+.cont_grupal{
+  transform: rotate(270deg);
+}
+.contenedor_fotos img.grupal {
+  
+  height: 100px;
+}
+.contenedor_precio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contenedor_precio h2{
+  font-weight: 400;
+  font-family: "Roboto",sans-serif;
+  font-size: 2.5vh;
+}
+.botonera {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(255, 253, 253);
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  font-weight: 300;
+  color: rgb(148, 148, 148);
+  border: 1px solid rgb(165, 165, 165);
+}
+.botonera_margen_extra {
+  margin: 7px 0;
+}
+.botonera button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.botonera input {
+  width: 30px;
+  background-color: rgb(255, 253, 253);
+  border: none;
+  border-left: 1px solid rgb(235, 235, 235);
+  border-right: 1px solid rgb(235, 235, 235);
+  text-align: center;
+  color: black;
+}
+
+.contenedor_bot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  //box-shadow: 0px -8px 10px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px -8px 10px 0px rgb(143 143 143 / 40%);
+  background-color: rgb(255, 253, 253);
+  z-index: 600;
+}
+.info_precio{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  padding-bottom: 2vh ;
+  max-width: 395px;
+}
+.contenedor_bot h1 {
+  text-align: center !important;
+  font-size: 4vh;
+  font-weight: 600; 
+  font-family: "Roboto", sans-serif;
+}
+.contenedor_bot h2{
+  text-transform: uppercase;
+  font-size: 2vh;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+.CartBtn {
+  margin-top: 2vh;
+  width: 100%;
+  max-width: 395px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: #0c2535;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 1;
+  transition-duration: 0.5s;
+  font-size: 1.04em;
+  font-weight: 600;
+}
+
+.CartBtn:hover .IconContainer {
+  border-radius: 40px;
+  transition-duration: 0.5s;
+  /*animation: moverCarrito 500ms;
+  //left: 30%;
+  left: 29%;*/
+}
+
+.CartBtn:hover .text {
+  /*transform: translate(30px, 0px);
+  transition-duration: 0.5s;*/
+}
+
+
+.CartBtn:active {
+  transform: scale(0.95);
+  transition-duration: 500ms;
+}
+/*
+@media only screen and (min-width:720px) {
+  .contenido {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //border-bottom: 1px solid rgb(201, 201, 201);
+    padding: 15px 5px;
+
+  }
+}*/
+@keyframes moverCarrito {
+  from{
+    left: -50px;
+  }
+  to{
+    left:29%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .contenedor_carrito {
+    width: 30vw;
+    min-width: 415px;
+    max-width: 700px;
+  }
+  .subcontenedor_item{
+    width: 395px;
+  }
+}
+@keyframes aparecerIcono {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

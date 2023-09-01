@@ -1,0 +1,48 @@
+.contenedor{
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+}
+.elemento{
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  //width: 100%;
+}
+.elemento svg{
+  width: 26px;
+  height: 26px;
+  width: auto;
+  fill: #fff;
+}
+.elemento svg.flecha{
+  width: 60px;
+}
+.elemento .contenido{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  //gap: 3px 0;
+}
+.elemento .contenido label{
+  font-family: "Roboto",sans-serif;
+  font-weight: 300;
+  color: #fff;
+  font-size: 3vw;
+  min-width: 35px;
+  text-align: center;
+}
+.elemento svg.active, .elemento svg.visited{
+  fill:#5c80e4;
+}
+.visited,.active{
+  cursor: pointer;
+}
+.ultimo{
+}
+@media only screen and (min-width:800px) {
+  .elemento .contenido label{
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,112 @@
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //border-top: 1px solid rgb(248, 246, 246);
+    padding: 5vh 0 20px 0;
+    background-color: #f2f1f4;
+    box-shadow: inset 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+    
+  }
+  .up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px 0;
+    margin-bottom: 5vh;
+  }
+  .up h3 {
+    font-size: 25px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+  }
+  .up h4 {
+    font-size: 1.5vh;
+    font-family: "Raleway", sans-serif;
+    font-weight: 200;
+    width: 100%;
+    text-align: center;
+  }
+  .up img {
+    width: 90vw;
+    max-width: 500px;
+  }
+  .down {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    border-top: 1px solid rgb(207, 207, 207);
+    height: 100px;
+    font-family: "Raleway", sans-serif;
+    
+    padding-top: 2.5vh;
+    
+  }
+  .down ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 0 20px;
+    font-size: 1.5vh;
+  }
+  .down ul li img {
+    width: 150px;
+  }
+  .down h5 {
+    font-weight: 400;
+    text-align: center;
+  }
+  .down h5 span {
+    font-weight: bold;
+  }
+@media only screen and (min-width: 800px) {
+  footer{
+    padding: 5vh 0 0 0;
+  }
+
+  .up h3{
+    font-size: 3.5vh;
+  }
+  .down ul li img {
+    width: 200px;
+  }
+    .down {
+      padding: 0;
+      flex-direction: row;
+    }
+
+
+}
+/*
+h3{
+    font-size: 3.5vh;
+    font-family: "Raleway",sans-serif;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    min-height: 10vh;
+}
+ul{list-style: none;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 50%;}
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.cont ul li img.logo{
+    width: 30vw;
+}*/

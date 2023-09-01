@@ -1,0 +1,48 @@
+<!--<div class="recuadro"> 
+  <div
+    (mouseenter)="mostrarLabel()"
+    (mouseleave)="ocultarLabel()"
+    class="contenedor"
+  >
+    <img
+      src="../../../assets/img/fotos/individuales/{{picEntrante?.cod_institucion}}/{{picEntrante?.ruta }}"
+      [ngClass]="{ opacity: selected }"
+      alt=""
+    />
+    <label class="hover" [ngClass]="{ labelmostrar: selected }" for=""
+      >{{ picEntrante?.nombres }} {{ picEntrante?.apellido }}</label
+    >
+  </div>
+
+  <label for="" class="label" *ngIf="mobile"
+    >{{ picEntrante?.nombres }} {{ picEntrante?.apellido }}</label
+  >
+</div>-->
+
+<!--<div class="card">
+  <div class="card-img">
+    <img
+      src="../../../assets/img/fotos/individuales/{{
+        picEntrante?.cod_institucion
+      }}/{{ picEntrante?.ruta }}"
+      [ngClass]="{ opacity: selected }"
+      alt=""
+      (contextmenu)="prohibirDescarga($event)"
+    />
+  </div>
+  <div class="card-footer">
+   
+    
+  </div>
+</div>-->
+
+<img
+src="../../../assets/img/fotos/individuales/{{
+  picEntrante?.cod_institucion
+}}/{{ picEntrante?.ruta }}"
+[ngClass]="{ opacity: selected }"
+alt=""
+(contextmenu)="prohibirDescarga($event)"
+class="img_nueva"
+
+/>

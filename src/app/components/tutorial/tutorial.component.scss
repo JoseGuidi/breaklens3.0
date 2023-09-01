@@ -1,0 +1,108 @@
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*margin-top: 10vh;
+  margin-bottom: 10vh;*/
+  //margin: 10vh 0;
+  //min-height: 90vh;
+  background-color: #f6f7f8;
+  padding: 45px 0 55px 0;
+}
+.tutorial h2 {
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 4vh;
+  margin-bottom: 45px;
+}
+.tutorial .grilla {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  max-width: 1190px;
+}
+
+.card {
+  position: relative;
+  min-width: 150px;
+  min-height: 100px;
+  
+  width: 20vw;
+  //background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.card img {
+  width: 90%;
+  min-width: 200px;
+}
+.cuadrado{
+  position: relative;
+  width: 20vw;
+  min-width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #bebebe;  
+  background-color: #fff;
+}
+.cuadrado p{
+  bottom: 0;
+  width: 100%;
+  font-size: 20px;
+  font-family: "Roboto",sans-serif;
+  border-top: 1px solid rgb(218, 218, 218);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5px;
+  height: 65px;
+  background-color: #f2f1f4;
+  color: #000000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+@media only screen and (min-width:800px) {
+  .tutorial .grilla {
+   
+    justify-content: space-evenly;
+    
+  }
+}
+@media only screen and (min-width:1210px) {
+  .tutorial .grilla {
+   
+    justify-content: space-between;
+    gap: 25px 0px;
+  }
+  .cuadrado{
+   
+  }
+}
+.c0{
+  z-index: 5;
+}
+.c01{
+  z-index: 7;
+}
+.c1{
+  z-index: 10;
+}
+.c2{
+  z-index: 20;
+}
+.c3{
+  z-index: 30;
+}
+.c4{
+  z-index: 40;
+}

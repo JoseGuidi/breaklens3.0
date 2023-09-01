@@ -1,0 +1,370 @@
+.copias {
+  position: relative;
+  width: 110px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+img.individual {
+  width: 75px;
+  height: 112px;
+  box-shadow: 0 1px 4px rgba(85, 85, 85, 0.61);
+}
+.c1 {
+  rotate: 0;
+  z-index: 10;
+  transform: translateX(30px);
+}
+.c2 {
+  rotate: -2deg;
+  z-index: 5;
+  transform: translateX(15px);
+}
+.c3 {
+  rotate: -4deg;
+  z-index: 2;
+}
+.c4 {
+  rotate: -6deg;
+  z-index: 0;
+  transform: translateX(-15px);
+}
+img.grupal {
+  transform: rotate(270deg);
+  height: 80px;
+  width: 112px;
+  box-shadow: 0 1px 4px rgba(85, 85, 85, 0.61);
+}
+img.extra {
+  width: 75px;
+  position: absolute;
+  box-shadow: 0 1px 4px rgba(85, 85, 85, 0.61);
+  border-radius: 1px;
+}
+.cruz{
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+}
+.plus svg {
+  fill: #0c2535;
+  width: 20px;
+  height: auto;
+}
+// item galeria
+.item_galeria {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 2vh 0;
+  gap: 5px 15px;
+}
+.item_galeria img.individual{
+  max-width: 213px;
+width: 16vw;
+min-width: 150px;
+}
+
+.item_galeria .cruz{
+  right: 2px;
+  top: 0;
+  opacity: 1;
+}
+.item_galeria .fotos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 10px;
+}
+
+.item_galeria .carpeta{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 150px;
+}
+.item_galeria .carpeta .individual{
+  height: auto;
+}
+.item_galeria.imagen_vertical{
+  flex-direction: row;
+}
+.item_galeria .carpeta .individual.img_vertical{
+  width: 75px;
+  max-width: 75px;
+  min-width: auto;
+
+}
+.item_galeria .carpeta .grupal{
+  height: 16vw;
+  max-height: 75px;
+  width: auto;
+}
+.item_galeria img.extra{
+  width: 16vw;
+  max-width: 75px;
+  height:auto ;
+}
+
+.item_galeria .plus{
+  transform: translateX(7px);
+}
+.item_galeria .plus.plus_3extras{
+  transform: translateX(-8px);
+}
+.item_galeria .plus.plus_2extras{
+  transform: translateX(-1px);
+}
+
+// item carrito page
+.item_carrito {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2vh 1.7vw;
+  gap: 3px 15px;
+  //border-bottom: 1px solid rgb(243,242,242);
+}
+.item_carrito img.individual{
+  width: 194px;
+  height: auto;
+}
+.item_carrito img.individual.img_vertical{
+  width: 75px;
+  height: 112px;
+}
+.item_carrito .cruz{
+  top: 2px;
+  right: 2px;
+  opacity: 0.5;
+}
+.item_carrito .fotos{
+  width: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 5%;
+  
+}
+.item_carrito .fotos.fotosSinExtra{
+  width: 340px;
+}
+.item_carrito .carpeta{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item_carrito .plus{
+  transform: translateX(11px);
+}
+.item_carrito .plus.plus_3extras{
+  transform: translateX(-6px);
+}
+.item_carrito .plus.plus_2extras{
+  transform: translateX(1px);
+}
+// cont info
+
+.contenedor_info {
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.contenedor_info h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 2.7vh;
+  text-transform: lowercase;
+}
+.contenedor_info h2::first-letter {
+  text-transform: uppercase;
+}
+.contenedor_info .info_alumno h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 1.9vh;
+  margin: 5px 0;
+}
+.contenedor_info .info_alumno h3.alumno{
+  font-size: 2.1vh;
+}
+// precio y botonera
+.contenedor_precio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px 0;
+}
+h2.precio {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 2.5vh;
+}
+
+.quantity {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+}
+.quantity input {
+  width: 35px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #47484b;
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+.quantity button {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width:800px) {
+ .item_carrito .fotos{
+  
+ }
+}
+@media only screen and (min-width: 1072px) {
+
+  
+}
+@keyframes aparecerLento {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.item_conDigital{
+  padding: 0;
+}
+.digital{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f2f1f4;
+  box-shadow: inset 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 2vh;
+  padding: 5px;
+  border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.item_conDigital{
+  padding-top: 2vh;
+  
+}
+.digital h4{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Genel stil */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin: 10px 20px 10px 10px;
+}
+
+/* Giriş stil */
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+/* Anahtarın stilinin etrafındaki etiketin stil */
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 24px;
+  background-color: #c72020;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Anahtarın yuvarlak kısmının stil */
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Anahtarın etkin hale gelmesindeki stil değişiklikleri */
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #4CAF50;
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px);
+}
+
+/* Light tema */
+.toggle-switch.light .toggle-label {
+  background-color: #BEBEBE;
+}
+
+.toggle-switch.light .toggle-input:checked + .toggle-label {
+  background-color: #9B9B9B;
+}
+
+.toggle-switch.light .toggle-input:checked + .toggle-label::before {
+  transform: translateX(6px);
+}
+
+/* Dark tema */
+.toggle-switch.dark .toggle-label {
+  background-color: #4B4B4B;
+}
+
+.toggle-switch.dark .toggle-input:checked + .toggle-label {
+  background-color: #717171;
+}
+
+.toggle-switch.dark .toggle-input:checked + .toggle-label::before {
+  transform: translateX(16px);
+}

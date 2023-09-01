@@ -1,0 +1,120 @@
+<div class="contenedor">
+  <div class="elemento">
+    <div class="contenido">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Outline"
+        viewBox="0 0 24 24"
+        width="512"
+        height="512"
+        class="home"
+        [ngClass]="{ active: inIndex, visited: disponiblePara('index') }"
+      >
+        <path
+          d="M23.121,9.069,15.536,1.483a5.008,5.008,0,0,0-7.072,0L.879,9.069A2.978,2.978,0,0,0,0,11.19v9.817a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V11.19A2.978,2.978,0,0,0,23.121,9.069ZM15,22.007H9V18.073a3,3,0,0,1,6,0Zm7-1a1,1,0,0,1-1,1H17V18.073a5,5,0,0,0-10,0v3.934H3a1,1,0,0,1-1-1V11.19a1.008,1.008,0,0,1,.293-.707L9.878,2.9a3.008,3.008,0,0,1,4.244,0l7.585,7.586A1.008,1.008,0,0,1,22,11.19Z"
+        />
+      </svg>
+      <!--<label for=""> Codigo</label>-->
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Layer_1"
+      data-name="Layer 1"
+      viewBox="0 0 24 24"
+      width="512"
+      height="512"
+      class="flecha"
+    >
+      <path xmlns="http://www.w3.org/2000/svg" d="M7.412,24,6,22.588l9.881-9.881a1,1,0,0,0,0-1.414L6.017,1.431,7.431.017l9.862,9.862a3,3,0,0,1,0,4.242Z"/>
+    </svg>
+  </div>
+
+  <div class="elemento">
+    <div class="contenido">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Outline"
+        viewBox="0 0 24 24"
+        width="512"
+        height="512"
+        class="seleccion"
+        routerLink="/galeria/{{ institution?.cod_institucion }}"
+        [ngClass]="{ active: inGallery,'visited':inCart || inPayment }"
+      >
+        <path
+          d="M19,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V5A5.006,5.006,0,0,0,19,0ZM5,2H19a3,3,0,0,1,3,3V19a2.951,2.951,0,0,1-.3,1.285l-9.163-9.163a5,5,0,0,0-7.072,0L2,14.586V5A3,3,0,0,1,5,2ZM5,22a3,3,0,0,1-3-3V17.414l4.878-4.878a3,3,0,0,1,4.244,0L20.285,21.7A2.951,2.951,0,0,1,19,22Z"
+        />
+        <path
+          d="M16,10.5A3.5,3.5,0,1,0,12.5,7,3.5,3.5,0,0,0,16,10.5Zm0-5A1.5,1.5,0,1,1,14.5,7,1.5,1.5,0,0,1,16,5.5Z"
+        />
+      </svg>
+      <!--<label for=""> Galeria</label>-->
+    </div>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Layer_1"
+      data-name="Layer 1"
+      viewBox="0 0 24 24"
+      width="512"
+      height="512"
+      class="flecha"
+    >
+      <path xmlns="http://www.w3.org/2000/svg" d="M7.412,24,6,22.588l9.881-9.881a1,1,0,0,0,0-1.414L6.017,1.431,7.431.017l9.862,9.862a3,3,0,0,1,0,4.242Z"/>
+    </svg>
+  </div>
+
+  <div class="elemento">
+
+    <div class="contenido">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Outline"
+        viewBox="0 0 24 24"
+        width="512"
+        height="512"
+        class="carrito"
+        [ngClass]="{ active: inCart , visited: disponiblePara('cart')}"
+      >
+        <path
+          d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
+        />
+        <circle cx="7" cy="22" r="2" />
+        <circle cx="17" cy="22" r="2" />
+      </svg>
+      <!--<label for="">Carrito</label>-->
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Layer_1"
+      data-name="Layer 1"
+      viewBox="0 0 24 24"
+      width="512"
+      height="512"
+      class="flecha"
+    >
+      <path xmlns="http://www.w3.org/2000/svg" d="M7.412,24,6,22.588l9.881-9.881a1,1,0,0,0,0-1.414L6.017,1.431,7.431.017l9.862,9.862a3,3,0,0,1,0,4.242Z"/>
+    </svg>
+  </div>
+
+  <div class="elemento ultimo">
+
+    <div class="contenido">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Outline"
+        viewBox="0 0 24 24"
+        width="512"
+        height="512"
+        class="tarjeta"
+        [ngClass]="{ active: inPayment }"
+      >
+        <circle cx="5.5" cy="15.5" r="1.5" />
+        <path
+          d="M19,3H5A5.006,5.006,0,0,0,0,8v8a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V8A5.006,5.006,0,0,0,19,3ZM5,5H19a3,3,0,0,1,3,3H2A3,3,0,0,1,5,5ZM19,19H5a3,3,0,0,1-3-3V10H22v6A3,3,0,0,1,19,19Z"
+        />
+      </svg>
+      <!--<label for=""> Pago</label>-->
+    </div>
+  </div>
+</div>

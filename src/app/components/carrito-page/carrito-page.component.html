@@ -1,0 +1,318 @@
+<app-header></app-header>
+<div class="cargando" *ngIf="cargandoMP">
+  <app-loading></app-loading>
+</div>
+<div class="contenedor">
+  <div class="listadoItems">
+    <div class="cabecera">
+      <h1>Tu carrito</h1>
+    </div>
+
+    <div
+      class="itemFor"
+      *ngFor="let item of listadoItems"
+      [ngClass]="{ itemForPrimero: item === getPrimero() }"
+    >
+      <app-cart-item [item]="item"></app-cart-item>
+    </div>
+  </div>
+  <div class="contenedor_derecha">
+    <div class="datosCompra">
+      <div class="cabecera">
+        <h1>Resumen de compra</h1>
+      </div>
+      <div class="sumatoria">
+        <div *ngFor="let item of listadoItems">
+          <div class="itemSumatoria">
+            <h3>
+              {{ item.f.nombre }}
+              <span *ngIf="item.q !== 1">({{ item.q }})</span>
+            </h3>
+            <h3>${{ hacerCuenta(item.f.precio, item.q) }}</h3>
+          </div>
+          <div *ngIf="item.d" class="itemSumatoria">
+            <h4 class="div_digital">
+              <span>↪</span> <span>Copia digital</span>
+            </h4>
+            <h4>${{ item.f.digital }}</h4>
+          </div>
+        </div>
+        <div class="itemSumatoria envio">
+          <h3>Envio a domicilio</h3>
+          <h3>Gratis</h3>
+        </div>
+      </div>
+      <div class="compra">
+        <div class="info_compra">
+          <h5>Total</h5>
+          <h5>${{ getMontoTotal() }}</h5>
+        </div>
+        <button (click)="completarDatos()">
+          <label for="">Ir a pagar</label>
+          <svg class="svgIcon" viewBox="0 0 576 512">
+            <path
+              d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="notifications-container calidad_fotografia">
+      <div class="infoNotif">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg
+              class="info-svg svg_completandoPagos"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <div class="info-prompt-wrap">
+            <p class="parrafo_cartel">
+              Todas las fotografias se entregan en maxima calidad y sin marca de
+              agua.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="busqueda" *ngIf="mostrarPopUp">
+  <div class="cardDatos">
+    <div class="contenedor_error" *ngIf="mostrarErrorEnForm">
+      <div class="error__icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          viewBox="0 0 24 24"
+          height="24"
+          fill="none"
+        >
+          <path
+            d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"
+          ></path>
+        </svg>
+      </div>
+      <div class="error__title">Complete todo los campos y de forma valida</div>
+    </div>
+    <button type="button" class="dismiss" (click)="closePopUp()">×</button>
+    <div class="pasos">
+      <div
+        class="paso_1"
+        [ngClass]="{ active: completandoDatos }"
+        (click)="cambiarPaso('d')"
+      >
+        <p class="numero">1</p>
+        <p class="texto">Datos</p>
+      </div>
+      <div
+        class="paso_2"
+        [ngClass]="{ active: elijiendoMetodoPago }"
+        (click)="cambiarPaso('m')"
+      >
+        <p class="numero">2</p>
+        <p class="texto">Metodo</p>
+      </div>
+      <div
+        class="paso_3"
+        [ngClass]="{ active: momentoDePago }"
+        (click)="cambiarPaso('f')"
+      >
+        <p class="numero">3</p>
+        <p class="texto">Finalizar</p>
+      </div>
+    </div>
+    <div class="form" *ngIf="completandoDatos">
+      <div class="texto">
+        <h4>Ingrese informacion basica</h4>
+        <h5>Por favor, verifica que los datos sean correctos</h5>
+      </div>
+      <form action="" [formGroup]="formDatos">
+        <input type="text" placeholder="Nombre" formControlName="name" 
+        [class.error]="formDatos.get('name')?.invalid && formDatos.get('name')?.touched"
+        
+        />
+        <input type="text" placeholder="Apellido" formControlName="apellido" 
+        [class.error]="formDatos.get('apellido')?.invalid && formDatos.get('apellido')?.touched"/>
+        <input
+          type="email"
+          placeholder="Correo electronico"
+          formControlName="email"
+          [class.error]="formDatos.get('email')?.invalid && formDatos.get('email')?.touched"
+        />
+        <input type="email" placeholder="Telefono" formControlName="telefono" 
+        [class.error]="formDatos.get('telefono')?.invalid && formDatos.get('telefono')?.touched"/>
+        <input
+          type="text"
+          placeholder="Calle/Avenida"
+          formControlName="direc_calle"
+          [class.error]="formDatos.get('direc_calle')?.invalid && formDatos.get('direc_calle')?.touched"
+        />
+        <input
+          type="text"
+          placeholder="Numeracion"
+          formControlName="direc_numero"
+          [class.error]="formDatos.get('direc_numero')?.invalid && formDatos.get('direc_numero')?.touched"
+        />
+        <input
+          type="text"
+          placeholder="Piso/Depto (opcional)"
+          formControlName="direc_piso"
+          [class.error]="formDatos.get('direc_piso')?.invalid && formDatos.get('direc_piso')?.touched"
+        />
+        <input
+          type="text"
+          placeholder="Codigo postal"
+          formControlName="cod_postal"
+          [class.error]="formDatos.get('cod_postal')?.invalid && formDatos.get('cod_postal')?.touched"
+        />
+        <div class="btn">
+          <button (click)="elegirMetodoPago()">Siguiente</button>
+        </div>
+      </form>
+    </div>
+    <div class="header" *ngIf="elijiendoMetodoPago">
+      <div class="content">
+        <span class="title">METODOS DE PAGO</span>
+        <p class="message">
+          Seleccione uno de los siguientes para continuar con su compra.
+        </p>
+      </div>
+      <div class="metodos">
+        <button type="button" class="mp" (click)="mostrarDatosTranf()">
+          TRANSFERENCIA
+        </button>
+        <button type="button" class="transferencia" (click)="redirigirPagoMP()">
+          MERCADO PAGO
+        </button>
+      </div>
+
+      <div class="notifications-container">
+        <div class="infoNotif">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg
+                class="info-svg svg_completandoPagos"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <div class="info-prompt-wrap">
+              <p class="parrafo_cartel">
+                La opcion de mercado pago acepta tarjetas de credito, debito y
+                redes de pago en efectivo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="datos_tranferencias" *ngIf="momentoDePago">
+      <span class="title">PASOS PARA TRANSFERIR</span>
+      <div class="parrafos">
+        <!--<p class="guia">
+          Para finalizar tu compra: copia el <span>CVU</span> o <span>ALIAS</span>, ingresa a tu homebanking  y <span>realiza la transferencia</span>
+          del monto correspondiente, deberas enviar el comprobante al <span class="tel">0249 448-1007</span><span> (obligatorio)</span>. Tené en cuenta que la <span>confirmacion</span> de la transferencia puede durar
+          hasta <span>24hs habiles</span>, de todos modos podes seguir el <span>estado de tu pedido</span>
+          con <span>{{ orderID }}</span> en el inicio de nuestra web.
+        </p>-->
+        <ul>
+          <li>1) Copie el CBU o ALIAS.</li>
+          <li>
+            2) Ingresa a su homebanking y realize la transferencia del monto
+            <span>${{ getMontoTotal() }}</span
+            >.
+          </li>
+          <li>
+            3) Guarde el comprobante y envielo al
+            <a href="https://wa.link/w05wxt" target="_blank">(0249) 4481 007</a
+            >.
+          </li>
+        </ul>
+      </div>
+      <div class="informacion">
+        <div class="dato_compra">
+          <h4>
+            CVU: <span>{{ cvu }}</span>
+          </h4>
+          <img
+            src="../../../assets/img/flaticon/paste.png"
+            alt=""
+            (click)="copiarCVU(cvu)"
+          />
+          <div class="texto_copiado" *ngIf="cvuCopiado">Copiado!</div>
+        </div>
+        <div class="dato_compra">
+          <h4>
+            ALIAS: <span>{{ alias }}</span>
+          </h4>
+          <img
+            src="../../../assets/img/flaticon/paste.png"
+            alt=""
+            (click)="copiarAlias(alias)"
+          />
+          <div class="texto_copiado" *ngIf="aliasCopiado">Copiado!</div>
+        </div>
+      </div>
+      <!--
+        <div class="dato_monto_final">
+        <h4>Monto a transferir</h4>
+        <h4 class="monto_final_precio">${{ getMontoTotal() }}</h4>
+      </div>
+      -->
+
+      <div class="notifications-container notificacion_transf">
+        <div class="infoNotif">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg
+                class="info-svg svg_completandoPagos"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <div class="info-prompt-wrap">
+              <p class="parrafo_cartel">
+                Este es tu numero de pedido: <span>{{ orderID }}</span> ,
+                asegurate de guardarlo correctamente ya que con este vas a poder
+                hacer el seguimiento de tu pedido en el inicio de nuestra web
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button (click)="redirigirHome()">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

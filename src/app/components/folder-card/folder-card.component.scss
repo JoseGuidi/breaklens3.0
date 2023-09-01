@@ -1,0 +1,291 @@
+.masVendida{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 25px;
+  background-color: #2074b9;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0 20%;
+}
+div.masVendida h3{
+  text-align: center;
+  color: rgb(253, 253, 253);
+  font-weight: 400;
+  font-size: 1.6vh;
+  font-family: 'Roboto',sans-serif;
+}
+.folder {
+  //min-height: 35vh;
+  min-height: 273px;
+  padding: 10px 10px;
+  width: 45vw;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #fcfcfc;
+  border-top: 5px solid #0c2535;
+  //box-shadow: 2px 2px 5px rgb(224, 224, 224);
+  box-shadow: 20px 20px 60px #a0a0a0,
+  -1px -1px 30px #ffffff;
+  border-radius: 10px;
+  position: relative;
+  z-index: 20;
+  font-family: "Roboto",sans-serif;
+  gap: 15px 0;
+}
+.folderSelected{
+  transition: .2s;
+  border-top: 5px solid #0c2535;
+ // box-shadow: 0px 2px 7px #2a6081;
+  max-width: 275px;
+  min-height: 300px !important;
+  animation: 1500ms agrandarSeleccionadaCelu;
+}
+
+div.precio {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 0;
+}
+.folderSelected .precio h3{
+  font-size: 26px;
+}
+div.precio h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #0c2535;
+  text-transform: capitalize;
+  font-family: "Roboto",sans-serif;
+  margin-top: 10px;
+}
+div.precio h4 {
+  font-size: 30px;
+  font-weight: 500;
+}
+div.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Raleway",sans-serif;
+  font-size: 2.2vh;
+}
+div.info img {
+  width: 30px;
+}
+div.infoExtra {
+  width: 90%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+div.infoExtra h5 {
+  text-align: center;
+  width: 4vh;
+  font-size: 3vh;
+  font-weight: 500;
+  font-family: "Roboto",sans-serif;
+}
+div.infoExtra p {
+  font-size: 1.4vh;
+
+}
+
+div.copiaExtra{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+div.info button {
+  text-transform: uppercase;
+  border: 1px solid rgb(149, 146, 190);
+  border-radius: 40px;
+  padding: 10px 50px;
+  background-color: rgb(240, 240, 240);
+  color: rgb(149, 146, 190);
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.folder .info button:hover {
+  transition: 1s;
+  color: rgb(60, 55, 131);
+  background-color: rgb(212, 212, 212);
+  border: 1px solid rgb(60, 55, 131);
+  font-weight: bold;
+}
+/*
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 350px;
+  padding: 20px 1px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  //box-shadow: 0 10px 15px -3px rgba(33,150,243,.4),0 4px 6px -4px rgba(33,150,243,.4);
+  box-shadow: 20px 20px 60px #a0a0a0,
+  -1px -1px 30px #ffffff;
+  border-radius: 10px;
+  background-color: #6bccbf;
+  background: linear-gradient(45deg, #0c2535 0%, #292950 100%);
+  //background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+  font-family: "Roboto",sans-serif;
+}
+
+
+.content {
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .price h1{
+  color: white;
+  font-size: 3.5vh;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.42);
+}
+
+.content*/ .lists{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 88px;
+}
+.lists > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+}
+
+.list {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.list svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  color: #0c2535;
+}
+
+.list span {
+  color: rgb( 75 85 99 );
+  width: 100%;
+  font-size: 16px;
+}
+.description ul li{
+  list-style: none;
+}
+
+.content .title h1{
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 4vh;
+}
+
+// BOTON 2
+.button {
+  position: relative;
+  width: 90%;
+  height: 40px;
+  cursor: pointer;
+
+  border: 1px solid #184563;
+  background-color: #143850;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(15px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+//  transform: translateX(90%);
+right: 0;
+  height: 100%;
+  width: 39px;
+  background: #0c2535;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button:hover {
+  background-color: #184563;
+  
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 100%;
+  //transform: translateX(0);
+  //right: 25%;
+}
+
+.button:active .button__icon {
+  background-color: #2a6081;
+}
+
+.button:active {
+  border: 1px solid #2a6081;
+}
+
+
+@media only screen and (min-width:535px) {
+  .button .button__text {
+    transform: translateX(35px);
+  }
+}
+
+@media only screen and (min-width:800px) {
+  .folder {
+    min-height: 350px;
+    
+  }
+  .folderSelected{
+    min-height: 375px !important;
+  }
+  .button{
+    display: flex;
+    align-items: center;
+  }
+}
+
+@keyframes agrandarSeleccionadaCelu {
+  from{
+    scale: 0.94;
+  }
+  to{
+    scale: 1;
+  }
+}

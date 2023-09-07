@@ -216,6 +216,7 @@ export class CarritoPageComponent {
     }
   }
   redirigirPagoMP() {
+
     if (this.listadoItems.length > 0) {
       this.momentoDePago = false;
       this.elijiendoMetodoPago = false;
@@ -226,32 +227,33 @@ export class CarritoPageComponent {
       this.listadoItems.forEach((elem) => {
         titulo +=
           elem.q +
-          ' carpeta ' +
-          elem.f.nombre +
-          ' de ' +
-          elem.p.nombres +
           ' ' +
-          elem.p.apellido;
+          elem.f.nombre +
+         '  de ' + elem.i.nombre;
         if (elem.d) {
           //contiene digital el pedido
-          titulo += ' con digital --';
+          titulo += ' con digital. ';
+        }else{
+          titulo += 'sin digital. ';
         }
         descripcion +=
           'CAR: ' +
           elem.f.id_carpeta +
-          ' QUA: ' +
+          '-QUA: ' +
           elem.q +
-          ' FOT: ' +
+          '-FOT: ' +
           elem.p.id_foto +
-          ' INS: ' +
+          '-INS: ' +
           elem.i.cod_institucion;
 
         if (elem.d) {
           //contiene digital el pedido
-          descripcion += ' DIG: SI | ';
+          descripcion += '-DIG: SI]';
         } else {
-          descripcion += ' DIG: NO | ';
+          descripcion += '-DIG: NO]';
         }
+        let desc = descripcion.valueOf()
+        navigator.clipboard.writeText(desc);
       });
       titulo = JSON.stringify(titulo);
       descripcion = JSON.stringify(descripcion);

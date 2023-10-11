@@ -1,0 +1,85 @@
+<div class="cardEnvios">
+  <div class="back" (click)="volverFormulario()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Isolation_Mode"
+      data-name="Isolation Mode"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M13.422,19.061,8.129,13.768a2.5,2.5,0,0,1,0-3.536l5.293-5.293,2.121,2.122L10.6,12l4.939,4.939Z"
+      />
+    </svg>
+    <h3>volver</h3>
+  </div>
+  <div class="cabecera">
+    <h1>Metodo de entrega <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span>  </h1> 
+  </div>
+  <form [formGroup]="formMetodo">
+    <div
+      class="item_envio"
+      *ngFor="let item of listaDomicilios"
+      [ngClass]="{
+        primer_item: item == getElement(0),
+        'seleccionada':esLaSeleccionada(item)
+        
+      }"
+      (click)="elegir(item)"
+    >
+      <div class="izquierda">
+        <input
+          type="radio"
+          formControlName="metodo"
+          id=""
+          value="{{item.calle}}-{{item.numero}}-{{item.piso}}"
+        />
+        <div class="informacion">
+          <h2>{{ item.descr }}</h2>
+          <h3>
+            {{ item.calle }} {{ item.numero }}
+            <span *ngIf="item.piso">{{ item.piso }}</span>
+          </h3>
+        </div>
+      </div>
+      <div class="derecha">
+        <h2>{{ getCostoEnvio(item.costoEnvio) }}</h2>
+      </div>
+    </div>
+    <!--  MOCK ENVIOS-->
+      <!--<div class="item_envio primer_item">
+            <div class="izquierda">
+                <input type="radio" name="metodo" id="" value="Colombia-721">
+                <div class="informacion">
+                    <h2>Enviar a domicilio</h2>
+                    <h3>Colombia 721 </h3>
+                </div>
+            </div>
+            <div class="derecha">
+                <h2>$500</h2>
+            </div>
+        </div>
+        <div class="item_envio">
+            <div class="izquierda">
+                <input type="radio" name="metodo" id="" value="Cuba1498">
+                <div class="informacion">
+                    <h2>Retiro en sucursal</h2>
+                    <h3>Cuba 1498 </h3>
+                </div>
+            </div>
+            <div class="derecha">
+                <h2>Gratis</h2>
+            </div>
+        </div>-->
+  </form>
+
+</div>
+<div class="btn">
+  <button (click)="eligioMetodo()">Siguiente</button>
+</div>
+<app-resumen-pago class="resumen"
+[enMetodoEntrega]="true"
+(eventAvanzarResumen)="eligioMetodo()"
+[listadoItems]="listadoItems"
+>
+
+</app-resumen-pago>

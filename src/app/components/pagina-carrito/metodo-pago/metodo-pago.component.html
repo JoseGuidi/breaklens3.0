@@ -1,0 +1,88 @@
+<div class="cardMetodo">
+  <div class="back" (click)="volverResumen()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Isolation_Mode"
+      data-name="Isolation Mode"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M13.422,19.061,8.129,13.768a2.5,2.5,0,0,1,0-3.536l5.293-5.293,2.121,2.122L10.6,12l4.939,4.939Z"
+      />
+    </svg>
+    <h3>volver</h3>
+  </div>
+  <div class="cabecera">
+    <h1>Metodo de pago <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span></h1>
+  </div>
+  <form [formGroup]="formMetodoPago">
+    <div class="contenedor_metodos">
+      <div
+        class="item primero"
+        [ngClass]="{
+          seleccionada: formMetodoPago.value.pago == 'mercadoPago'
+        }"
+        (click)="elegir('mercadoPago')"
+      >
+        <input type="radio" formControlName="pago" id="" value="mercadoPago" />
+        <h2>Mercado Pago</h2>
+        <img src="https://img.icons8.com/color/48/mercado-pago.png" alt="" />
+      </div>
+      <div
+        class="item"
+        [ngClass]="{
+          seleccionada: formMetodoPago.value.pago == 'transferencia'
+        }"
+        (click)="elegir('transferencia')"
+      >
+        <input
+          type="radio"
+          formControlName="pago"
+          id=""
+          value="transferencia"
+        />
+        <h2>Transferencia</h2>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/5223/5223830.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="notifications-container">
+  <div class="infoNotif">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg
+          class="info-svg svg_completandoPagos"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <div class="info-prompt-wrap">
+        <p class="parrafo_cartel">
+          La opcion de mercado pago acepta tarjetas de credito, debito y redes
+          de pago en efectivo.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="btn">
+  <button (click)="habilitarPagar()">Siguiente</button>
+</div>
+<app-resumen-pago class="resumen"
+[enMetodoPago]="true"
+(eventAvanzarMostrarTodos)="habilitarPagar()"
+>
+
+</app-resumen-pago>

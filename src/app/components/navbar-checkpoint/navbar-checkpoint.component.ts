@@ -51,7 +51,6 @@ export class NavbarCheckpointComponent {
       this.inTutorial = false;
       this.inComentarios = false;
       this.inAbout = true;
-      console.log('hola')
     }else if( scrollY >= windowHeight - 1/2*windowHeight && scrollY < 3*windowHeight - windowHeight) {
       this.inInicio = false;
       this.inTutorial = true;

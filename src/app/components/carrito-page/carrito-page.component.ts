@@ -20,57 +20,112 @@ export class CarritoPageComponent {
   costoEnvio: number = 0; //en caso de que enun futuro tenga costo
   urlLocal: string =
     'https://localhost/trabajos/breaklens/api-proyecto/api/payments/';
-  urlHOSTINGER: string = 'https://breaklens.com/api/payments';
-  cargandoMP: boolean = false;
-  mostrarPopUp: boolean = false;
-  completandoDatos: boolean = false;
-  elijiendoMetodoPago: boolean = false;
-  momentoDePago: boolean = false;
-  formDatos: FormGroup;
-  mostrarErrorEnForm: boolean = false;
+  urlHOSTINGER: string = 'https://breaklens.com/api/';
+
+  formDatos!: FormGroup;
   orderID: String = 'TR';
   cvu: string = '';
   alias: string = '';
-
+  cargandoRedireccionPago:boolean = false;
+  enDatosPersonales: boolean = true;
+  enMetodoEntrega: boolean = false;
+  enResumen: boolean = false;
+  enMetodoPago: boolean = false;
+  enMostrarTodos: boolean = false;
+  lugarEntrega: String = '';
+  entregaEnDomicilio: boolean = false;
+  metodoPago: String = '';
+  mostrarDatosTransferencia: boolean = false;
   constructor(
     private cartService: CartService,
     private router: Router,
     private http: HttpClient,
     private data_service: DataService
-  ) {
-    this.formDatos = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      apellido: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      cod_postal: new FormControl('', [Validators.required]),
-      telefono: new FormControl('', [Validators.required]),
-      direc_calle: new FormControl('', [Validators.required]),
-      direc_numero: new FormControl('', [Validators.required]),
-      direc_piso: new FormControl(''),
-    });
-  }
+  ) {}
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.cartService.carrito.subscribe((cart) => {
       this.listadoItems = cart;
-
+      
       /*this.listadoItems = [
         {
           f: {
-            id_carpeta: 8,
-            cod_institucion: 'abc123',
-            nombre: 'Completa',
-            precio: 1900,
+            id_carpeta: 11,
+            cod_institucion: 'aytm21',
+            nombre: 'Pack Basico',
+            precio: 800,
             individual: 1,
-            grupal: 1,
-            digital: 0,
+            grupal: 0,
+            digital: 500,
+            primer_item: '1 fotografia 13x18cm',
+            segundo_item: 'vacio',
+            tercer_item: 'vacio',
+            medidas: '13x18',
           },
           p: {
-            id_foto: 10,
+            id_foto: 189,
+            cod_institucion: 'aytm21',
+            ruta: '_DSC7396.jpg',
+            nombres: '',
+            apellido: 'DSC7396',
+          },
+          i: {
+            cod_institucion: 'aytm21',
+            nombre: 'Acto 21 Agosto - TM',
+            path_foto_grupal: 'vacio',
+          },
+          q: 1,
+          d: false,
+        },
+        {
+          f: {
+            id_carpeta: 14,
+            cod_institucion: 'aytm21',
+            nombre: 'Pack Premium',
+            precio: 2000,
+            individual: 3,
+            grupal: 0,
+            digital: 500,
+            primer_item: '1 fotografia 15x21cm',
+            segundo_item: '2 copias extras 15x21cm',
+            tercer_item: 'vacio',
+            medidas: '15x21',
+          },
+          p: {
+            id_foto: 186,
+            cod_institucion: 'aytm21',
+            ruta: '_DSC7380.jpg',
+            nombres: '',
+            apellido: 'DSC7380',
+          },
+          i: {
+            cod_institucion: 'aytm21',
+            nombre: 'Acto 21 Agosto - TM',
+            path_foto_grupal: 'vacio',
+          },
+          q: 1,
+          d: false,
+        },
+        {
+          f: {
+            id_carpeta: 9,
             cod_institucion: 'abc123',
-            ruta: 'Santino_Lavayen_-_6A_Prim.jpg',
-            nombres: 'Santino',
-            apellido: 'Lavayen',
+            nombre: 'Plus',
+            precio: 1400,
+            individual: 2,
+            grupal: 1,
+            digital: 700,
+            primer_item: '',
+            segundo_item: '',
+            tercer_item: '',
+            medidas: '',
+          },
+          p: {
+            id_foto: 14,
+            cod_institucion: 'abc123',
+            ruta: 'Montes_angel_-_6A_Prim.jpg',
+            nombres: 'Montes',
+            apellido: 'angel',
           },
           i: {
             cod_institucion: 'abc123',
@@ -82,13 +137,17 @@ export class CarritoPageComponent {
         },
         {
           f: {
-            id_carpeta: 9,
+            id_carpeta: 7,
             cod_institucion: 'abc123',
-            nombre: 'Plus',
-            precio: 2500,
-            individual: 2,
-            grupal: 1,
-            digital: 700,
+            nombre: 'Individual',
+            precio: 1,
+            individual: 1,
+            grupal: 0,
+            digital: 1,
+            primer_item: '',
+            segundo_item: '',
+            tercer_item: '',
+            medidas: '',
           },
           p: {
             id_foto: 11,
@@ -110,42 +169,21 @@ export class CarritoPageComponent {
             id_carpeta: 10,
             cod_institucion: 'abc123',
             nombre: 'Gold',
-            precio: 5000,
+            precio: 1100,
             individual: 4,
             grupal: 1,
-            digital: 0,
+            digital: 700,
+            primer_item: '',
+            segundo_item: '',
+            tercer_item: '',
+            medidas: '',
           },
           p: {
-            id_foto: 16,
+            id_foto: 17,
             cod_institucion: 'abc123',
-            ruta: 'Maria_Lujan_Lazarte_Moreno_-_6A_Prim.jpg',
-            nombres: 'Maria',
-            apellido: 'Lujan',
-          },
-          i: {
-            cod_institucion: 'abc123',
-            nombre: 'Prueba Primaria',
-            path_foto_grupal: 'pruebaprimaria.jpg',
-          },
-          q: 1,
-          d: false,
-        },
-        {
-          f: {
-            id_carpeta: 7,
-            cod_institucion: 'abc123',
-            nombre: 'Individual',
-            precio: 1500,
-            individual: 1,
-            grupal: 0,
-            digital: 850,
-          },
-          p: {
-            id_foto: 13,
-            cod_institucion: 'abc123',
-            ruta: 'Naima_Aguero_-_6A_Prim.jpg',
-            nombres: 'Naima',
-            apellido: 'Aguero',
+            ruta: 'Gorosito_Francisco_-_6A_Prim.jpg',
+            nombres: 'Gorosito',
+            apellido: 'Francisco',
           },
           i: {
             cod_institucion: 'abc123',
@@ -156,7 +194,6 @@ export class CarritoPageComponent {
           d: false,
         },
       ];*/
-      // console.log(this.listadoItems)
 
       if (this.listadoItems.length === 0) {
         this.router.navigate(['/inicio']);
@@ -167,32 +204,13 @@ export class CarritoPageComponent {
       this.alias = data.alias;
       this.cvu = data.cbu;
     });
+    this.data_service.obtenerDatosEnvio('7000').subscribe((envio) => {
+      this.costoEnvio = envio.costo;
+    });
   }
-  borrarElementoCarrito(item: {
-    f: Folder;
-    p: Pic;
-    i: Institution;
-    q: Number;
-  }) {
-    this.cartService.borrarElemento(item);
-  }
-  cambiarCantidad(
-    item: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean },
-    accion: number
-  ) {
-    if ((accion === -1 && item.q.valueOf() > 1) || accion === 1) {
-      this.cartService.actualizarCarrito(
-        item.f,
-        item.p,
-        item.i,
-        accion,
-        item.d
-      );
-    }
-  }
-  getMontoItem(item: { f: Folder; p: Pic; i: Institution; q: Number }) {
-    return item.q.valueOf() * item.f.precio.valueOf();
-  }
+  
+  
+
   getMontoTotal() {
     let total: number = 0;
     this.listadoItems.forEach((pos) => {
@@ -203,158 +221,135 @@ export class CarritoPageComponent {
     });
     return total;
   }
-  getMontoTotalEnvio() {
-    return this.getMontoTotal() + this.costoEnvio;
+
+
+
+  
+
+ 
+
+  manejarDatos(datos: any) {
+    this.enDatosPersonales = false;
+    this.enMetodoEntrega = true;
+    this.formDatos = datos;
   }
-  completarDatos() {
-    if (this.listadoItems.length > 0) {
-      this.mostrarPopUp = true;
-      this.completandoDatos = true;
-      this.momentoDePago = false;
-    } else {
-      alert('REDIRECCIONAR A GALERIA O APARECER MENSAJE DE CARRITO VACIO');
+
+  actualizarMetodoEntrega(envio: any) {
+    let arrayDirec = envio.value.metodo.split('-');
+    this.lugarEntrega =
+      arrayDirec[0] + ' ' + arrayDirec[1] + ' ' + arrayDirec[2];
+    this.enMetodoEntrega = false;
+    this.enResumen = true;
+    this.entregaEnDomicilio =
+      arrayDirec[0] != 'Cuba' && arrayDirec[1] != '1498';
+  }
+
+  avanzarAMetodoPago() {
+    this.enResumen = false;
+    this.enMetodoPago = true;
+  }
+
+  redirigirPago(metodo: string) {
+    this.enMostrarTodos = true;
+    this.enMetodoPago = false;
+    this.metodoPago = metodo;
+  }
+
+  mostrandoTodos() {
+    return (
+      this.enDatosPersonales &&
+      this.enMetodoEntrega &&
+      this.enMetodoPago &&
+      this.enResumen
+    );
+  }
+
+  volverAtras(destino: String) {
+    if (destino == 'datos') {
+      this.enMetodoEntrega = false;
+      this.enDatosPersonales = true;
+    } else if (destino == 'entrega') {
+      this.enResumen = false;
+      this.enMetodoEntrega = true;
+    } else if (destino == 'resumen') {
+      this.enMetodoPago = false;
+      this.enResumen = true;
+    } else if (destino == 'galeria') {
+      let ultimoElemento = this.listadoItems[this.listadoItems.length - 1];
+      this.router.navigate(['galeria/' + ultimoElemento.i.cod_institucion]);
     }
   }
-  redirigirPagoMP() {
 
-    if (this.listadoItems.length > 0) {
-      this.momentoDePago = false;
-      this.elijiendoMetodoPago = false;
-      this.cargandoMP = true;
-      let amount: Number = this.getMontoTotal();
-      let titulo: String = '';
-      let descripcion: String = '';
-      this.listadoItems.forEach((elem) => {
-        titulo +=
-          elem.q +
-          ' ' +
-          elem.f.nombre +
-         '  de ' + elem.i.nombre;
-        if (elem.d) {
-          //contiene digital el pedido
-          titulo += ' con digital. ';
-        }else{
-          titulo += 'sin digital. ';
-        }
-        descripcion +=
-          'CAR: ' +
-          elem.f.id_carpeta +
-          '-QUA: ' +
-          elem.q +
-          '-FOT: ' +
-          elem.p.id_foto +
-          '-INS: ' +
-          elem.i.cod_institucion;
+  elegirTRoMP() {
+    this.cargandoRedireccionPago = true
 
-        if (elem.d) {
-          //contiene digital el pedido
-          descripcion += '-DIG: SI]';
-        } else {
-          descripcion += '-DIG: NO]';
-        }
-        let desc = descripcion.valueOf()
-        navigator.clipboard.writeText(desc);
-      });
-      titulo = JSON.stringify(titulo);
-      descripcion = JSON.stringify(descripcion);
-      let piso = '';
-      if (this.formDatos.get('direc_piso')?.value) {
-        piso = this.formDatos.get('direc_piso')?.value;
+    setTimeout( () =>{
+      if ((this.metodoPago == 'transferencia')) {
+        this.enMostrarTodos = false;
+        this.mostrarDatosTransferencia = true;
+        this.pushearTransferencia();
+      } else {
+        this.redirigirMercadoPago();
       }
-      let direccion =
-        this.formDatos.get('direc_calle')?.value +
-        ' ' +
-        this.formDatos.get('direc_numero')?.value +
-        ' ' +
-        piso;
-      let url =
-        this.urlHOSTINGER +
-        '?price=' +
-        amount +
-        '&description=' +
-        titulo +
-        '&textoDB=' +
-        descripcion +
-        '&payer_name=' +
-        this.formDatos.get('name')?.value +
-        '&payer_surname=' +
-        this.formDatos.get('apellido')?.value +
-        '&payer_email=' +
-        this.formDatos.get('email')?.value +
-        '&payer_phone=' +
-        this.formDatos.get('telefono')?.value +
-        '&payer_direc=' +
-        direccion;
-      this.http.get(url).subscribe((response) => {
-        setTimeout(() => {
-          this.cargandoMP = false;
-          window.open(response.toString(), '_self');
-        }, 1500);
-      });
-    } else {
-      alert('REDIRECCIONAR A GALERIA O APARECER MENSAJE DE CARRITO VACIO');
-    }
-  }
-  hacerCuenta(precioF: Number, cantidad: Number): number {
-    return precioF.valueOf() * cantidad.valueOf();
+    },1500)
   }
 
-  prohibirDescarga(event: any) {
-    event.preventDefault();
-  }
-  closePopUp() {
-    this.mostrarPopUp = false;
-    this.completandoDatos = false;
-    this.elijiendoMetodoPago = false;
-  }
-  getPrimero() {
-    return this.listadoItems[0];
-  }
-  elegirMetodoPago() {
-    if (
-      this.formDatos.valid 
-    ) {
-      this.completandoDatos = false;
-      this.elijiendoMetodoPago = true;
-      this.momentoDePago = false;
-    } else {
-      this.mostrarErrorEnForm = true;
-      setTimeout(() => {
-        this.mostrarErrorEnForm = false;
-      }, 3000);
-      if (this.formDatos.invalid) {
-        Object.values(this.formDatos.controls).forEach(control => {
-          control.markAsTouched();
-        });
-        return;
-      }
-    }
-    
-  }
-  mostrarDatosTranf() {
-    this.elijiendoMetodoPago = false;
-
-    this.cargandoMP = true;
-    let desc = this.generateDescription();
-    let titDB = this.generateTituloDB();
-    let price = this.getMontoTotal();
+  generateURL(endpoint: string) {
+    let descripcion = '';
+    let titulo = '';
+    let amount = this.getMontoTotal();
+    let direccion = '';
     let piso = '';
+    let entrega ='';
+    if(this.entregaEnDomicilio){
+      entrega = 'domicilio'
+    }else{
+      entrega = 'retiro'
+    }
+    this.listadoItems.forEach((item) => {
+      titulo += item.q + ' ' + item.f.nombre + ' de ' + item.i.nombre;
+      if (item.d) {
+        titulo += ' con digital.';
+      } else {
+        titulo += ' sin digital.';
+      }
+      descripcion +=
+        'CAR: ' +
+        item.f.id_carpeta +
+        '-QUA: ' +
+        item.q +
+        '-FOT: ' +
+        item.p.id_foto +
+        '-INS: ' +
+        item.i.cod_institucion;
+      if (item.d) {
+        //contiene digital el pedido
+        descripcion += '-DIG: SI]';
+      } else {
+        descripcion += '-DIG: NO]';
+      }
+    });
+    titulo = JSON.stringify(titulo);
+    descripcion = JSON.stringify(descripcion);
+    piso = '';
     if (this.formDatos.get('direc_piso')?.value) {
       piso = this.formDatos.get('direc_piso')?.value;
     }
-    let direccion =
+    direccion =
       this.formDatos.get('direc_calle')?.value +
       ' ' +
       this.formDatos.get('direc_numero')?.value +
       ' ' +
       piso;
-    let url_tr =
-      'https://breaklens.com/api/transfer?price=' +
-      price +
+    let url =
+      this.urlHOSTINGER +
+      endpoint +
+      '?price=' +
+      amount +
       '&description=' +
-      desc +
+      titulo +
       '&textoDB=' +
-      titDB +
+      descripcion +
       '&payer_name=' +
       this.formDatos.get('name')?.value +
       '&payer_surname=' +
@@ -364,130 +359,57 @@ export class CarritoPageComponent {
       '&payer_phone=' +
       this.formDatos.get('telefono')?.value +
       '&payer_direc=' +
-      direccion;
-    this.http.get(url_tr).subscribe((order_id) => {
+      direccion+'&entrega='+entrega;
+    console.log(url);
+    return url;
+  }
+ 
+  pushearTransferencia() {
+    let url = this.generateURL('transfer');
+    this.http.get(url).subscribe((order_id) => {
       let idTR = order_id;
       this.orderID = 'TR' + order_id;
-      setTimeout(() => {
-        this.cargandoMP = false;
-        this.momentoDePago = true;
-
-        // hacer post a base de datos con cada item;
-        this.listadoItems.forEach((item) => {
-          let inst = item.f.cod_institucion;
-          let carp = item.f.id_carpeta;
-          let foto = item.p.id_foto;
-
-          let digit;
-          if (item.d) {
-            digit = 1;
-          } else {
-            digit = 0;
-          }
-          let cant = item.q;
-
-          let url_item =
-            'https://breaklens.com/api/itemTR?inst=' +
-            inst +
-            '&carp=' +
-            carp +
-            '&foto=' +
-            foto +
-            '&digit=' +
-            digit +
-            '&cant=' +
-            cant + '&idTR='+idTR;
-          this.http.get(url_item).subscribe(()=>{
-              
-          });
-        });
-      }, 1500);
+      this.pushearItemsEnBBDD(this.listadoItems, 'itemTR', order_id);
     });
   }
+  pushearItemsEnBBDD(items: any, endpoint: string, idTR: any) {
+    setTimeout(() => {
+      this.listadoItems.forEach((item) => {
+        let inst = item.f.cod_institucion;
+        let carp = item.f.id_carpeta;
+        let foto = item.p.id_foto;
 
-  cambiarPaso(paso: String) {
-    if (paso === 'd') {
-      this.completandoDatos = true;
-      this.elijiendoMetodoPago = false;
-      this.momentoDePago = false;
-    } else if (paso === 'm' && !this.completandoDatos) {
-      this.elijiendoMetodoPago = true;
-      this.momentoDePago = false;
-      this.completandoDatos = false;
-    } else if (
-      paso === 'f' &&
-      !this.elijiendoMetodoPago &&
-      !this.completandoDatos
-    ) {
-      this.elijiendoMetodoPago = false;
-      this.momentoDePago = true;
-      this.completandoDatos = false;
+        let digit;
+        if (item.d) {
+          digit = 1;
+        } else {
+          digit = 0;
+        }
+        let cant = item.q;
+
+        let url_item =
+          'https://breaklens.com/api/itemTR?inst=' +
+          inst +
+          '&carp=' +
+          carp +
+          '&foto=' +
+          foto +
+          '&digit=' +
+          digit +
+          '&cant=' +
+          cant +
+          '&idTR=' +
+          idTR;
+        this.http.get(url_item).subscribe(() => {});
+      });
+    }, 1500);
+  }
+  redirigirMercadoPago() {
+    if (this.listadoItems.length > 0) {
+      let url = this.generateURL('payments');
+      this.http.get(url).subscribe((link_mp) => {
+          window.open(link_mp.toString(), '_self');
+      });
     }
-  }
-
-  private generateDescription() {
-    let titulo = '';
-    this.listadoItems.forEach((elem) => {
-      titulo +=
-        elem.q +
-        ' carpeta ' +
-        elem.f.nombre +
-        ' de ' +
-        elem.p.nombres +
-        ' ' +
-        elem.p.apellido;
-      if (elem.d) {
-        //contiene digital el pedido
-        titulo += ' con digital --';
-      } else {
-        titulo += ' --';
-      }
-    });
-    return titulo;
-  }
-  private generateTituloDB() {
-    let tituloDB = '';
-    this.listadoItems.forEach((elem) => {
-      tituloDB +=
-        'CAR: ' +
-        elem.f.id_carpeta +
-        ' QUA: ' +
-        elem.q +
-        ' FOT: ' +
-        elem.p.id_foto +
-        ' INS: ' +
-        elem.i.cod_institucion;
-      if (elem.d) {
-        //contiene digital el pedido
-        tituloDB += ' DIG: SI | ';
-      } else {
-        tituloDB += ' DIG: NO| ';
-      }
-    });
-    return tituloDB;
-  }
-
-
-
-  aliasCopiado: boolean = false;
-  cvuCopiado: boolean = false;
-  copiarCVU(texto: string) {
-    navigator.clipboard.writeText(texto);
-    this.cvuCopiado = true;
-    setTimeout(() => {
-      this.cvuCopiado = false;
-    }, 1500);
-  }
-  copiarAlias(texto: string) {
-    navigator.clipboard.writeText(texto);
-    this.aliasCopiado = true;
-    setTimeout(() => {
-      this.aliasCopiado = false;
-    }, 1500);
-  }
-  redirigirHome() {
-    setTimeout(() => {
-      this.router.navigate(['/inicio']);
-    }, 1000);
   }
 }

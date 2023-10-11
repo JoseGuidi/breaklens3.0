@@ -1,0 +1,149 @@
+.cardGeneral{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 160px;
+}
+.cabecera {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1vh 3.5vw;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cabecera h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+}
+.cabecera h1::first-letter {
+  text-transform: uppercase;
+}
+.modificar{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.modificar svg{
+  width: 13px;
+  height: auto;
+  fill: rgb(86, 86, 86);
+}
+.modificar h3{
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(86, 86, 86);
+}
+
+
+.formDatos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+  background-color: #fff;
+}
+.formDatos input {
+  border-radius: 8px;
+  background-color: #e7ebee;
+  border: 1px solid #e9e8e8;
+  width: 35%;
+  min-width: 230px;
+  max-width: 350px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #595b5f;
+  padding: 7px;
+}
+
+
+// entrega
+
+.item_envio{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* JUNTOS CON LINEA
+  border-top: 1px solid rgb(246, 246, 246);*/
+  padding: 2vh 3.5vw;
+  background-color: #fff;
+}
+
+.izquierda{
+  display: flex;
+  align-items: flex-start;
+  gap: 0 10px;
+}
+.izquierda input{
+  transform: translateY(7px);
+}
+
+.informacion{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.informacion h2,.derecha h2{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+.informacion h3{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #7f7d7d;
+}
+
+
+.itemEnCarrito{
+  background-color: #fff;
+  border-top: 1px solid #eeecec;
+}
+.itemEnCarrito.primero{
+  border: none;
+}
+
+
+
+.item_pago{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+  padding: 2vh 3.5vw;
+  background-color: #fff;
+
+  
+}
+
+.item_pago h2{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+.item_pago img{
+  width: 40px;
+}
+.resumenFinalizar{
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+}
+@media only screen and (min-width:870px) {
+  .cardGeneral{
+    padding-bottom: 0 ;
+  }
+  .resumenFinalizar{
+    display: none;
+  }
+}

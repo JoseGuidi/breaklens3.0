@@ -1,12 +1,13 @@
 <div
   *ngIf="item"
-  [ngClass]="{ item_galeria: inGallery, item_carrito: !inGallery, item_conDigital:!inGallery&&contieneDigital(),'imagen_vertical':imagenVertical }"
+  [ngClass]="{ item_galeria: inGallery, item_carrito: !inGallery, item_conDigital:!inGallery&&contieneDigital(),'imagen_vertical':imagenVertical,'en_resumen':enResumen }"
 >
   <img
     src="../../../assets/img/flaticon/cross-sm.svg "
     alt=""
     class="cruz"
     (click)="eliminarElemento()"
+    *ngIf="!enResumen"
   />
   <div class="fotos" [ngClass]="{'fotosSinExtra':!contieneExtras()}">
     <div class="carpeta">
@@ -18,7 +19,6 @@
         alt=""
         class="individual"
         id="_{{item.f.id_carpeta}}-{{item.p.id_foto}}"
-        [ngClass]="{}"
         (load)="checkImagenVertical(item.f.id_carpeta,item.p.id_foto)"
       />
       <img
@@ -77,7 +77,7 @@
       <h3>{{ item.i.nombre }}</h3>
     </div>
   </div>
-  <div class="contenedor_precio">
+  <div class="contenedor_precio" *ngIf="!enResumen">
     <h2 class="precio">${{ hacerCuenta(item.f.precio, item.q) }}</h2>
     <div class="quantity">
       <button (click)="cambiarCantidad(item, -1)">
@@ -117,11 +117,13 @@
       </button>
     </div>
   </div>
-  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0">
+  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0 && !enResumen">
     <h4>QUIERO RECIBIR LA FOTO DIGITAL EN MI MAIL (${{item.f.digital}})</h4>
     <div class="toggle-switch" >
       <input class="toggle-input" id="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}" type="checkbox"
-      (click)="agregarDigital(item)">
+      (click)="agregarDigital(item)"
+      
+      >
       <label class="toggle-label" for="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}"></label>
     </div>    
   </div>

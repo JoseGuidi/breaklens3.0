@@ -98,6 +98,7 @@ export class GalleryComponent {
     this._cartService.visibilidadCarrito.subscribe(
       (vis) => (this.carritoVisible = vis)
     );
+
   }
   cerrarCarrito() {
     this.primeraVez = false;

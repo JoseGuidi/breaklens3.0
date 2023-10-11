@@ -1,0 +1,107 @@
+<div class="cardDatos" >
+  <div class="back" routerLink="/galeria/{{ultimaInstitucion?.cod_institucion}}">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Isolation_Mode"
+      data-name="Isolation Mode"
+      viewBox="0 0 24 24"
+      
+    >
+      <path
+        d="M13.422,19.061,8.129,13.768a2.5,2.5,0,0,1,0-3.536l5.293-5.293,2.121,2.122L10.6,12l4.939,4.939Z"
+      />
+    </svg>
+    <h3>volver</h3>
+  </div>
+  <div class="cabecera">
+    <h1>Resumen de compra</h1>
+  </div>
+  <div class="form">
+    <div class="texto">
+      <h4>Ingrese informacion de contacto</h4>
+      <h5>Por favor, verifica que los datos sean correctos</h5>
+    </div>
+    <form action="" [formGroup]="formDatos">
+      <input
+        type="text"
+        placeholder="Nombre"
+        formControlName="name"
+        [class.error]="
+          formDatos.get('name')?.invalid && formDatos.get('name')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Apellido"
+        formControlName="apellido"
+        [class.error]="
+          formDatos.get('apellido')?.invalid &&
+          formDatos.get('apellido')?.touched
+        "
+      />
+      <input
+        type="email"
+        placeholder="Correo electronico"
+        formControlName="email"
+        [class.error]="
+          formDatos.get('email')?.invalid && formDatos.get('email')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Telefono"
+        formControlName="telefono"
+        [class.error]="
+          formDatos.get('telefono')?.invalid &&
+          formDatos.get('telefono')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Calle/Avenida"
+        formControlName="direc_calle"
+        [class.error]="
+          formDatos.get('direc_calle')?.invalid &&
+          formDatos.get('direc_calle')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Numeracion"
+        formControlName="direc_numero"
+        [class.error]="
+          formDatos.get('direc_numero')?.invalid &&
+          formDatos.get('direc_numero')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Piso/Depto (opcional)"
+        formControlName="direc_piso"
+        [class.error]="
+          formDatos.get('direc_piso')?.invalid &&
+          formDatos.get('direc_piso')?.touched
+        "
+      />
+      <input
+        type="text"
+        placeholder="Codigo postal"
+        formControlName="cod_postal"
+        [class.error]="
+          formDatos.get('cod_postal')?.invalid &&
+          formDatos.get('cod_postal')?.touched
+        "
+      />
+    </form>
+  </div>
+</div>
+<div class="btn">
+  <button (click)="enviarDatosForm()">Siguiente</button>
+</div>
+<app-resumen-pago class="resumen"
+  [enDatosPersonales]="true"
+  (eventAvanzarEntrega)="enviarDatosForm()"
+  [listadoItems]="listadoItems"
+>
+
+</app-resumen-pago>

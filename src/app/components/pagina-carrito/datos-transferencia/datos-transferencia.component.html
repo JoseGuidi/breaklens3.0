@@ -1,0 +1,76 @@
+<div class="datos_tranferencias" *ngIf="true">
+    <span class="title">PASOS PARA TRANSFERIR</span>
+    <div class="parrafos">
+      <ul>
+        <li>1) Copie el CBU o ALIAS.</li>
+        <li>
+          2) Ingresa a su homebanking y realize la transferencia del monto
+          <span>${{ getMontoTotal() }}</span
+          >.
+        </li>
+        <li>
+          3) Guarde el comprobante y envielo al
+          <a href="https://wa.link/w05wxt" target="_blank">(0249) 4481 007</a
+          >.
+        </li>
+      </ul>
+    </div>
+    <div class="informacion">
+      <div class="dato_compra">
+        <h4>
+          CVU: <span>{{ cvu }}</span>
+        </h4>
+        <img
+          src="../../../assets/img/flaticon/paste.png"
+          alt=""
+          (click)="copiarCVU(cvu)"
+        />
+        <div class="texto_copiado" *ngIf="cvuCopiado">Copiado!</div>
+      </div>
+      <div class="dato_compra">
+        <h4>
+          ALIAS: <span>{{ alias }}</span>
+        </h4>
+        <img
+          src="../../../assets/img/flaticon/paste.png"
+          alt=""
+          (click)="copiarAlias(alias)"
+        />
+        <div class="texto_copiado" *ngIf="aliasCopiado">Copiado!</div>
+      </div>
+    </div>
+
+
+    <div class="notifications-container notificacion_transf">
+      <div class="infoNotif">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg
+              class="info-svg svg_completandoPagos"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <div class="info-prompt-wrap">
+            <p class="parrafo_cartel">
+              Este es tu numero de pedido: <span>{{orderID}}</span> ,
+              asegurate de guardarlo correctamente ya que con este vas a poder
+              hacer el seguimiento de tu pedido en el inicio de nuestra web
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button (click)="redirigirHome()">Finalizar</button>
+    </div>
+</div>
+

@@ -62,4 +62,7 @@ export class DataService {
   obtenerDatosExtras():Observable<any>{
     return this.http.get(URL+'extras')
   }
+  obtenerDatosEnvio(id:string):Observable<any>{
+    return this.http.get(URL+'envio/'+id)
+  }
 }

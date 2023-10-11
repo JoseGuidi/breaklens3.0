@@ -1,0 +1,197 @@
+.cardEnvios {
+  background-color: #fff;
+ 
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 800px;
+  z-index: 20;
+  animation: aparecer 0.3s;
+
+
+  width: 100vw;
+  border-radius: 0;
+  //min-height: calc(100vh - 15px - 10vh - 48px - 10px - 26px);
+}
+.cabecera {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 2vh 3.5vw;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #fff;
+}
+.cabecera h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 2.5vh;
+}
+
+.cabecera h1::first-letter {
+  text-transform: uppercase;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  //padding: 2vh 3.5vw;
+
+  min-height: 164px;
+}
+.item_envio {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px solid rgb(246, 246, 246);
+  padding: 2vh 3.5vw;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.item_envio.primer_item {
+  border: none;
+}
+
+.item_envio:hover {
+  background-color: #f2f2f2;
+  transition: 0.3s;
+}
+
+.item_envio.seleccionada::before {
+  background-color: #3483fa;
+  content: ""; /* Agregamos contenido pseudo-elemento */
+  position: absolute; /* Establecemos una posición absoluta para el borde */
+  top: 0;
+  left: 0;
+  height: 100%; /* Altura igual a la del div padre */
+  width: 5px; /* Ancho del borde izquierdo */
+}
+
+.izquierda {
+  display: flex;
+  align-items: flex-start;
+  gap: 0 10px;
+}
+.izquierda input {
+  transform: translateY(7px);
+  cursor: pointer;
+}
+.cabecera span{
+  display: none;
+}
+.cabecera span.sinElegir{
+  display: inline;
+  font-weight: 300;
+  font-size: 15px;
+  color: red;
+  transition: ease-in 50ms;
+}
+.item_envio.sinElegir {
+  border: 1px solid rgba(215, 11, 11, 0.734);
+  border-top: none;
+  
+}
+.informacion {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.informacion h2,
+.derecha h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+.informacion h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #7f7d7d;
+}
+
+.btn,
+.datos_tranferencias .btn {
+  display: none;
+
+}
+.btn button,
+.datos_tranferencias .btn button {
+  width: 35%;
+  min-width: 230px;
+  max-width: 350px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background-color: #0c2535;
+  transition: 0.4s;
+}
+.btn button:hover,
+.datos_tranferencias .btn button:hover {
+  background-color: #153c54;
+  transition: 0.4s;
+}
+
+form input.error {
+  border: 1px solid rgb(233, 93, 93);
+  background-color: rgba(247, 190, 190, 0.459);
+  transition: 0.2s;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  cursor: pointer;
+}
+.back svg {
+  width: 25px;
+  fill: rgb(30, 75, 152);
+  transform: translateX(3px);
+}
+.back h3 {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(30, 75, 152);
+  transform: translateY(-2px);
+}
+.back:hover h3,
+.back:hover svg {
+  color: rgb(9, 9, 67);
+}
+.resumen{
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+}
+@media only screen and (min-width:870px) {
+  .cardEnvios{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    min-height: auto;
+    width: auto;
+  }
+  .btn{
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    justify-content: right;
+  }
+  .resumen{
+    display: none;
+  }
+}

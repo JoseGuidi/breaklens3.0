@@ -1,0 +1,127 @@
+.cardCarrito {
+  max-width: 800px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+
+  background-color: #fdfdfd;
+  padding-bottom: 150px;
+}
+.cabecera {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 2vh 3.5vw;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.cabecera h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 2.5vh;
+}
+.cabecera h1::first-letter {
+  text-transform: uppercase;
+}
+
+.itemForPrimero {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-top: none !important;
+}
+
+.itemFor {
+  width: 100%;
+  margin: 0 0 10px 0;
+
+  border-top: 1px solid #e5e5e5;
+  
+}
+
+.btn,
+.datos_tranferencias .btn {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+  justify-content: right;
+}
+.btn button,
+.datos_tranferencias .btn button {
+  width: 35%;
+  min-width: 230px;
+  max-width: 350px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background-color: #0c2535;
+  transition: 0.4s;
+}
+.btn button:hover,
+.datos_tranferencias .btn button:hover {
+  background-color: #153c54;
+  transition: 0.4s;
+}
+.back{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  cursor: pointer;
+}
+.back svg{
+  width: 25px;
+  fill: rgb(30, 75, 152);
+  transform: translateX(3px);
+}
+.back h3{
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(30, 75, 152);
+  transform: translateY(-2px);
+}
+.back:hover h3,.back:hover svg{
+  color: rgb(9, 9, 67);
+}
+
+.resumen{
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+}
+.btn{
+  display: none;
+}
+@media only screen and (min-width:870px) {
+  .cardCarrito{
+    padding-bottom: 0;
+    background-color: transparent;
+  }
+  .btn{
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    justify-content: right;
+  }
+  .resumen{
+    display: none;
+  }
+  .cabecera{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+  }
+  .itemFor{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    border-top: none;
+    border-radius: 8px 8px 15px 15px;
+  }
+
+}

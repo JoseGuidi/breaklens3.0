@@ -7,7 +7,7 @@
   position: relative;
 }
 .cabecera {
- 
+
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
   padding: 2vh 3.5vw;
@@ -37,7 +37,7 @@ form{
     width: 100%;
 }
 .contenedor_metodos{
-    
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -62,7 +62,7 @@ form{
   border: none;
 }
 .item.seleccionada::before{
-  background-color:  #3483fa ;
+  background-color:  #28516B ;
   content: ''; /* Agregamos contenido pseudo-elemento */
   position: absolute; /* Establecemos una posición absoluta para el borde */
   top: 0;

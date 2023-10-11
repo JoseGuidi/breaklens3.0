@@ -27,21 +27,14 @@ export class ResumenPagoComponent {
   @Input() entregaEnDomicilio?:boolean;
   @Input() formDatosPersonales?:FormGroup;
 
-  costoEnvio:any;
+  @Input() costoEnvio:any;
   constructor(private _dataService:DataService, private _router:Router, private _cartService:CartService){
     _cartService.carrito.subscribe( c=>{
       this.lItems = c;
     })
     if(this.lItems){
       if(this.lItems?.length > 0){
-      this._dataService.obtenerDatosEnvio('7000').subscribe((precio)=>{
 
-        if(precio.costo == 0){
-          this.costoEnvio = 'Gratis'
-        }else{
-          this.costoEnvio = precio.costo;
-        }
-      })
       }else{
         _router.navigate(['/inicio'])
       }

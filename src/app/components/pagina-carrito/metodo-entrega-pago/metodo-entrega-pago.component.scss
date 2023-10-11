@@ -1,6 +1,6 @@
 .cardEnvios {
   background-color: #fff;
- 
+
 
   position: relative;
   display: flex;
@@ -17,7 +17,7 @@
 }
 .cabecera {
   border-bottom: 1px solid #e5e5e5;
-  padding: 2vh 3.5vw;
+  padding: 25px 29px;
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -47,7 +47,7 @@ form {
   justify-content: space-between;
   align-items: flex-start;
   border-top: 1px solid rgb(246, 246, 246);
-  padding: 2vh 3.5vw;
+  padding: 25px 29px;
   background-color: #fff;
   cursor: pointer;
   position: relative;
@@ -63,7 +63,7 @@ form {
 }
 
 .item_envio.seleccionada::before {
-  background-color: #3483fa;
+  background-color: #28516B;
   content: ""; /* Agregamos contenido pseudo-elemento */
   position: absolute; /* Establecemos una posición absoluta para el borde */
   top: 0;
@@ -81,6 +81,9 @@ form {
   transform: translateY(7px);
   cursor: pointer;
 }
+.izquierda input::before{
+  border: 2px solid red;
+}
 .cabecera span{
   display: none;
 }
@@ -94,7 +97,7 @@ form {
 .item_envio.sinElegir {
   border: 1px solid rgba(215, 11, 11, 0.734);
   border-top: none;
-  
+
 }
 .informacion {
   display: flex;
@@ -106,6 +109,9 @@ form {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 20px;
+}
+.derecha h2{
+  color: #4caf50;
 }
 .informacion h3 {
   font-family: "Roboto", sans-serif;

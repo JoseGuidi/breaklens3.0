@@ -17,13 +17,12 @@ export class TodosComponentesPagoComponent {
   @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() entregaEnDomicilio?:boolean;
   @Input() metodoPago?:String;
+  @Input () costoEnvio?:any;
   @Output() volverAtras = new EventEmitter<any>();
-  costoEnvio:String='';
+
   imagenVertical:boolean = false;
   constructor(private _dataService:DataService){
-    _dataService.obtenerDatosEnvio('7000').subscribe( (e)=>{
-      this.costoEnvio = e.costo;
-    })
+
   }
 
   getCostoEnvio(){

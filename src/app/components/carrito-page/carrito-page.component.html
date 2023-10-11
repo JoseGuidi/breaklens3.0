@@ -20,12 +20,14 @@
       [entregaEnDomicilio]="entregaEnDomicilio"
       (avanzarPaso)="avanzarAMetodoPago()"
       (volverAtras)="volverAtras($event)"
+      [costoEnvio]="costoEnvio"
     ></app-items-pago>
     <app-metodo-pago
       *ngIf="enMetodoPago"
       [entregaEnDomicilio]="entregaEnDomicilio"
       (eventEmmiter)="redirigirPago($event)"
       (volverAtras)="volverAtras($event)"
+      [costoEnvio]="costoEnvio"
     ></app-metodo-pago>
     <app-todos-componentes-pago
     *ngIf="enMostrarTodos"
@@ -34,6 +36,7 @@
     [entregaEnDomicilio]="entregaEnDomicilio"
     [metodoPago]="metodoPago"
     (volverAtras)="volverAtras($event)"
+    [costoEnvio]="costoEnvio"
     >
     </app-todos-componentes-pago>
     <app-datos-transferencia *ngIf="mostrarDatosTransferencia"
@@ -51,6 +54,7 @@
       [enMostrarTodos]="enMostrarTodos"
       [entregaEnDomicilio]="entregaEnDomicilio"
       (eventRedirigirPago)="elegirTRoMP()"
+      [costoEnvio]="costoEnvio"
     ></app-resumen-pago>
   </div>
 </div>

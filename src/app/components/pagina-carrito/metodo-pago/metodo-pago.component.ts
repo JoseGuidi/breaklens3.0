@@ -12,6 +12,7 @@ import { Institution } from '../../../interfaces/institution';
 export class MetodoPagoComponent {
   @Output() eventEmmiter = new EventEmitter<any>()
   @Output() volverAtras = new EventEmitter<any>()
+  @Input () costoEnvio?:any;
   @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() entregaEnDomicilio?:boolean;
   formMetodoPago:FormGroup;

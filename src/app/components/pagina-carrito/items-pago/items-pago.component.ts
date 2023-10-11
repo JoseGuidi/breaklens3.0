@@ -12,6 +12,7 @@ import { Institution } from '../../../interfaces/institution';
 export class ItemsPagoComponent {
   @Input() listadoItems: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[] = []
   @Input() entregaEnDomicilio?:boolean;
+  @Input () costoEnvio?:any;
   @Output() avanzarPaso = new EventEmitter<any>();
   @Output() volverAtras = new EventEmitter<any>();
   getPrimero() {

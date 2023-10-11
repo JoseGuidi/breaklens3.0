@@ -16,7 +16,7 @@ import { DataService } from './../../services/PicsService/data.service';
 export class CarritoPageComponent {
   listadoItems: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[] =
     [];
-  costoEnvio: number = 0; //en caso de que enun futuro tenga costo
+  //costoEnvio: number = 0; //en caso de que enun futuro tenga costo
   urlLocal: string =
     'https://localhost/trabajos/breaklens/api-proyecto/api/payments/';
   urlHOSTINGER: string = 'https://breaklens.com/api/';
@@ -35,6 +35,7 @@ export class CarritoPageComponent {
   entregaEnDomicilio: boolean = false;
   metodoPago: String = '';
   mostrarDatosTransferencia: boolean = false;
+  costoEnvio:any;
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -203,9 +204,16 @@ export class CarritoPageComponent {
       this.alias = data.alias;
       this.cvu = data.cbu;
     });
-    this.data_service.obtenerDatosEnvio('7000').subscribe((envio) => {
+    /*this.data_service.obtenerDatosEnvio('7000').subscribe((envio) => {
       this.costoEnvio = envio.costo;
-    });
+    });*/
+    this.data_service.obtenerDatosEnvio('7000').subscribe((precio)=>{
+      if(precio.costo == 0){
+        this.costoEnvio = 'Gratis'
+      }else{
+        this.costoEnvio = precio.costo;
+      }
+    })
   }
 
 

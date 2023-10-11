@@ -13,7 +13,7 @@
     <h3>volver</h3>
   </div>
   <div class="cabecera">
-    <h1>Metodo de entrega <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span>  </h1> 
+    <h1>Metodo de entrega <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span>  </h1>
   </div>
   <form [formGroup]="formMetodo">
     <div
@@ -22,7 +22,7 @@
       [ngClass]="{
         primer_item: item == getElement(0),
         'seleccionada':esLaSeleccionada(item)
-        
+
       }"
       (click)="elegir(item)"
     >
@@ -77,9 +77,12 @@
   <button (click)="eligioMetodo()">Siguiente</button>
 </div>
 <app-resumen-pago class="resumen"
-[enMetodoEntrega]="true"
+[enDatosPersonales]="false"
+      [enMetodoEntrega]="true"
+      [enResumen]="false"
+      [enMetodoPago]="false"
+      [enMostrarTodos]="false"
 (eventAvanzarResumen)="eligioMetodo()"
-[listadoItems]="listadoItems"
 >
 
 </app-resumen-pago>

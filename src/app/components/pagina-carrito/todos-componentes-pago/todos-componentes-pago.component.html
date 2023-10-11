@@ -90,12 +90,15 @@
         <div class="informacion">
           <h2 *ngIf="entregaEnDomicilio">Envio a domicilio</h2>
           <h2 *ngIf="!entregaEnDomicilio">Retiro en sucursal</h2>
-          <h3>
+          <h3 *ngIf="entregaEnDomicilio">
             {{ formDatos?.value.direc_calle }}
             {{ formDatos?.value.direc_numero }}
             <span *ngIf="formDatos?.value.direc_piso">{{
               formDatos?.value.direc_piso
             }}</span>
+          </h3>
+          <h3 *ngIf="!entregaEnDomicilio">
+            Cuba 1498
           </h3>
         </div>
       </div>
@@ -132,7 +135,7 @@
   <div class="metodo_pago">
     <div class="cabecera">
       <h1>Metodo de pago</h1>
-      <div class="modificar" (click)="modificar('entrega')">
+      <div class="modificar" (click)="modificar('pago')">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="Outline"
@@ -163,7 +166,12 @@
   </div>
 </div>
 <app-resumen-pago class="resumenFinalizar"
-[enMostrarTodos]="true"
-[listadoItems]="listadoItems"
+[enDatosPersonales]="false"
+      [enMetodoEntrega]="false"
+      [enResumen]="false"
+      [enMetodoPago]="false"
+      [enMostrarTodos]="true"
+      [entregaEnDomicilio]="entregaEnDomicilio"
 >
+</app-resumen-pago>
 

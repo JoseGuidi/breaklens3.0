@@ -1,9 +1,11 @@
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Folder } from 'src/app/interfaces/folder';
-import { Institution } from 'src/app/interfaces/institution';
-import { Pic } from 'src/app/interfaces/pic';
-import { DataService } from 'src/app/services/PicsService/data.service';
+import { Institution } from '../../../interfaces/institution';
+import { Pic } from '../../../interfaces/pic';
+import { Folder } from '../../../interfaces/folder';
+import { DataService } from '../../../services/PicsService/data.service';
+
 
 @Component({
   selector: 'app-todos-componentes-pago',
@@ -11,7 +13,7 @@ import { DataService } from 'src/app/services/PicsService/data.service';
   styleUrls: ['./todos-componentes-pago.component.scss']
 })
 export class TodosComponentesPagoComponent {
-  @Input() formDatos?:FormGroup; 
+  @Input() formDatos?:FormGroup;
   @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() entregaEnDomicilio?:boolean;
   @Input() metodoPago?:String;

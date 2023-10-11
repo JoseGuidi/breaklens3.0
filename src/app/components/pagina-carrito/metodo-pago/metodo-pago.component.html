@@ -81,8 +81,13 @@
   <button (click)="habilitarPagar()">Siguiente</button>
 </div>
 <app-resumen-pago class="resumen"
-[enMetodoPago]="true"
+[enDatosPersonales]="false"
+      [enMetodoEntrega]="false"
+      [enResumen]="false"
+      [enMetodoPago]="true"
+      [enMostrarTodos]="false"
 (eventAvanzarMostrarTodos)="habilitarPagar()"
+[entregaEnDomicilio]="entregarEnDomicilio()"
 >
 
 </app-resumen-pago>

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Folder } from 'src/app/interfaces/folder';
-import { Institution } from 'src/app/interfaces/institution';
-import { Pic } from 'src/app/interfaces/pic';
+import { Folder } from '../../../interfaces/folder';
+import { Pic } from '../../../interfaces/pic';
+import { Institution } from '../../../interfaces/institution';
+
 
 @Component({
   selector: 'app-items-pago',
@@ -10,6 +11,7 @@ import { Pic } from 'src/app/interfaces/pic';
 })
 export class ItemsPagoComponent {
   @Input() listadoItems: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[] = []
+  @Input() entregaEnDomicilio?:boolean;
   @Output() avanzarPaso = new EventEmitter<any>();
   @Output() volverAtras = new EventEmitter<any>();
   getPrimero() {
@@ -23,5 +25,8 @@ export class ItemsPagoComponent {
       item.d =false
     })
     this.volverAtras.emit('entrega');
+  }
+  entregarEnDomicilio(){
+    return this.entregaEnDomicilio;
   }
 }

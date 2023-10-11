@@ -17,15 +17,17 @@
     <app-items-pago
       *ngIf="enResumen"
       [listadoItems]="listadoItems"
+      [entregaEnDomicilio]="entregaEnDomicilio"
       (avanzarPaso)="avanzarAMetodoPago()"
       (volverAtras)="volverAtras($event)"
     ></app-items-pago>
     <app-metodo-pago
       *ngIf="enMetodoPago"
+      [entregaEnDomicilio]="entregaEnDomicilio"
       (eventEmmiter)="redirigirPago($event)"
       (volverAtras)="volverAtras($event)"
     ></app-metodo-pago>
-    <app-todos-componentes-pago 
+    <app-todos-componentes-pago
     *ngIf="enMostrarTodos"
     [formDatos]="formDatos"
     [listadoItems]="listadoItems"
@@ -42,7 +44,6 @@
   </div>
   <div class="resumen" [ngClass]="{'cambiarOrden':enMostrarTodos}">
     <app-resumen-pago
-      [listadoItems]="[]"
       [enDatosPersonales]="enDatosPersonales"
       [enMetodoEntrega]="enMetodoEntrega"
       [enResumen]="enResumen"

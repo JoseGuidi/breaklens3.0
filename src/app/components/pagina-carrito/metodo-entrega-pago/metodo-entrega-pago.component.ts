@@ -1,10 +1,10 @@
+import { DataService } from './../../../services/PicsService/data.service';
+import { DomicilioClass } from './../../../class/domicilio';
+import { Institution } from './../../../interfaces/institution';
+import { Pic } from './../../../interfaces/pic';
+import { Folder } from './../../../interfaces/folder';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DomicilioClass } from 'src/app/class/domicilio';
-import { Folder } from 'src/app/interfaces/folder';
-import { Institution } from 'src/app/interfaces/institution';
-import { Pic } from 'src/app/interfaces/pic';
-import { DataService } from 'src/app/services/PicsService/data.service';
 
 @Component({
   selector: 'app-metodo-entrega-pago',
@@ -21,9 +21,9 @@ export class MetodoEntregaPagoComponent {
   costoEnvio: String = '';
   sinElegir:boolean=false;
   constructor(private _dataService:DataService, private fb: FormBuilder){
-    
+
     this._dataService.obtenerDatosEnvio('7000').subscribe(envio =>{
-      this.listaDomicilios = [
+      /*this.listaDomicilios = [
         {
             "calle": "COlombia",
             "numero": 721,
@@ -36,7 +36,7 @@ export class MetodoEntregaPagoComponent {
             "descr": "Retiro en sucursal",
             "costoEnvio": "Gratis"
         }
-    ]
+    ]*/
       if(envio.costo == 0){
         this.costoEnvio = 'Gratis'
       }else{
@@ -60,7 +60,7 @@ export class MetodoEntregaPagoComponent {
         domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio)
       }
       this.listaDomicilios = [domicilio, new DomicilioClass("Cuba",1498,"Retiro en sucursal","Gratis")]
-      
+
     }
   }
 
@@ -69,7 +69,6 @@ export class MetodoEntregaPagoComponent {
       this.lugarEntrega.emit(this.formMetodo);
       this.sinElegir = false;
     }else{
-      console.log("Gla")
       this.sinElegir = true;
       setTimeout(()=>{
         this.sinElegir = false;
@@ -94,7 +93,7 @@ export class MetodoEntregaPagoComponent {
   elegir(item:DomicilioClass){
       let calle = item.calle;
       let numero = item.numero
-      let piso = item.piso;  
+      let piso = item.piso;
       if(piso){
         this.formMetodo.get('metodo')?.setValue(calle+'-'+numero+'-'+piso);
       }else{
@@ -104,7 +103,7 @@ export class MetodoEntregaPagoComponent {
   esLaSeleccionada(item:DomicilioClass){
     let calle = item.calle;
     let numero = item.numero
-    let piso = item.piso;  
+    let piso = item.piso;
     if(piso){
       return calle+'-'+numero+'-'+piso == this.formMetodo.value.metodo;
     }else{

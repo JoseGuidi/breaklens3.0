@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Folder } from '../../../interfaces/folder';
+import { Pic } from '../../../interfaces/pic';
+import { Institution } from '../../../interfaces/institution';
 
 @Component({
   selector: 'app-metodo-pago',
@@ -9,6 +12,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class MetodoPagoComponent {
   @Output() eventEmmiter = new EventEmitter<any>()
   @Output() volverAtras = new EventEmitter<any>()
+  @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
+  @Input() entregaEnDomicilio?:boolean;
   formMetodoPago:FormGroup;
   sinElegir:boolean = false;
   constructor(private fb:FormBuilder){
@@ -32,5 +37,8 @@ export class MetodoPagoComponent {
   }
   volverResumen(){
     this.volverAtras.emit('resumen');
+  }
+  entregarEnDomicilio(){
+    return this.entregaEnDomicilio
   }
 }

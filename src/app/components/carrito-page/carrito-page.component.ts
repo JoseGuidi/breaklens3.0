@@ -1,13 +1,12 @@
+import { Institution } from './../../interfaces/institution';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Folder } from 'src/app/interfaces/folder';
-import { Institution } from 'src/app/interfaces/institution';
-import { Payment } from 'src/app/interfaces/payment';
-import { Pic } from 'src/app/interfaces/pic';
-import { CartService } from 'src/app/services/PicsService/cart.service';
-import { DataService } from 'src/app/services/PicsService/data.service';
+import { Folder } from './../../interfaces/folder';
+import { Pic } from './../../interfaces/pic';
+import { CartService } from './../../services/PicsService/cart.service';
+import { DataService } from './../../services/PicsService/data.service';
 
 @Component({
   selector: 'app-carrito-page',
@@ -46,7 +45,7 @@ export class CarritoPageComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.cartService.carrito.subscribe((cart) => {
       this.listadoItems = cart;
-      
+
       /*this.listadoItems = [
         {
           f: {
@@ -208,8 +207,8 @@ export class CarritoPageComponent {
       this.costoEnvio = envio.costo;
     });
   }
-  
-  
+
+
 
   getMontoTotal() {
     let total: number = 0;
@@ -224,9 +223,9 @@ export class CarritoPageComponent {
 
 
 
-  
 
- 
+
+
 
   manejarDatos(datos: any) {
     this.enDatosPersonales = false;
@@ -265,6 +264,7 @@ export class CarritoPageComponent {
   }
 
   volverAtras(destino: String) {
+    this.enMostrarTodos = false
     if (destino == 'datos') {
       this.enMetodoEntrega = false;
       this.enDatosPersonales = true;
@@ -277,6 +277,8 @@ export class CarritoPageComponent {
     } else if (destino == 'galeria') {
       let ultimoElemento = this.listadoItems[this.listadoItems.length - 1];
       this.router.navigate(['galeria/' + ultimoElemento.i.cod_institucion]);
+    }else if(destino == 'pago'){
+      this.enMetodoPago = true;
     }
   }
 
@@ -285,6 +287,7 @@ export class CarritoPageComponent {
 
     setTimeout( () =>{
       if ((this.metodoPago == 'transferencia')) {
+        this.cargandoRedireccionPago = false;
         this.enMostrarTodos = false;
         this.mostrarDatosTransferencia = true;
         this.pushearTransferencia();
@@ -363,7 +366,7 @@ export class CarritoPageComponent {
     console.log(url);
     return url;
   }
- 
+
   pushearTransferencia() {
     let url = this.generateURL('transfer');
     this.http.get(url).subscribe((order_id) => {

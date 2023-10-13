@@ -61,6 +61,15 @@ form{
 .item.primero{
   border: none;
 }
+.item::before{
+  background-color:  #c0c0c0 ;
+  content: ''; /* Agregamos contenido pseudo-elemento */
+  position: absolute; /* Establecemos una posición absoluta para el borde */
+  top: 0;
+  left: 0;
+  height: 100%; /* Altura igual a la del div padre */
+  width: 5px; /* Ancho del borde izquierdo */
+}
 .item.seleccionada::before{
   background-color:  #28516B ;
   content: ''; /* Agregamos contenido pseudo-elemento */
@@ -114,7 +123,7 @@ form{
   display: flex;
   align-items: center;
   position: absolute;
-  top: -25px;
+  top: -5px;
   cursor: pointer;
 }
 .back svg{
@@ -210,6 +219,9 @@ form{
   max-width: none;
 }
 @media only screen and (min-width:870px) {
+  .back{
+    top: -25px;
+  }
   .cardMetodo{
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.12);
   }

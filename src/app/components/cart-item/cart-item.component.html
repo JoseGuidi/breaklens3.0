@@ -121,14 +121,12 @@
     /* Estilo básico para el select */
 
   </style>
-  <div class="botonesss">
-    <select id="frutas" *ngIf="!inGallery">
-      <option value="manzana">1 unidad</option>
-      <option value="banana">2 unidades</option>
-      <option value="naranja">3 unidades</option>
-      <option value="uva">4 unidades</option>
-      <option value="pera">5 unidades</option>
-  </select>
+  <div class="botonesss" >
+    <form action=""[formGroup]="myForm" *ngIf="!inGallery">
+    <select id="frutas" *ngIf="!inGallery" name="opciones" formControlName="selectedOption" (change)="onOptionChange(item,$event)">
+      <option *ngFor="let op of options" [value]="op.value" >{{op.label}}</option>
+    </select>
+</form>
     <button class="CartBtn" (click)="eliminarElemento()"
     *ngIf="!enResumen"> Quitar item </button>
   </div>

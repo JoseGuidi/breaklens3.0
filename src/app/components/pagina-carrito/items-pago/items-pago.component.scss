@@ -36,7 +36,7 @@
   margin: 0 0 10px 0;
 
   border-top: 1px solid #e5e5e5;
-  
+
 }
 
 .btn,
@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   position: absolute;
-  top: -25px;
+  top: -5px;
   cursor: pointer;
 }
 .back svg{
@@ -100,6 +100,9 @@
   display: none;
 }
 @media only screen and (min-width:870px) {
+  .back{
+    top: -25px;
+  }
   .cardCarrito{
     padding-bottom: 0;
     background-color: transparent;

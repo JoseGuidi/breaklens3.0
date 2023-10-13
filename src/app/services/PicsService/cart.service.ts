@@ -21,8 +21,8 @@ export class CartService {
 
     let elem = this._carrito.find(e => e.p.id_foto === p.id_foto && e.f.nombre === f.nombre);
     if(elem){
-      elem.q = elem.q.valueOf() + q.valueOf()
-
+      //elem.q = elem.q.valueOf() + q.valueOf()
+      elem.q = q.valueOf();
     }else{
       this._carrito.push({f,p,i,q,d});
     }

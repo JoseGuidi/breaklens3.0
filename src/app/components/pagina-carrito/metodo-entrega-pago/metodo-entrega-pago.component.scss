@@ -61,7 +61,15 @@ form {
   background-color: #f2f2f2;
   transition: 0.3s;
 }
-
+.item::before{
+  background-color:  rgb(246, 246, 246) ;
+  content: ''; /* Agregamos contenido pseudo-elemento */
+  position: absolute; /* Establecemos una posición absoluta para el borde */
+  top: 0;
+  left: 0;
+  height: 100%; /* Altura igual a la del div padre */
+  width: 5px; /* Ancho del borde izquierdo */
+}
 .item_envio.seleccionada::before {
   background-color: #28516B;
   content: ""; /* Agregamos contenido pseudo-elemento */
@@ -157,7 +165,7 @@ form input.error {
   display: flex;
   align-items: center;
   position: absolute;
-  top: -25px;
+  top: 0px;
   cursor: pointer;
 }
 .back svg {
@@ -183,6 +191,9 @@ form input.error {
   max-width: none;
 }
 @media only screen and (min-width:870px) {
+  .back{
+    top: -25px;
+  }
   .cardEnvios{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;

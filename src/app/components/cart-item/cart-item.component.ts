@@ -4,7 +4,7 @@ import { Folder } from 'src/app/interfaces/folder';
 import { Institution } from 'src/app/interfaces/institution';
 import { Pic } from 'src/app/interfaces/pic';
 import { CartService } from 'src/app/services/PicsService/cart.service';
-
+import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
@@ -17,15 +17,39 @@ export class CartItemComponent {
   fotoVertical: boolean = false;
   enviarDigital: boolean = false;
   imagenVertical: boolean = false;
+  myForm:FormGroup;
+  options = [
+    { value: '1', label: '1 unidad' },
+    { value: '2', label: '2 unidades' },
+    { value: '3', label: '3 unidades' },
+    { value: '4', label: '4 unidades' },
+    { value: '5', label: '5 unidades' }
+  ];
   constructor(
     private cartService: CartService,
-    private loc: LocationStrategy
-  ) {}
+    private loc: LocationStrategy,private fb: FormBuilder
+  ) {
+    if(this.item){
+      this.myForm = this.fb.group({
+        selectedOption: new FormControl(this.item.q)
+      });
+    }else{
+      this.myForm = this.fb.group({
+        selectedOption: new FormControl('1')
+      });
+    }
+
+  }
   ngOnInit(): void {
     if (this.loc.path().startsWith('/galeria/')) {
       this.inGallery = true;
     } else {
       this.inGallery = false;
+    }
+    if(this.item){
+      this.myForm = this.fb.group({
+        selectedOption: new FormControl(this.item.q)
+      });
     }
   }
 
@@ -37,7 +61,7 @@ export class CartItemComponent {
       if(img.offsetHeight > img.offsetWidth){
         i.classList.add('img_vertical');
       }
-      
+
     })*/
     let img = document.querySelector(
       '#_' + this.item?.f.id_carpeta + '-' + this.item?.p.id_foto
@@ -52,19 +76,30 @@ export class CartItemComponent {
       };
     }
   }
+  onOptionChange( item: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean },event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.cartService.actualizarCarrito(
+      item.f,
+      item.p,
+      item.i,
+      parseInt(selectedValue),
+      item.d
+    );
+  }
   cambiarCantidad(
     item: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean },
-    accion: number
+    accion: any
   ) {
-    if ((accion === -1 && item.q.valueOf() > 1) || accion === 1) {
-      this.cartService.actualizarCarrito(
+
+      /*this.cartService.actualizarCarrito(
         item.f,
         item.p,
         item.i,
         accion,
         item.d
-      );
-    }
+      );*/
+
+    console.log(item.q,accion)
   }
   hacerCuenta(precioF: Number, cantidad: Number): number {
     return precioF.valueOf() * cantidad.valueOf();

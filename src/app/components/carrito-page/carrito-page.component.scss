@@ -33,6 +33,7 @@ html{
     gap: 0 1.5vw;
     background-color: #eeeeee;
     padding: 5vh 0;
+    min-height: calc(100vh - 12vh - 288px);
   }
   .componentes{
     width: 60vw;

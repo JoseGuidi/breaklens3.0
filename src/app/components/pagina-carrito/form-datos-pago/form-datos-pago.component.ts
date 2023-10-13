@@ -18,13 +18,13 @@ export class FormDatosPagoComponent {
   @Input() listadoItems: {f:Folder,p:Pic,i:Institution,q:Number,d:boolean}[] = [];
   constructor(private _router:Router, private _cartService:CartService){
     this.formDatos = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      apellido: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      cod_postal: new FormControl('', [Validators.required]),
-      telefono: new FormControl('', [Validators.required]),
-      direc_calle: new FormControl('', [Validators.required]),
-      direc_numero: new FormControl('', [Validators.required]),
+      name: new FormControl('Jose', [Validators.required]),
+      apellido: new FormControl('Guidi', [Validators.required]),
+      email: new FormControl('joseguidi@gmail.com', [Validators.required, Validators.email]),
+      cod_postal: new FormControl('7000', [Validators.required]),
+      telefono: new FormControl('249498570', [Validators.required]),
+      direc_calle: new FormControl('Colombia', [Validators.required]),
+      direc_numero: new FormControl('721', [Validators.required]),
       direc_piso: new FormControl(''),
     });
     this._cartService.carrito.subscribe(
@@ -37,7 +37,7 @@ export class FormDatosPagoComponent {
     if(this.formDatos.valid){
       this.enviarDatos.emit(this.formDatos);
     }else{
-     
+
       if (this.formDatos.invalid) {
         Object.values(this.formDatos.controls).forEach(control => {
           control.markAsTouched();
@@ -47,5 +47,5 @@ export class FormDatosPagoComponent {
     }
   }
 
- 
+
 }

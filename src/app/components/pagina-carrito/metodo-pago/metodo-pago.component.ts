@@ -31,9 +31,7 @@ export class MetodoPagoComponent {
       this.eventEmmiter.emit(this.formMetodoPago.value.pago);
     }else{
       this.sinElegir = true;
-      setTimeout(()=>{
-        this.sinElegir = false;
-      },2000)
+
     }
   }
   volverResumen(){

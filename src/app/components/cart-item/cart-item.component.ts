@@ -12,14 +12,14 @@ import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms
 })
 export class CartItemComponent {
   @Input() item?: { f: Folder; p: Pic; i: Institution; q: Number; d: boolean };
+  @Input() enMostrarTodos?:boolean;
   @Input() enResumen?: boolean;
   inGallery: boolean = false;
   fotoVertical: boolean = false;
-  enviarDigital: boolean = false;
   imagenVertical: boolean = false;
   myForm:FormGroup;
   options = [
-    { value: '1', label: '1 unidad' },
+    { value: '1', label: '1 unidad '},
     { value: '2', label: '2 unidades' },
     { value: '3', label: '3 unidades' },
     { value: '4', label: '4 unidades' },
@@ -30,6 +30,7 @@ export class CartItemComponent {
     private loc: LocationStrategy,private fb: FormBuilder
   ) {
     if(this.item){
+
       this.myForm = this.fb.group({
         selectedOption: new FormControl(this.item.q)
       });
@@ -141,14 +142,13 @@ export class CartItemComponent {
     q: Number;
     d: boolean;
   }) {
-    console.log(item.d)
-    this.enviarDigital = !this.enviarDigital;
+    let dig = !item.d;
     this.cartService.agregarDigitalDeFoto(
       item.f,
       item.p,
       item.i,
       item.q,
-      this.enviarDigital
+      dig
     );
   }
   checkImagenVertical(id_carpeta: Number, id_foto: number) {
@@ -163,5 +163,8 @@ export class CartItemComponent {
   yaAgregoDigital(){
 
     return this.item?.d
+  }
+  parseInt(i:any){
+    return parseInt(i);
   }
 }

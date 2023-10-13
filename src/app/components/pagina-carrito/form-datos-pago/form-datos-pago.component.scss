@@ -12,12 +12,22 @@
   border-bottom: 1px solid #e5e5e5;
   padding: 2vh 3.5vw;
   width: 100%;
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+}
+.cabecera > svg{
+  stroke: #3f7190;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.cabecera > svg:hover{
 }
 .cabecera h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  font-size: 2.5vh;
+  font-size: 20px;
 }
 .cabecera h1::first-letter {
   text-transform: uppercase;
@@ -34,7 +44,7 @@
   align-items: center;
   gap: 5px 0;
   //padding-bottom: 10px;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .cardDatos .form .texto h4 {
   font-size: 20px;
@@ -52,6 +62,7 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 35px 20px;
+  padding-top: 20px;
   gap: 20px;
 }
 .cardDatos .form form input {
@@ -216,6 +227,7 @@
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border-radius: 0.5rem;
     padding-bottom: 0;
+
   }
   .cabecera{
     display: flex;
@@ -229,7 +241,7 @@
 
     width: 100%;
     display: flex;
-    margin: 10px 0;
+    margin: 20px 0;
     justify-content: right;
   }
   .resumen{

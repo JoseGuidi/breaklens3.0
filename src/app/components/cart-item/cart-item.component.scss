@@ -63,7 +63,7 @@ img.extra {
   flex-wrap: wrap;
   //flex-direction: column;
   padding: 1vh 0;
-  gap: 12px 15px;
+  gap: 0px 15px;
 }
 .item_galeria img.individual {
   max-width: 213px;
@@ -522,7 +522,7 @@ h2.precio {
 .botonesss form{
   width: 45%;
 }
-select {
+.botonesss form select {
   width: 100%;
   padding: 0px;
   font-size: 16px;
@@ -537,7 +537,7 @@ select::after {
 
 }
 /* Estilo para los option dentro del select */
-option {
+.botonesss form select option {
   font-size: 14px;
   background-color: #fff;
   color: #333;
@@ -555,4 +555,74 @@ select:focus {
   align-items: center;
   width: 90%;
   margin: 10px;
+}
+
+
+.item_carrito button.button{
+  border: 1px solid #28516b;
+  height: 35px;
+}
+.item_carrito .button .button__icon{
+  background-color: #28516b;
+}
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #0c2535;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(35px);
+  color: #0c2535;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #0c2535;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+}
+
+.button:hover {
+  background: #0c2535;
+}
+.item_carrito .button:hover {
+  background: #28516B;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #b20000;
+}
+
+.button:active {
+  border: 1px solid #b20000;
 }

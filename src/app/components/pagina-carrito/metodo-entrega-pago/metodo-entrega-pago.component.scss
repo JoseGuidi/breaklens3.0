@@ -22,11 +22,20 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+}
+.cabecera > svg{
+  stroke: #3f7190;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 .cabecera h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  font-size: 2.5vh;
+  font-size: 20px;
 }
 
 .cabecera h1::first-letter {
@@ -61,14 +70,14 @@ form {
   background-color: #f2f2f2;
   transition: 0.3s;
 }
-.item::before{
-  background-color:  rgb(246, 246, 246) ;
+.item_envio::before{
+  background-color:  #afb7bc ;
   content: ''; /* Agregamos contenido pseudo-elemento */
   position: absolute; /* Establecemos una posición absoluta para el borde */
   top: 0;
   left: 0;
   height: 100%; /* Altura igual a la del div padre */
-  width: 5px; /* Ancho del borde izquierdo */
+  width: 7px; /* Ancho del borde izquierdo */
 }
 .item_envio.seleccionada::before {
   background-color: #28516B;
@@ -77,7 +86,8 @@ form {
   top: 0;
   left: 0;
   height: 100%; /* Altura igual a la del div padre */
-  width: 5px; /* Ancho del borde izquierdo */
+  width: 7px; /* Ancho del borde izquierdo */
+  animation: beforeItem 0.2s ease-in-out;
 }
 
 .izquierda {
@@ -118,7 +128,7 @@ form {
   font-weight: 400;
   font-size: 20px;
 }
-.derecha h2{
+.derecha.gratis h2{
   color: #4caf50;
 }
 .informacion h3 {
@@ -210,5 +220,14 @@ form input.error {
   }
   .resumen{
     display: none;
+  }
+}
+
+@keyframes beforeItem {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }

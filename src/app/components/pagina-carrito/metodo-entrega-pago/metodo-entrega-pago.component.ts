@@ -66,13 +66,11 @@ export class MetodoEntregaPagoComponent {
 
   eligioMetodo(){
     if(this.formMetodo.valid){
-      this.lugarEntrega.emit(this.formMetodo);
       this.sinElegir = false;
+      this.lugarEntrega.emit(this.formMetodo);
     }else{
       this.sinElegir = true;
-      setTimeout(()=>{
-        this.sinElegir = false;
-      },2000)
+
     }
   }
 

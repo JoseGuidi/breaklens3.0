@@ -131,7 +131,7 @@ div.contenidoIndividual {
   transform: rotate(270deg);
 }
 .contenedor_fotos img.grupal {
-  
+
   height: 100px;
 }
 .contenedor_precio {
@@ -194,19 +194,18 @@ div.contenidoIndividual {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(201, 201, 201);
-  padding-bottom: 2vh ;
+  padding-bottom: 1vh ;
   max-width: 395px;
 }
 .contenedor_bot h1 {
   text-align: center !important;
-  font-size: 4vh;
-  font-weight: 600; 
+  font-size: 29px;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
 }
 .contenedor_bot h2{
-  text-transform: uppercase;
-  font-size: 2vh;
-  font-weight: 400;
+  font-size: 29px;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
 }
 .CartBtn {

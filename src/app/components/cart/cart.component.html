@@ -2,7 +2,7 @@
   <div class="contenedor_items" *ngIf="listaItems.length !== 0">
     <div class="divFor" *ngFor="let item of listaItems">
       <div class="subcontenedor_item">
-        <!-- 
+        <!--
         <img
           src="../../../assets/img/feather_1/x.svg"
           class="cruz"
@@ -38,12 +38,12 @@
           <div class="contenedor_precio">
             <h2>${{ getMontoCarpeta(item.f.precio, item.q) }}</h2>
             <div class="botonera botonera_margen_extra">
-              
+
               <button (click)="cambiarCantidad(item, -1)">-</button>
               <input type="text" disabled value="{{ item.q }}" />
               <button (click)="cambiarCantidad(item, 1)">+</button>
             </div>
-            
+
           </div>
         </div>-->
         <app-cart-item [item]="item"></app-cart-item>
@@ -52,7 +52,7 @@
   </div>
   <div class="contenedor_bot" *ngIf="listaItems.length !== 0">
     <div class="info_precio">
-      <h2>Valor total</h2>
+      <h2>Total</h2>
       <h1>${{ calcularMonto() }}</h1>
     </div>
     <button

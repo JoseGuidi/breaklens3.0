@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-loading *ngIf="cargandoRedireccionPago"></app-loading>
-<div class="contenedor_principal">
-  <div class="componentes" [ngClass]="{'cambiarOrden':enMostrarTodos}">
+<div class="contenedor_principal" [ngClass]="{'enDatosPersonales':enDatosPersonales}">
+  <div class="componentes" [ngClass]="{'cambiarOrden':enMostrarTodos,'enMetodoPago':enMetodoPago}">
     <app-form-datos-pago
       *ngIf="enDatosPersonales"
       (enviarDatos)="manejarDatos($event)"
@@ -37,12 +37,14 @@
     [metodoPago]="metodoPago"
     (volverAtras)="volverAtras($event)"
     [costoEnvio]="costoEnvio"
+    (irAPagar)="elegirTRoMP()"
     >
     </app-todos-componentes-pago>
     <app-datos-transferencia *ngIf="mostrarDatosTransferencia"
     [items]="listadoItems"
     [envio]="costoEnvio"
     [orderID]="orderID"
+
     ></app-datos-transferencia>
   </div>
   <div class="resumen" [ngClass]="{'cambiarOrden':enMostrarTodos}">
@@ -55,6 +57,7 @@
       [entregaEnDomicilio]="entregaEnDomicilio"
       (eventRedirigirPago)="elegirTRoMP()"
       [costoEnvio]="costoEnvio"
+
     ></app-resumen-pago>
   </div>
 </div>

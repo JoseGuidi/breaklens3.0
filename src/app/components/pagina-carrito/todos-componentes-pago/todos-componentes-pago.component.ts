@@ -19,7 +19,7 @@ export class TodosComponentesPagoComponent {
   @Input() metodoPago?:String;
   @Input () costoEnvio?:any;
   @Output() volverAtras = new EventEmitter<any>();
-
+  @Output() irAPagar = new EventEmitter<any>();
   imagenVertical:boolean = false;
   constructor(private _dataService:DataService){
 
@@ -41,5 +41,8 @@ export class TodosComponentesPagoComponent {
     }else{
       return null
     }
+  }
+  irAPagarCelular(){
+    this.irAPagar.emit();
   }
 }

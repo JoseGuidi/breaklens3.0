@@ -12,6 +12,9 @@ html{
   padding-top: 2vh;
   padding-bottom: 0;
 }
+.contenedor_principal.enDatosPersonales{
+  padding:0 ;
+}
 .resumen{
 
 
@@ -25,7 +28,9 @@ html{
 .footer{
   display: none;
 }
-
+.enMetodoPago.componentes{
+  width: 100%;
+}
 @media only screen and (min-width:870px) {
   .contenedor_principal {
     flex-direction: row;
@@ -34,6 +39,9 @@ html{
     background-color: #eeeeee;
     padding: 5vh 0;
     min-height: calc(100vh - 12vh - 288px);
+  }
+  .contenedor_principal.enDatosPersonales{
+    padding: 4vh 0;
   }
   .componentes{
     width: 60vw;
@@ -51,6 +59,7 @@ html{
     display: flex;
     flex-direction: column;
     gap: 10px 0;
+    border-radius: 8px;
   }
   .footer{
     display: block;

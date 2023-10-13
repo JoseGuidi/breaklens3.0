@@ -58,7 +58,7 @@
   fill: white;
 }
 .compra button label.irPagar {
-  
+
 }
 .compra button label.continuar {
   font-family: "Roboto", sans-serif;
@@ -74,10 +74,12 @@
   left: -100%;
   top: 0;
   transition-duration: 0.3s;
+  z-index: 150;
   //mix-blend-mode: difference;
 }
 .compra button:hover label {
   z-index: 200;
+
 }
 .compra button:hover .svgIcon {
   z-index: 250;
@@ -156,10 +158,17 @@
   .datosCompra {
     width: 25vw;
     max-width: 395px;
+    border-radius: 8px;
   }
   .cabecera {
-    padding: 2vh 1.7vw;
+    padding: 2vh 15px;
     display: block;
+  }
+  .cabecera h1{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 22px;
   }
   .datosCompra .sumatoria,
   .datosCompra .compra {
@@ -169,7 +178,7 @@
     cursor: not-allowed;
   }
   .compra button.bloqueado {
-    background-color: #0c253596;
+    background-color: rgb(12 37 53 / 33%);;
   }
   .compra button.bloqueado::before {
     background-color: transparent;
@@ -200,6 +209,8 @@
   }
   .compra button label.irPagar{
     display: inline;
+    position: relative;
+    z-index: 250;
   }
   .compra button.celular{
     display: none;

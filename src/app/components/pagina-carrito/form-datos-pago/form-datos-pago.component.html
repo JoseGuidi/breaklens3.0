@@ -1,5 +1,5 @@
 <div class="cardDatos" >
-  <div class="back" routerLink="/galeria/{{ultimaInstitucion?.cod_institucion}}">
+  <!--<div class="back" routerLink="/galeria/{{ultimaInstitucion?.cod_institucion}}">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       id="Isolation_Mode"
@@ -12,12 +12,16 @@
       />
     </svg>
     <h3>volver</h3>
+  </div>-->
+  <div class="cabecera">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" routerLink="/galeria/{{ultimaInstitucion?.cod_institucion}}">
+      <path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/>
+    </svg>
+    <h1>Informacion personal</h1>
   </div>
-
   <div class="form">
     <div class="texto">
-      <h4>Informacion de contacto</h4>
-      <h5>Ingrese sus datos</h5>
+      <h5>Porfavor, ingrese sus datos de contacto</h5>
     </div>
     <form action="" [formGroup]="formDatos">
       <input

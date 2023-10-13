@@ -110,7 +110,7 @@
   <div class="resumen">
     <div class="cabecera">
       <h1>Tus fotografias</h1>
-      <div class="modificar" (click)="modificar('galeria')">
+      <div class="modificar" (click)="modificar('items')">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="Outline"
@@ -129,7 +129,7 @@
       </div>
     </div>
     <div *ngFor="let item of listadoItems" class="itemEnCarrito" [ngClass]="{'primero':item==getElemento(0)}">
-      <app-cart-item [item]="item" [enResumen]="true"></app-cart-item>
+      <app-cart-item [item]="item" [enResumen]="true" [enMostrarTodos]="true"></app-cart-item>
     </div>
   </div>
   <div class="metodo_pago">
@@ -173,6 +173,7 @@
       [enMostrarTodos]="true"
       [entregaEnDomicilio]="entregaEnDomicilio"
       [costoEnvio]="costoEnvio"
+      (eventRedirigirPago)="irAPagarCelular()"
 >
 </app-resumen-pago>
 

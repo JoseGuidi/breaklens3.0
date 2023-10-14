@@ -77,6 +77,38 @@
       <h3>{{ item.i.nombre }}</h3>
     </div>
   </div>
+  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0 && !enResumen">
+
+    <!--<div class="toggle-switch" >
+      <input class="toggle-input" id="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}" type="checkbox"
+      (click)="agregarDigital(item)"
+
+      >
+      <label class="toggle-label" for="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}"></label>
+    </div>-->
+
+
+    <h4>Quiero recibir la foto digital: <span>${{item.f.digital}}</span></h4>
+    <div class="checkbox-wrapper-12" (click)="agregarDigital(item)">
+      <div class="cbx">
+        <input  type="checkbox" id="cbx-12"  [checked]="item.d">
+        <label for="cbx-12"></label>
+        <svg fill="none" viewBox="0 0 15 14" height="14" width="15">
+          <path d="M2 8.36364L6.23077 12L13 2"></path>
+        </svg>
+      </div>
+
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="goo-12">
+            <feGaussianBlur result="blur" stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+            <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix" in="blur"></feColorMatrix>
+            <feBlend in2="goo-12" in="SourceGraphic"></feBlend>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  </div>
  <!--<div class="contenedor_precio" *ngIf="!enResumen">
     <h2 class="precio">${{ hacerCuenta(item.f.precio, item.q) }}</h2>
     <div class="quantity">
@@ -117,10 +149,7 @@
       </button>
     </div>
   </div>-->
-  <style>
-    /* Estilo básico para el select */
 
-  </style>
   <div class="botonesss" *ngIf="!enMostrarTodos">
     <form action=""[formGroup]="myForm" *ngIf="!inGallery">
     <select id="frutas" *ngIf="!inGallery" name="opciones" formControlName="selectedOption" (change)="onOptionChange(item,$event)">
@@ -135,36 +164,6 @@
     </button>
   </div>
 
-  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0 && !enResumen">
 
-    <!--<div class="toggle-switch" >
-      <input class="toggle-input" id="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}" type="checkbox"
-      (click)="agregarDigital(item)"
-
-      >
-      <label class="toggle-label" for="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}"></label>
-    </div>-->
-
-    <div class="checkbox-wrapper-12" (click)="agregarDigital(item)">
-      <div class="cbx">
-        <input  type="checkbox" id="cbx-12"  [checked]="item.d">
-        <label for="cbx-12"></label>
-        <svg fill="none" viewBox="0 0 15 14" height="14" width="15">
-          <path d="M2 8.36364L6.23077 12L13 2"></path>
-        </svg>
-      </div>
-
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="goo-12">
-            <feGaussianBlur result="blur" stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
-            <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix" in="blur"></feColorMatrix>
-            <feBlend in2="goo-12" in="SourceGraphic"></feBlend>
-          </filter>
-        </defs>
-      </svg>
-    </div>
-    <h4>QUIERO LA FOTO DIGITAL (${{item.f.digital}})</h4>
-  </div>
 </div>
 

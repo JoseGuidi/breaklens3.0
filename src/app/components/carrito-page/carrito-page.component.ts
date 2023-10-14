@@ -47,7 +47,7 @@ export class CarritoPageComponent {
     this.cartService.carrito.subscribe((cart) => {
       this.listadoItems = cart;
 
-      this.listadoItems = [
+      /*this.listadoItems = [
         {
           f: {
             id_carpeta: 11,
@@ -193,7 +193,7 @@ export class CarritoPageComponent {
           q: 1,
           d: false,
         },
-      ];
+      ];*/
 
       if (this.listadoItems.length === 0) {
         this.router.navigate(['/inicio']);

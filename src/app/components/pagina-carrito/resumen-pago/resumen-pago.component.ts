@@ -31,7 +31,7 @@ export class ResumenPagoComponent {
   constructor(private _dataService:DataService, private _router:Router, private _cartService:CartService){
     _cartService.carrito.subscribe( c=>{
       this.lItems = c;
-      this.lItems = [
+      /*this.lItems = [
         {
           f: {
             id_carpeta: 11,
@@ -177,7 +177,7 @@ export class ResumenPagoComponent {
           q: 1,
           d: false,
         },
-      ];
+      ];*/
     })
     if(this.lItems){
       if(this.lItems?.length > 0){

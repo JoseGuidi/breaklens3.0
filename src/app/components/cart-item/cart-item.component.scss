@@ -36,7 +36,7 @@ img.grupal {
   box-shadow: 0 1px 4px rgba(85, 85, 85, 0.61);
 }
 img.extra {
-  width: 75px;
+  width: 60px;
   position: absolute;
   box-shadow: 0 1px 4px rgba(85, 85, 85, 0.61);
   border-radius: 1px;
@@ -96,12 +96,13 @@ img.extra {
   flex-direction: row;
 }
 .item_galeria .carpeta .individual.img_vertical {
-  width: 75px;
+  width: 60px;
   max-width: 75px;
   min-width: auto;
 }
 .item_galeria .carpeta .grupal {
   height: 16vw;
+  height: 60px;
   max-height: 75px;
   width: auto;
 }
@@ -118,7 +119,7 @@ img.extra {
   transform: translateX(-8px);
 }
 .item_galeria .plus.plus_2extras {
-  transform: translateX(-1px);
+  transform: translateX(-8px);
 }
 
 // item carrito page
@@ -248,10 +249,6 @@ h2.precio {
   padding-bottom: 2px;
   cursor: pointer;
 }
-.digital {
-  background-color: #f2f1f4;
-  margin-top: 2vh;
-}
 .CartBtn{
   width: 45%;
   max-width: 334px;
@@ -269,10 +266,23 @@ h2.precio {
   position: relative;
 }
 @media only screen and (min-width: 870px) {
-
-
+  .item_galeria .carpeta .individual.img_vertical{
+    width: 75px;
+  }
+  .item_galeria img.extra{
+    width: 75px;
+  }
+  .item_galeria .carpeta .grupal{
+    height: 75px;
+  }
+  .digital{
+    width: 70%;
+  }
   .item_conDigital {
-    padding: 2vh 0 0 0 !important;
+    padding: 2vh 0 0 0 ;
+  }
+  .en_resumen.item_conDigital{
+    padding: 15px 0;
   }
 }
 
@@ -292,12 +302,13 @@ h2.precio {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  /**/
-  padding: 7px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
   gap: 0 10px;
+
+  /**/
+  margin-top: 15px;
+  padding: 10px 0;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 .en_resumen {
   padding: 10px 0;
@@ -308,6 +319,9 @@ h2.precio {
   font-size: 16px;
   text-transform: uppercase;
   text-align: center;
+}
+.digital h4 span{
+  font-weight: 600;
 }
 
 /* Genel stil */
@@ -554,7 +568,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   width: 90%;
-  margin: 10px;
+  margin: 15px;
 }
 
 

@@ -10,9 +10,9 @@ article {
     transform-origin: center;
     transition: all 0.4s ease-in-out;
     overflow: hidden;
-    box-shadow: 2px 2px 20px #bebebe; 
+    box-shadow: 2px 2px 20px #bebebe;
   }
-  
+
   article a::after {
     position: absolute;
     inset-block: 0;
@@ -20,7 +20,7 @@ article {
     cursor: pointer;
     content: "";
   }
-  
+
   /* basic article elements styling */
   article h2 {
     margin: 0 0 18px 0;
@@ -30,36 +30,36 @@ article {
     color: var(--title-color);
     transition: color 0.3s ease-out;
   }
-  
+
   figure {
     margin: 0;
     padding: 0;
     aspect-ratio: 16 / 9;
     overflow: hidden;
   }
-  
+
   article img {
     max-width: 100%;
     transform-origin: center;
     transform: scale(var(--img-scale));
     transition: transform 0.4s ease-in-out;
   }
-  
+
   .article-body {
     padding: 24px;
   }
-  
+
   article a {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     color: #28666e;
   }
-  
+
   article a:focus {
     outline: 1px dotted #28666e;
   }
-  
+
   article a .icon {
     min-width: 24px;
     width: 24px;
@@ -69,7 +69,7 @@ article {
     opacity: var(--link-icon-opacity);
     transition: all 0.3s;
   }
-  
+
   /* using the has() relational pseudo selector to update our custom properties */
   article:has(:hover, :focus) {
     --img-scale: 1.1;
@@ -78,14 +78,14 @@ article {
     --link-icon-opacity: 1;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   }
-  
-  
-  /************************ 
+
+
+  /************************
   Generic layout (demo looks)
   **************************/
-  
-  
-  
+
+
+
   .articles {
     display: grid;
     width: 80vw;
@@ -94,7 +94,7 @@ article {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
   }
-  
+
   @media screen and (max-width: 960px) {
     article {
       container: card/inline-size;
@@ -103,8 +103,13 @@ article {
       display: none;
     }
   }
-  
+
   @container card (min-width: 380px) {
+    section.articles{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .article-wrapper {
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -124,13 +129,31 @@ article {
       object-fit: cover;
     }
   }
-  
+
   .sr-only:not(:focus):not(:active) {
-    clip: rect(0 0 0 0); 
+    clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;
     position: absolute;
-    white-space: nowrap; 
+    white-space: nowrap;
     width: 1px;
   }
+
+
+@media only screen and (max-width:384px) {
+  .articles{
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+  }
+  article{
+    width: 250px;
+  }
+  article figure{
+    width: 250px;
+  }
+  article .article-body{
+    width: 250px;
+  }
+}

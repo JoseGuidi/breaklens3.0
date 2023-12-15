@@ -61,14 +61,14 @@
   height: 30px;
   //transform:scaleX(-1);
   filter: invert(100%);
-  
+
 }
 .chatBtnCarrito img.flecha{
   height: 70px;
   //transform:scaleX(-1);
   transform: translateY(-2px);
   filter: invert(100%);
-  
+
 }
 .tooltip {
   position: absolute;
@@ -99,7 +99,7 @@
   position: fixed;
   top: calc(50% - 33vh);
   right: 0;
-  z-index: 1800; 
+  z-index: 1800;
   max-width: 512px;
   width: 90vw;
 }
@@ -179,7 +179,7 @@
   align-items: center;
   animation: 1s aparecerOpacidad;
   background-color: #eeeeee;
-} 
+}
 .contenedor_top {
   margin: 2vh 0;
   width: 100%;
@@ -237,7 +237,7 @@
 }
 
 .folder {
- 
+
   cursor: pointer;
 }
 .galeria_fotos > div,.galeria_masonry > div img{
@@ -366,10 +366,10 @@ svg {
 
   }
   .app-cart_Mostrar{
-    animation: .8s _ngcontent-ng-c950197313_aparecerCarritoCompu;
+    animation: .8s _ngcontent-ng-c2306864957_aparecerCarritoCompu;
   }
   .app-cart_Oculto{
-    animation: .8s _ngcontent-ng-c950197313_desaparecerCarritoCompu;
+    animation: .8s _ngcontent-ng-c2306864957_desaparecerCarritoCompu;
   }
   .contenedor_top {
     /*max-width: 1200px;*/
@@ -422,7 +422,7 @@ svg {
     gap: 10px 15px;
     width: 100%;
   }
-  
+
 }
 @media only screen and (min-width: 1550px) {
   .contenedor_chico{
@@ -447,7 +447,7 @@ svg {
     width: calc(90vw);
     max-width: 520px;
   }
-  
+
 }
 
 @keyframes desaparecerCarritoCelu{
@@ -475,13 +475,13 @@ svg {
 @keyframes desaparecerCarritoCompu {
   from{
     width: 30vw;
-    
+
     max-width: 700px;
   }
   to{
     width: 0;
   }
-  
+
 }
 @keyframes moveIcono {
   from {
@@ -594,7 +594,7 @@ svg {
   position: absolute;
   top: 0;
   right: calc(50%);
-  
+
 }
 
 

@@ -29,7 +29,6 @@ import { LoaderSeguimientoComponent } from './components/loader-seguimiento/load
 
 import { InfoExtraComponent } from './components/info-extra/info-extra.component';
 import { NgOptimizedImage } from '@angular/common';
-import { SeccionFotosComponent } from './seccion-fotos/seccion-fotos.component';
 import { FormDatosPagoComponent } from './components/pagina-carrito/form-datos-pago/form-datos-pago.component';
 import { ItemsPagoComponent } from './components/pagina-carrito/items-pago/items-pago.component';
 import { MetodoEntregaPagoComponent } from './components/pagina-carrito/metodo-entrega-pago/metodo-entrega-pago.component';
@@ -65,7 +64,6 @@ import { DatosTransferenciaComponent } from './components/pagina-carrito/datos-t
     TestimonyCardComponent,
     LoaderSeguimientoComponent,
     InfoExtraComponent,
-    SeccionFotosComponent,
     FormDatosPagoComponent,
     ItemsPagoComponent,
     MetodoEntregaPagoComponent,

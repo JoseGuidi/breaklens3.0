@@ -8,8 +8,10 @@
   width: 100%;
   max-width: none;
   border-radius: 0;
-}
-
+}/*
+.datosCompra.enMostrarTodos{
+  width: calc(100% - 4vh);
+}*/
 .cabecera,
 .itemFor,
 .datosCompra {
@@ -18,7 +20,7 @@
 .cabecera {
   display: none;
   border-bottom: 1px solid #e5e5e5;
-  padding: 2vh 3.5vw;
+  padding: 25px 29px;
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;

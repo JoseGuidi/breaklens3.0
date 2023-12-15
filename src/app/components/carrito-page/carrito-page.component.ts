@@ -40,10 +40,12 @@ export class CarritoPageComponent {
     private cartService: CartService,
     private router: Router,
     private http: HttpClient,
-    private data_service: DataService
-  ) {}
+    private data_service: DataService,
+  ) {
+    window.scrollTo(0,0);
+  }
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    //window.scrollTo({ top: 0, behavior: 'smooth' });
     this.cartService.carrito.subscribe((cart) => {
       this.listadoItems = cart;
 
@@ -226,6 +228,7 @@ export class CarritoPageComponent {
         total += pos.f.digital.valueOf();
       }
     });
+
     return total;
   }
 
@@ -297,11 +300,11 @@ export class CarritoPageComponent {
     this.cargandoRedireccionPago = true
 
     setTimeout( () =>{
-      if ((this.metodoPago == 'transferencia')) {
+      if ((this.metodoPago == 'transferencia') || (this.metodoPago == 'efectivo')) {
         this.cargandoRedireccionPago = false;
         this.enMostrarTodos = false;
         this.mostrarDatosTransferencia = true;
-        this.pushearTransferencia();
+        this.pushearTransferencia(this.metodoPago);
       } else {
         this.redirigirMercadoPago();
       }
@@ -374,11 +377,14 @@ export class CarritoPageComponent {
       this.formDatos.get('telefono')?.value +
       '&payer_direc=' +
       direccion+'&entrega='+entrega;
-    console.log(url);
+
+      if(endpoint != 'payments'){
+        url += "&metodo="+this.metodoPago
+      }
     return url;
   }
 
-  pushearTransferencia() {
+  pushearTransferencia(metodo:String) {
     let url = this.generateURL('transfer');
     this.http.get(url).subscribe((order_id) => {
       let idTR = order_id;

@@ -1,4 +1,4 @@
-<div class="datos_tranferencias" *ngIf="true">
+<div class="datos_tranferencias" *ngIf="metodoPago=='transferencia'">
     <span class="title">PASOS PARA TRANSFERIR</span>
     <div class="parrafos">
       <ul>
@@ -9,7 +9,7 @@
           >.
         </li>
         <li>
-          3) Guarde el comprobante y envielo al
+          3) Guarde el comprobante y envielo al whatsapp de
           <a href="https://wa.link/w05wxt" target="_blank">(0249) 4481 007</a
           >.
         </li>
@@ -37,6 +37,13 @@
           (click)="copiarAlias(alias)"
         />
         <div class="texto_copiado" *ngIf="aliasCopiado">Copiado!</div>
+      </div>
+
+      <div class="dato_compra">
+        <h4>
+          TITULAR: <span>FELIPE MARTINEZ</span>
+        </h4>
+
       </div>
     </div>
 
@@ -72,5 +79,25 @@
     <div class="btn">
       <button (click)="redirigirHome()">Finalizar</button>
     </div>
+</div>
+
+<div class="datos_tranferencias" *ngIf="metodoPago === 'efectivo'">
+  <span class="title">PASOS PARA ABONAR</span>
+  <div class="parrafos">
+    <ul>
+      <li>1) Dirigite a nuestra sucursal en Cuba 1498.</li>
+      <li>
+        2) Muestre su numero de pedido <span>{{orderID}}</span> y abone el monto total:
+        <span>${{ getMontoTotal() }}</span
+        >.
+      </li>
+      <li>
+        3) Guarde el comprobante y espere a recibir las fotografias.
+      </li>
+    </ul>
+  </div>
+  <div class="btn">
+    <button (click)="redirigirHome()">Finalizar</button>
+  </div>
 </div>
 

@@ -14,6 +14,8 @@ export class DatosTransferenciaComponent {
   @Input() envio?:number;
   @Input() items?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() orderID?:String;
+  @Input() metodoPago?:String;
+  @Input() entregaDomicilio?:boolean;
   momentoDePago?:string;
   cvu:string = '';
   alias:string=''
@@ -33,8 +35,8 @@ export class DatosTransferenciaComponent {
         total+= item.f.digital.valueOf();
       }
     })
-    if(this.envio){
-      
+    if(this.envio&&this.entregaDomicilio){
+
     total+= this.envio;
     }
     return total

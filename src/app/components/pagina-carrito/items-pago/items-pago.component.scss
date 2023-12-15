@@ -11,7 +11,7 @@
 }
 .cabecera {
   border-bottom: 1px solid #e5e5e5;
-  padding: 2vh 3.5vw;
+  padding: 20px 29px;
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -99,8 +99,9 @@
 }
 
 .resumen{
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  left: 0;
   z-index: 1000;
   width: 100%;
   max-width: none;

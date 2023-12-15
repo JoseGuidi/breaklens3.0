@@ -24,8 +24,8 @@ export class PaymentPageComponent {
   constructor(private _url: ActivatedRoute){}
   ngOnInit(): void {
     this.url = this._url.snapshot.url.toString();
-    this.url += " --- " + this._url.snapshot.queryParams 
-    
+    this.url += " --- " + this._url.snapshot.queryParams
+
     let _id = this._url.snapshot.queryParamMap.get('payment_id')
     if(_id){
       this.id = _id

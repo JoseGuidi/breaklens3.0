@@ -86,7 +86,7 @@
       </h1>-->
 
       <div class="galeria_fotos_flex">
-        
+
         <div class="contenedor_loader" *ngIf="cargandoFotos">
           <span class="loaderFotos"  ></span>
         </div>
@@ -98,7 +98,7 @@
               (click)="agregarFotoCarrito(foto)"
             ></app-card-pic>-->
             <img
-              loading="lazy"
+
                 src="../../../assets/img/fotos/individuales/{{
                   foto?.cod_institucion
                 }}/{{ foto?.ruta }}"

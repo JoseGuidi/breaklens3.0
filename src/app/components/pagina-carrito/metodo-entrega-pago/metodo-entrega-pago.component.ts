@@ -20,6 +20,7 @@ export class MetodoEntregaPagoComponent {
   listaDomicilios : DomicilioClass[] = [];
   costoEnvio: String = '';
   sinElegir:boolean=false;
+  unicamenteDigitales = false;
   constructor(private _dataService:DataService, private fb: FormBuilder){
 
     this._dataService.obtenerDatosEnvio('7000').subscribe(envio =>{
@@ -47,20 +48,31 @@ export class MetodoEntregaPagoComponent {
     this.formMetodo = this.fb.group({
       metodo:new FormControl('',[Validators.required])
     })
+
+
+  }
+  ngOnInit(){
+    this.unicamenteDigitales = this.carpetasUnicamenteDigitales();
   }
   private cargarListadoDomicilio() {
+    this.listaDomicilios = [];
     if(this.formDatos){
-      let domicilio;
-      let calle = this.formDatos.value.direc_calle;
-      let numero = this.formDatos.value.direc_numero;
-      let piso = this.formDatos.value.direc_piso;
-      if(piso){
-        domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio,piso)
-      }else{
-        domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio)
-      }
-      this.listaDomicilios = [domicilio, new DomicilioClass("Cuba",1498,"Retiro en sucursal","Gratis")]
+      if(!this.carpetasUnicamenteDigitales()){
 
+        let domicilio;
+        let calle = this.formDatos.value.direc_calle;
+        let numero = this.formDatos.value.direc_numero;
+        let piso = this.formDatos.value.direc_piso;
+        if(piso){
+          domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio,piso)
+        }else{
+          domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio)
+        }
+        this.listaDomicilios.push(domicilio);
+        this.listaDomicilios.push(new DomicilioClass("Cuba",1498,"Retiro en sucursal","Gratis"));
+      }else{
+        this.listaDomicilios.push(new DomicilioClass(this.formDatos.value.email,-1,"Entrega por mail (Plazo de hasta 24hs)","Gratis"));
+      }
     }
   }
 
@@ -107,5 +119,20 @@ export class MetodoEntregaPagoComponent {
     }else{
       return calle+'-'+numero+'-' == this.formMetodo.value.metodo;
     }
+  }
+
+  carpetasUnicamenteDigitales(){
+    let r:boolean = true;
+    let i = 0;
+    if(this.listadoItems){
+      while(r && i < this.listadoItems?.length){
+        if(this.listadoItems[i].f.tipo != 'digital'){
+
+          r = false;
+        }
+        i++;
+      }
+    }
+    return r;
   }
 }

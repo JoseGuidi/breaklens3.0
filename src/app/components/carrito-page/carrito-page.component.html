@@ -2,64 +2,30 @@
 <app-loading *ngIf="cargandoRedireccionPago"></app-loading>
 <div class="contenedor_principal" [ngClass]="{'enDatosPersonales':enDatosPersonales}">
   <div class="componentes" [ngClass]="{'cambiarOrden':enMostrarTodos,'enMetodoPago':enMetodoPago}">
-    <app-form-datos-pago
-      *ngIf="enDatosPersonales"
-      (enviarDatos)="manejarDatos($event)"
-      [listadoItems]="listadoItems"
-    ></app-form-datos-pago>
-    <app-metodo-entrega-pago
-      *ngIf="enMetodoEntrega"
-      (lugarEntrega)="actualizarMetodoEntrega($event)"
-      [formDatos]="formDatos"
-      (volverAtras)="volverAtras($event)"
-      [listadoItems]="listadoItems"
-    ></app-metodo-entrega-pago>
-    <app-items-pago
-      *ngIf="enResumen"
-      [listadoItems]="listadoItems"
-      [entregaEnDomicilio]="entregaEnDomicilio"
-      (avanzarPaso)="avanzarAMetodoPago()"
-      (volverAtras)="volverAtras($event)"
-      [costoEnvio]="costoEnvio"
-    ></app-items-pago>
-    <app-metodo-pago
-      *ngIf="enMetodoPago"
-      [entregaEnDomicilio]="entregaEnDomicilio"
-      (eventEmmiter)="redirigirPago($event)"
-      (volverAtras)="volverAtras($event)"
-      [costoEnvio]="costoEnvio"
-    ></app-metodo-pago>
-    <app-todos-componentes-pago
-    *ngIf="enMostrarTodos"
-    [formDatos]="formDatos"
-    [listadoItems]="listadoItems"
-    [entregaEnDomicilio]="entregaEnDomicilio"
-    [metodoPago]="metodoPago"
-    (volverAtras)="volverAtras($event)"
-    [costoEnvio]="costoEnvio"
-    (irAPagar)="elegirTRoMP()"
-    >
+    <app-form-datos-pago *ngIf="enDatosPersonales" (enviarDatos)="manejarDatos($event)"
+      [listadoItems]="listadoItems"></app-form-datos-pago>
+    <app-metodo-entrega-pago *ngIf="enMetodoEntrega" (lugarEntrega)="actualizarMetodoEntrega($event)"
+      [formDatos]="formDatos" (volverAtras)="volverAtras($event)"
+      [listadoItems]="listadoItems"></app-metodo-entrega-pago>
+    <app-items-pago *ngIf="enResumen" [listadoItems]="listadoItems" [entregaEnDomicilio]="entregaEnDomicilio"
+      [entregaEnMail]="entregaEnMail" (avanzarPaso)="avanzarAMetodoPago()" (volverAtras)="volverAtras($event)"
+      [costoEnvio]="costoEnvio"></app-items-pago>
+    <app-metodo-pago *ngIf="enMetodoPago" [entregaEnDomicilio]="entregaEnDomicilio" [entregaEnMail]="entregaEnMail"
+      (eventEmmiter)="redirigirPago($event)" (volverAtras)="volverAtras($event)"
+      [costoEnvio]="costoEnvio"></app-metodo-pago>
+    <app-todos-componentes-pago *ngIf="enMostrarTodos" [formDatos]="formDatos" [listadoItems]="listadoItems"
+      [entregaEnDomicilio]="entregaEnDomicilio" [entregaEnMail]="entregaEnMail" [metodoPago]="metodoPago"
+      (volverAtras)="volverAtras($event)" [costoEnvio]="costoEnvio" (irAPagar)="elegirTRoMP()">
     </app-todos-componentes-pago>
-    <app-datos-transferencia *ngIf="mostrarDatosTransferencia"
-    [items]="listadoItems"
-    [envio]="costoEnvio"
-    [orderID]="orderID"
-    [metodoPago]="metodoPago"
-    [entregaDomicilio]="entregaEnDomicilio"
-    ></app-datos-transferencia>
+    <app-datos-transferencia *ngIf="mostrarDatosTransferencia" [items]="listadoItems" [envio]="costoEnvio"
+      [orderID]="orderID" [metodoPago]="metodoPago" [entregaDomicilio]="entregaEnDomicilio"
+      [entregaEnMail]="entregaEnMail"></app-datos-transferencia>
   </div>
   <div class="resumen" [ngClass]="{'cambiarOrden':enMostrarTodos}">
-    <app-resumen-pago
-      [enDatosPersonales]="enDatosPersonales"
-      [enMetodoEntrega]="enMetodoEntrega"
-      [enResumen]="enResumen"
-      [enMetodoPago]="enMetodoPago"
-      [enMostrarTodos]="enMostrarTodos"
-      [entregaEnDomicilio]="entregaEnDomicilio"
-      (eventRedirigirPago)="elegirTRoMP()"
-      [costoEnvio]="costoEnvio"
-
-    ></app-resumen-pago>
+    <app-resumen-pago [enDatosPersonales]="enDatosPersonales" [enMetodoEntrega]="enMetodoEntrega"
+      [enResumen]="enResumen" [enMetodoPago]="enMetodoPago" [enMostrarTodos]="enMostrarTodos"
+      [entregaEnDomicilio]="entregaEnDomicilio" [entregaEnMail]="entregaEnMail" (eventRedirigirPago)="elegirTRoMP()"
+      [costoEnvio]="costoEnvio"></app-resumen-pago>
   </div>
 </div>
 

@@ -14,41 +14,26 @@
   </div>-->
   <div class="cabecera">
     <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" (click)="volverResumen()">
-      <path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/>
+      <path
+        d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" />
     </svg>
     <h1>Metodo de pago <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span></h1>
   </div>
   <form [formGroup]="formMetodoPago">
     <div class="contenedor_metodos">
-      <div
-        class="item primero"
-        [ngClass]="{
+      <!--<div class="item primero" [ngClass]="{
           seleccionada: formMetodoPago.value.pago == 'mercadoPago',
-        }"
-        (click)="elegir('mercadoPago')"
-      >
+        }" (click)="elegir('mercadoPago')">
         <input type="radio" formControlName="pago" id="" value="mercadoPago" />
         <h2>Mercado Pago</h2>
         <img src="https://img.icons8.com/color/48/mercado-pago.png" alt="" />
-      </div>
-      <div
-        class="item"
-        [ngClass]="{
+      </div>-->
+      <div class="item" [ngClass]="{
           seleccionada: formMetodoPago.value.pago == 'transferencia'
-        }"
-        (click)="elegir('transferencia')"
-      >
-        <input
-          type="radio"
-          formControlName="pago"
-          id=""
-          value="transferencia"
-        />
+        }" (click)="elegir('transferencia')">
+        <input type="radio" formControlName="pago" id="" value="transferencia" />
         <h2>Transferencia</h2>
-        <img
-          src="../../../../assets/img/flaticon/tarjetasve.png"
-          alt=""
-        />
+        <img src="../../../../assets/img/flaticon/tarjetasve.png" alt="" />
       </div>
       <!--<div
         class="item"
@@ -77,18 +62,11 @@
     <div class="infoNotif">
       <div class="flex">
         <div class="flex-shrink-0">
-          <svg
-            class="info-svg svg_completandoPagos"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
+          <svg class="info-svg svg_completandoPagos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+            fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
               d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"
-            ></path>
+              clip-rule="evenodd"></path>
           </svg>
         </div>
         <div class="info-prompt-wrap">
@@ -101,16 +79,9 @@
     </div>
   </div>
 
-  <app-resumen-pago class="resumen"
-  [enDatosPersonales]="false"
-        [enMetodoEntrega]="false"
-        [enResumen]="false"
-        [enMetodoPago]="true"
-        [enMostrarTodos]="false"
-  (eventAvanzarMostrarTodos)="habilitarPagar()"
-  [entregaEnDomicilio]="entregarEnDomicilio()"
-  [costoEnvio]="costoEnvio"
-  >
+  <app-resumen-pago class="resumen" [enDatosPersonales]="false" [enMetodoEntrega]="false" [enResumen]="false"
+    [enMetodoPago]="true" [enMostrarTodos]="false" (eventAvanzarMostrarTodos)="habilitarPagar()"
+    [entregaEnDomicilio]="entregarEnDomicilio()" [entregaEnMail]="entregaEnMail" [costoEnvio]="costoEnvio">
 
   </app-resumen-pago>
 </div>

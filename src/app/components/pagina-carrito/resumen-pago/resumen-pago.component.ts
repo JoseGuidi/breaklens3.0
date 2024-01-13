@@ -25,6 +25,7 @@ export class ResumenPagoComponent {
   @Input() enMetodoPago?:boolean
   @Input() enMostrarTodos?:boolean;
   @Input() entregaEnDomicilio?:boolean;
+  @Input() entregaEnMail?:boolean;
   @Input() formDatosPersonales?:FormGroup;
 
   @Input() costoEnvio:any;
@@ -198,7 +199,7 @@ export class ResumenPagoComponent {
         total += pos.f.digital.valueOf();
       }
     });
-    if(this.costoEnvio !== 'Gratis' && !(this.enMetodoEntrega||this.enDatosPersonales) && this.entregaEnDomicilio){
+    if(this.costoEnvio !== 'Gratis' && !(this.enMetodoEntrega||this.enDatosPersonales) && this.entregaEnDomicilio && !this.entregaEnMail){
       total+= this.costoEnvio
     }
     return total;
@@ -210,7 +211,7 @@ export class ResumenPagoComponent {
   }
   getCostoEnvio(){
 
-      if(this.entregaEnDomicilio && this.costoEnvio != 'Gratis'){
+      if(this.entregaEnDomicilio && this.costoEnvio != 'Gratis' && !this.entregaEnMail){
         return '$'+this.costoEnvio
       }else{
         return 'Gratis'

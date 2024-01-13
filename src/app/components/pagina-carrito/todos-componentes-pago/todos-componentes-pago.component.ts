@@ -16,6 +16,8 @@ export class TodosComponentesPagoComponent {
   @Input() formDatos?:FormGroup;
   @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() entregaEnDomicilio?:boolean;
+  @Input() entregaEnMail?:boolean;
+
   @Input() metodoPago?:String;
   @Input () costoEnvio?:any;
   @Output() volverAtras = new EventEmitter<any>();

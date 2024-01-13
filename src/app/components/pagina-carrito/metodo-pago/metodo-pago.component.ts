@@ -15,6 +15,8 @@ export class MetodoPagoComponent {
   @Input () costoEnvio?:any;
   @Input() listadoItems?:{ f: Folder; p: Pic; i: Institution; q: Number; d: boolean }[];
   @Input() entregaEnDomicilio?:boolean;
+  @Input() entregaEnMail?:boolean;
+
   formMetodoPago:FormGroup;
   sinElegir:boolean = false;
   constructor(private fb:FormBuilder){

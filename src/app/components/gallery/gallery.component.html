@@ -1,9 +1,6 @@
 <app-header class="header" id="arriba"></app-header>
 
-<div
-  [ngClass]="{ opacidad_carrito: carritoVisible }"
-  (click)="cambiarVisibilidadCarrito()"
-></div>
+<div [ngClass]="{ opacidad_carrito: carritoVisible }" (click)="cambiarVisibilidadCarrito()"></div>
 
 <!--<img
   src="../../../assets/img/carrito2.png"
@@ -14,18 +11,8 @@
 />-->
 <div class="contBtn" (click)="cambiarVisibilidadCarrito()">
   <button class="chatBtnCarrito">
-    <img
-      src="../../../assets/img/icono/cart-shopping-fast.svg"
-      alt=""
-      *ngIf="!carritoVisible"
-      class="carrito"
-    />
-    <img
-      src="../../../assets/img/icono/caret-right.svg"
-      alt=""
-      *ngIf="carritoVisible"
-      class="flecha"
-    />
+    <img src="../../../assets/img/icono/cart-shopping-fast.svg" alt="" *ngIf="!carritoVisible" class="carrito" />
+    <img src="../../../assets/img/icono/caret-right.svg" alt="" *ngIf="carritoVisible" class="flecha" />
 
     <label for="">{{ getLengthCarrito() }}</label>
   </button>
@@ -42,41 +29,24 @@
       </h3>
     </div>
     <p class="selecCarp">*Seleccione una carpeta</p>
-    <div
-      class="contenedor_carpetas"
-      [ngClass]="{ contenedor_carpetas_elegida: carpetaElegida }"
-    >
+    <div class="contenedor_carpetas" [ngClass]="{ contenedor_carpetas_elegida: carpetaElegida }">
       <div *ngFor="let folder of listaCarpetas">
         <div class="folder">
-          <app-folder-card
-            class="app-folder"
-            [carpetaReferida]="folder"
-            (click)="seleccionarCarpeta(folder)"
-            [isSelected]="folder.nombre === carpetaElegida?.nombre"
-            [institucion]="institucion"
-          ></app-folder-card>
+          <app-folder-card class="app-folder" [carpetaReferida]="folder" (click)="seleccionarCarpeta(folder)"
+            [isSelected]="folder.nombre === carpetaElegida?.nombre" [institucion]="institucion"></app-folder-card>
         </div>
       </div>
     </div>
 
-    <div
-      class="foto_grupal"
-      *ngIf="institucion && institucion?.path_foto_grupal !== 'vacio'"
-    >
+    <div class="foto_grupal" *ngIf="institucion && institucion?.path_foto_grupal !== 'vacio'">
       <div class="cardGrupal">
         <div class="cardGrupal-img">
-          <img
-            src="../../../assets/img/fotos/portadas/{{
+          <img src="../../../assets/img/fotos/portadas/{{
               institucion.path_foto_grupal
-            }}"
-            alt="Foto grupal de {{ institucion.nombre }}"
-            (contextmenu)="prohibirDescarga($event)"
-          />
+            }}" alt="Foto grupal de {{ institucion.nombre }}" (contextmenu)="prohibirDescarga($event)" />
         </div>
         <div class="cardGrupal-footer">
-          <span class="text-title"
-            >Fotografia grupal de {{ institucion.nombre }}</span
-          >
+          <span class="text-title">Fotografia grupal de {{ institucion.nombre }}</span>
         </div>
       </div>
     </div>
@@ -88,25 +58,19 @@
       <div class="galeria_fotos_flex">
 
         <div class="contenedor_loader" *ngIf="cargandoFotos">
-          <span class="loaderFotos"  ></span>
+          <span class="loaderFotos"></span>
         </div>
         <p class="selecCarp foto" *ngIf="!cargandoFotos">*Seleccione la fotografia</p>
-        <div *ngIf="!institucionVacia&&!cargandoFotos" class="galeria_fotos" >
+        <div *ngIf="!institucionVacia&&!cargandoFotos" class="galeria_fotos">
           <div *ngFor="let foto of listaFotos" class="imgFOR">
             <!--<app-card-pic
               [picEntrante]="foto"
               (click)="agregarFotoCarrito(foto)"
             ></app-card-pic>-->
-            <img
-
-                src="../../../assets/img/fotos/individuales/{{
+            <img src="../../../assets/img/fotos/individuales/{{
                   foto?.cod_institucion
-                }}/{{ foto?.ruta }}"
-                alt=""
-                (contextmenu)="prohibirDescarga($event)"
-                (click)="agregarFotoCarrito(foto)"
-                width="100%"
-              />
+                }}/{{ foto?.ruta }}" alt="" (contextmenu)="prohibirDescarga($event)" (click)="agregarFotoCarrito(foto)"
+              width="100%" />
           </div>
 
         </div>
@@ -166,10 +130,13 @@
           </div>
         </div>
       </div>-->
+      </div>
     </div>
+    <!--
+    <button class="loadMore" *ngIf="!cargandoFotos" (click)="loadMore()">CARGAR MAS</button>
+-->
   </div>
-</div>
-<!--
+  <!--
 <div class="contenedor_carrito" [ngClass]="{'ocultarContenedorCarrito': !carritoVisible}">
   <div
     [ngClass]="{
@@ -182,19 +149,13 @@
   </div>
 </div>
 -->
-<div class="cont_carrito">
-  <div
-    [ngClass]="{
+  <div class="cont_carrito">
+    <div [ngClass]="{
       'app-cart-sinAnim': primeraVez,
       'app-cart_Oculto': !carritoVisible && !primeraVez,
       'app-cart_Mostrar': carritoVisible && !primeraVez
-    }"
-  >
-    <app-cart [carritoVisible]="carritoVisible"></app-cart>
+    }">
+      <app-cart [carritoVisible]="carritoVisible"></app-cart>
+    </div>
   </div>
-</div>
-<app-footer
-  class="footer"
-  *ngIf="listaFotos.length !== 0"
-  #footerRef
-></app-footer>
+  <app-footer class="footer" *ngIf="listaFotos.length !== 0" #footerRef></app-footer>

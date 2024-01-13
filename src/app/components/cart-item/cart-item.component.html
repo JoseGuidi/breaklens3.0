@@ -1,8 +1,6 @@
-<div
-  *ngIf="item"
-  [ngClass]="{ item_galeria: inGallery, item_carrito: !inGallery, item_conDigital:!inGallery&&contieneDigital(),'imagen_vertical':imagenVertical,'en_resumen':enResumen }"
->
- <!--  <img
+<div *ngIf="item"
+  [ngClass]="{ item_galeria: inGallery, item_carrito: !inGallery, item_conDigital:!inGallery&&contieneDigital(),'imagen_vertical':imagenVertical,'en_resumen':enResumen }">
+  <!--  <img
     src="../../../assets/img/flaticon/cross-sm.svg "
     alt=""
     class="cruz"
@@ -11,62 +9,30 @@
   />-->
   <div class="fotos" [ngClass]="{'fotosSinExtra':!contieneExtras()}">
     <div class="carpeta">
-      <img
-        (contextmenu)="prohibirDescarga($event)"
-        src="../../../assets/img/fotos/individuales/{{
+      <img (contextmenu)="prohibirDescarga($event)" src="../../../assets/img/fotos/individuales/{{
           item.i.cod_institucion
-        }}/{{ item.p.ruta }}"
-        alt=""
-        class="individual"
-        id="_{{item.f.id_carpeta}}-{{item.p.id_foto}}"
-        (load)="checkImagenVertical(item.f.id_carpeta,item.p.id_foto)"
-      />
-      <img
-        (contextmenu)="prohibirDescarga($event)"
-        *ngIf="item.f.grupal !== 0"
-        src="../../../assets/img/fotos/portadas/{{ item.i.path_foto_grupal }}"
-        alt=""
-        class="grupal"
-      />
+        }}/{{ item.p.ruta }}" alt="" class="individual" id="_{{item.f.id_carpeta}}-{{item.p.id_foto}}"
+        (load)="checkImagenVertical(item.f.id_carpeta,item.p.id_foto)" />
+      <img (contextmenu)="prohibirDescarga($event)" *ngIf="item.f.grupal !== 0"
+        src="../../../assets/img/fotos/portadas/{{ item.i.path_foto_grupal }}" alt="" class="grupal" />
     </div>
-    <div
-      class="plus"
-      *ngIf="contieneExtras()"
-      [ngClass]="{
+    <div class="plus" *ngIf="contieneExtras()" [ngClass]="{
         plus_3extras: item.f.individual === 5,
         plus_2extras: item.f.individual === 4
-      }"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        version="1.1"
-        id="Capa_1"
-        x="0px"
-        y="0px"
-        viewBox="0 0 512 512"
-        xml:space="preserve"
-        width="512"
-        height="512"
-      >
+      }">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+        x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" width="512" height="512">
         <g>
           <path
-            d="M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z"
-          />
+            d="M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z" />
         </g>
       </svg>
     </div>
     <div class="copias" *ngIf="contieneExtras()">
-      <img
-        *ngFor="let i of extras()"
-        src="../../../assets/img/fotos/individuales/{{
+      <img *ngFor="let i of extras()" src="../../../assets/img/fotos/individuales/{{
           item.p.cod_institucion
-        }}/{{ item.p.ruta }}"
-        alt="Foto individual"
-        class="extra c{{ i }}"
-        [ngClass]="{ extraInGaleria: inGallery }"
-        (contextmenu)="prohibirDescarga($event)"
-      />
+        }}/{{ item.p.ruta }}" alt="Foto individual" class="extra c{{ i }}" [ngClass]="{ extraInGaleria: inGallery }"
+        (contextmenu)="prohibirDescarga($event)" />
     </div>
   </div>
 
@@ -77,7 +43,7 @@
       <h3>{{ item.i.nombre }}</h3>
     </div>
   </div>
-  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0 && !enResumen">
+  <div class="digital" *ngIf="!inGallery&&item.f.digital !== 0 && !enResumen && item.f.tipo != 'digital'">
 
     <!--<div class="toggle-switch" >
       <input class="toggle-input" id="item_{{item.f.id_carpeta}}_{{item.p.id_foto}}" type="checkbox"
@@ -91,7 +57,7 @@
     <h4>Quiero recibir la foto digital: <span>${{item.f.digital}}</span></h4>
     <div class="checkbox-wrapper-12" (click)="agregarDigital(item)">
       <div class="cbx">
-        <input  type="checkbox" id="cbx-12"  [checked]="item.d">
+        <input type="checkbox" id="cbx-12" [checked]="item.d">
         <label for="cbx-12"></label>
         <svg fill="none" viewBox="0 0 15 14" height="14" width="15">
           <path d="M2 8.36364L6.23077 12L13 2"></path>
@@ -102,14 +68,15 @@
         <defs>
           <filter id="goo-12">
             <feGaussianBlur result="blur" stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
-            <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix" in="blur"></feColorMatrix>
+            <feColorMatrix result="goo-12" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" mode="matrix"
+              in="blur"></feColorMatrix>
             <feBlend in2="goo-12" in="SourceGraphic"></feBlend>
           </filter>
         </defs>
       </svg>
     </div>
   </div>
- <!--<div class="contenedor_precio" *ngIf="!enResumen">
+  <!--<div class="contenedor_precio" *ngIf="!enResumen">
     <h2 class="precio">${{ hacerCuenta(item.f.precio, item.q) }}</h2>
     <div class="quantity">
       <button (click)="cambiarCantidad(item, -1)">
@@ -151,19 +118,35 @@
   </div>-->
 
   <div class="botonesss" *ngIf="!enMostrarTodos">
-    <form action=""[formGroup]="myForm" *ngIf="!inGallery">
-    <select id="frutas" *ngIf="!inGallery" name="opciones" formControlName="selectedOption" (change)="onOptionChange(item,$event)">
-      <option *ngFor="let op of options" [value]="op.value" >{{op.label}} - ${{hacerCuenta(item.f.precio,parseInt(op.value))}}</option>
-    </select>
-</form>
+    <form action="" [formGroup]="myForm" *ngIf="!inGallery && item.f.tipo != 'digital'">
+      <select id="frutas" *ngIf="!inGallery && item.f.tipo != 'digital'" name="opciones"
+        formControlName="selectedOption" (change)="onOptionChange(item,$event)">
+        <option *ngFor="let op of options" [value]="op.value">{{op.label}} -
+          ${{hacerCuenta(item.f.precio,parseInt(op.value))}}</option>
+      </select>
+    </form>
     <!--<button class="CartBtn" (click)="eliminarElemento()"
     *ngIf="!enResumen"> Quitar item </button>-->
-    <button class="button" type="button"  (click)="eliminarElemento()">
+    <button class="button" type="button" (click)="eliminarElemento()">
       <span class="button__text">Quitar</span>
-      <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line><path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line></svg></span>
+      <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512"
+          xmlns="http://www.w3.org/2000/svg">
+          <title></title>
+          <path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
+            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
+          <line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432"
+            y1="112" y2="112"></line>
+          <path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
+            style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
+          <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256"
+            x2="256" y1="176" y2="400"></line>
+          <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184"
+            x2="192" y1="176" y2="400"></line>
+          <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328"
+            x2="320" y1="176" y2="400"></line>
+        </svg></span>
     </button>
   </div>
 
 
 </div>
-

@@ -14,33 +14,26 @@
   </div>-->
   <div class="cabecera">
     <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" (click)="volverFormulario()">
-      <path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/>
+      <path
+        d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z" />
     </svg>
-    <h1>Metodo de entrega <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span>  </h1>
+    <h1>Metodo de entrega <span [ngClass]="{sinElegir: sinElegir}">(seleccione uno)</span> </h1>
   </div>
   <form [formGroup]="formMetodo">
-    <div
-      class="item_envio"
-      *ngFor="let item of listaDomicilios"
-      [ngClass]="{
+    <div class="item_envio" *ngFor="let item of listaDomicilios" [ngClass]="{
         primer_item: item == getElement(0),
         'seleccionada':esLaSeleccionada(item)
-
-      }"
-      (click)="elegir(item)"
-    >
+      }" (click)="elegir(item)">
       <div class="izquierda">
-        <input
-          type="radio"
-          formControlName="metodo"
-          id=""
-          value="{{item.calle}}-{{item.numero}}-{{item.piso}}"
-        />
+        <input type="radio" formControlName="metodo" id="" value="{{item.calle}}-{{item.numero}}-{{item.piso}}" />
         <div class="informacion">
           <h2>{{ item.descr }}</h2>
-          <h3>
+          <h3 *ngIf="item.numero != -1">
             {{ item.calle }} {{ item.numero }}
             <span *ngIf="item.piso">{{ item.piso }}</span>
+          </h3>
+          <h3 *ngIf="item.numero == -1">
+            {{ item.calle }}
           </h3>
         </div>
       </div>
@@ -49,7 +42,7 @@
       </div>
     </div>
     <!--  MOCK ENVIOS-->
-      <!--<div class="item_envio primer_item">
+    <!--<div class="item_envio primer_item">
             <div class="izquierda">
                 <input type="radio" name="metodo" id="" value="Colombia-721">
                 <div class="informacion">
@@ -79,13 +72,7 @@
 <div class="btn">
   <button (click)="eligioMetodo()">Siguiente</button>
 </div>
-<app-resumen-pago class="resumen"
-[enDatosPersonales]="false"
-      [enMetodoEntrega]="true"
-      [enResumen]="false"
-      [enMetodoPago]="false"
-      [enMostrarTodos]="false"
-(eventAvanzarResumen)="eligioMetodo()"
->
+<app-resumen-pago class="resumen" [enDatosPersonales]="false" [enMetodoEntrega]="true" [enResumen]="false"
+  [enMetodoPago]="false" [enMostrarTodos]="false" (eventAvanzarResumen)="eligioMetodo()">
 
 </app-resumen-pago>

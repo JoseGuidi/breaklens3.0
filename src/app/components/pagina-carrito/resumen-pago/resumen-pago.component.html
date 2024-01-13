@@ -23,12 +23,13 @@
       </div>
     </div>
     <div *ngIf="!(enMetodoEntrega || enDatosPersonales)">
-        <div class="itemSumatoria envio">
-          <h3 *ngIf="entregaEnDomicilio">Envio a domicilio</h3>
-          <h3 *ngIf="!entregaEnDomicilio">Retiro en sucursal</h3>
-          <h3>{{getCostoEnvio()}}</h3>
-        </div>
+      <div class="itemSumatoria envio">
+        <h3 *ngIf="entregaEnDomicilio&&!entregaEnMail">Envio a domicilio</h3>
+        <h3 *ngIf="!entregaEnDomicilio&&!entregaEnMail">Retiro en sucursal</h3>
+        <h3 *ngIf="entregaEnMail">Envio a mail</h3>
+        <h3>{{getCostoEnvio()}}</h3>
       </div>
+    </div>
   </div>
   <div class="compra">
     <div class="info_compra">
@@ -39,8 +40,8 @@
       <label for="" class="irPagar">Ir a pagar</label>
       <svg class="svgIcon" viewBox="0 0 576 512">
         <path
-          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"
-        ></path>
+          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+        </path>
       </svg>
     </button>
 
@@ -48,17 +49,18 @@
       <label for="" class="irPagar">Ir a pagar</label>
       <svg class="svgIcon" viewBox="0 0 576 512">
         <path
-          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"
-        ></path>
+          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+        </path>
       </svg>
     </button>
 
-    <button (click)="avanzarPaso()" [ngClass]="{ bloqueado: !enMostrarTodos}" class="celular" *ngIf="(enDatosPersonales||enMetodoEntrega||enResumen||enMetodoPago)&&!enMostrarTodos">
+    <button (click)="avanzarPaso()" [ngClass]="{ bloqueado: !enMostrarTodos}" class="celular"
+      *ngIf="(enDatosPersonales||enMetodoEntrega||enResumen||enMetodoPago)&&!enMostrarTodos">
       <label for="" [ngClass]="{'continuar':!enMostrarTodos}">Continuar</label>
       <svg class="svgIcon" viewBox="0 0 576 512">
         <path
-          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"
-        ></path>
+          d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+        </path>
       </svg>
     </button>
 
@@ -69,18 +71,11 @@
   <div class="infoNotif">
     <div class="flex">
       <div class="flex-shrink-0">
-        <svg
-          class="info-svg svg_completandoPagos"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
+        <svg class="info-svg svg_completandoPagos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+          fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd"
             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-            clip-rule="evenodd"
-          ></path>
+            clip-rule="evenodd"></path>
         </svg>
       </div>
       <div class="info-prompt-wrap">

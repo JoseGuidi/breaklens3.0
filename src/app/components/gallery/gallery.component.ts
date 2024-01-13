@@ -67,7 +67,7 @@ export class GalleryComponent {
       this.cargandoFotos = true;
       setTimeout(()=>{
         this.cargandoFotos = false;
-        
+
       },5000) // son 2000 del primer cargando y 3000 de este
       if(codigo)
         this._dataService.getPics(codigo,0,0).subscribe(
@@ -108,7 +108,7 @@ export class GalleryComponent {
   }
   seleccionarCarpeta(carpetaElegida: Folder) {
     this.carpetaElegida = carpetaElegida;
-   
+
       let section = document.querySelector('.foto_grupal');
     if (section) {
       let variable = section.getBoundingClientRect().top + window.scrollY + 300;
@@ -166,8 +166,8 @@ export class GalleryComponent {
   private lastScrollPosition = 0;
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
-    
-    
+
+
   }
 
   getPicsForColumn(col:number){
@@ -182,6 +182,19 @@ export class GalleryComponent {
       }
     })
     return arr;
+  }
+
+  loadMore(){
+    this.currentPage++;
+    let codigo = this.url.snapshot.paramMap.get('codigo');
+
+    if(codigo){
+      this._dataService.getPics(codigo,0,0).subscribe(( f)=>{
+        if(typeof f !== 'string'){
+          this.listaFotos = [...this.listaFotos,...f];
+        }
+      })
+    }
   }
 
 }

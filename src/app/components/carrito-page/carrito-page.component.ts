@@ -33,6 +33,7 @@ export class CarritoPageComponent {
   enMostrarTodos: boolean = false;
   lugarEntrega: String = '';
   entregaEnDomicilio: boolean = false;
+  entregaEnMail:boolean = false;
   metodoPago: String = '';
   mostrarDatosTransferencia: boolean = false;
   costoEnvio:any;
@@ -252,6 +253,8 @@ export class CarritoPageComponent {
     this.enResumen = true;
     this.entregaEnDomicilio =
       arrayDirec[0] != 'Cuba' && arrayDirec[1] != '1498';
+    this.entregaEnMail = arrayDirec[0] == this.formDatos.get("email")?.value;
+
   }
 
   avanzarAMetodoPago() {
@@ -318,7 +321,9 @@ export class CarritoPageComponent {
     let direccion = '';
     let piso = '';
     let entrega ='';
-    if(this.entregaEnDomicilio){
+    if(this.entregaEnMail){
+      entrega = "email"
+    }else if(this.entregaEnDomicilio){
       entrega = 'domicilio'
     }else{
       entrega = 'retiro'
@@ -381,6 +386,7 @@ export class CarritoPageComponent {
       if(endpoint != 'payments'){
         url += "&metodo="+this.metodoPago
       }
+      console.log(url);
     return url;
   }
 

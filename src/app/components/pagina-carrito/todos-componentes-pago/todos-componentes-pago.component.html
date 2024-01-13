@@ -3,83 +3,35 @@
     <div class="cabecera">
       <h1>Tus datos</h1>
       <div class="modificar" (click)="modificar('datos')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Outline"
-          viewBox="0 0 24 24"
-          width="512"
-          height="512"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
           <path
-            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"
-          />
+            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z" />
           <path
-            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"
-          />
+            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z" />
         </svg>
         <h3>Modificar</h3>
       </div>
     </div>
     <div class="formDatos">
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.name }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.apellido }}"
-        [disabled]="true"
-      />
-      <input
-        type="email"
-        placeholder="{{ formDatos?.value.email }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.telefono }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.direc_calle }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.direc_numero }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.direc_piso }}"
-        [disabled]="true"
-      />
-      <input
-        type="text"
-        placeholder="{{ formDatos?.value.cod_postal }}"
-        [disabled]="true"
-      />
+      <input type="text" placeholder="{{ formDatos?.value.name }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.apellido }}" [disabled]="true" />
+      <input type="email" placeholder="{{ formDatos?.value.email }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.telefono }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.direc_calle }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.direc_numero }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.direc_piso }}" [disabled]="true" />
+      <input type="text" placeholder="{{ formDatos?.value.cod_postal }}" [disabled]="true" />
     </div>
   </div>
   <div class="entrega">
     <div class="cabecera">
       <h1>Metodo de entrega</h1>
       <div class="modificar" (click)="modificar('entrega')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Outline"
-          viewBox="0 0 24 24"
-          width="512"
-          height="512"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
           <path
-            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"
-          />
+            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z" />
           <path
-            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"
-          />
+            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z" />
         </svg>
         <h3>Modificar</h3>
       </div>
@@ -95,7 +47,7 @@
             {{ formDatos?.value.direc_numero }}
             <span *ngIf="formDatos?.value.direc_piso">{{
               formDatos?.value.direc_piso
-            }}</span>
+              }}</span>
           </h3>
           <h3 *ngIf="!entregaEnDomicilio">
             Cuba 1498
@@ -111,19 +63,11 @@
     <div class="cabecera">
       <h1>Tus fotografias</h1>
       <div class="modificar" (click)="modificar('items')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Outline"
-          viewBox="0 0 24 24"
-          width="512"
-          height="512"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
           <path
-            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"
-          />
+            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z" />
           <path
-            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"
-          />
+            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z" />
         </svg>
         <h3>Modificar</h3>
       </div>
@@ -136,19 +80,11 @@
     <div class="cabecera">
       <h1>Metodo de pago</h1>
       <div class="modificar" (click)="modificar('pago')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Outline"
-          viewBox="0 0 24 24"
-          width="512"
-          height="512"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
           <path
-            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z"
-          />
+            d="M18.656.93,6.464,13.122A4.966,4.966,0,0,0,5,16.657V18a1,1,0,0,0,1,1H7.343a4.966,4.966,0,0,0,3.535-1.464L23.07,5.344a3.125,3.125,0,0,0,0-4.414A3.194,3.194,0,0,0,18.656.93Zm3,3L9.464,16.122A3.02,3.02,0,0,1,7.343,17H7v-.343a3.02,3.02,0,0,1,.878-2.121L20.07,2.344a1.148,1.148,0,0,1,1.586,0A1.123,1.123,0,0,1,21.656,3.93Z" />
           <path
-            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z"
-          />
+            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2h9.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.968,4.968,0,0,0,3.536-1.464l2.656-2.658A4.968,4.968,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.465,21.122a2.975,2.975,0,0,1-1.465.8V18a1,1,0,0,1,1-1h3.925a3.016,3.016,0,0,1-.8,1.464Z" />
         </svg>
         <h3>Modificar</h3>
       </div>
@@ -170,15 +106,7 @@
     </div>
   </div>
 </div>
-<app-resumen-pago class="resumenFinalizar"
-[enDatosPersonales]="false"
-      [enMetodoEntrega]="false"
-      [enResumen]="false"
-      [enMetodoPago]="false"
-      [enMostrarTodos]="true"
-      [entregaEnDomicilio]="entregaEnDomicilio"
-      [costoEnvio]="costoEnvio"
-      (eventRedirigirPago)="irAPagarCelular()"
->
+<app-resumen-pago class="resumenFinalizar" [enDatosPersonales]="false" [enMetodoEntrega]="false" [enResumen]="false"
+  [enMetodoPago]="false" [enMostrarTodos]="true" [entregaEnDomicilio]="entregaEnDomicilio"
+  [entregaEnMail]="entregaEnMail" [costoEnvio]="costoEnvio" (eventRedirigirPago)="irAPagarCelular()">
 </app-resumen-pago>
-

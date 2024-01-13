@@ -9,5 +9,6 @@ export interface Folder{
     primer_item:String,
     segundo_item:String,
     tercer_item:String,
-    medidas:String
+    medidas:String,
+    tipo:string
 }

@@ -15,6 +15,7 @@
   border-radius: 0;
   //min-height: calc(100vh - 15px - 10vh - 48px - 10px - 26px);
 }
+
 .cabecera {
   border-bottom: 1px solid #e5e5e5;
   padding: 20px 29px;
@@ -26,12 +27,14 @@
   align-items: center;
   gap: 0 5px;
 }
-.cabecera > svg{
+
+.cabecera>svg {
   stroke: #3f7190;
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
+
 .cabecera h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
@@ -41,6 +44,7 @@
 .cabecera h1::first-letter {
   text-transform: uppercase;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -48,8 +52,8 @@ form {
   width: 100%;
   //padding: 2vh 3.5vw;
 
-  min-height: 164px;
 }
+
 .item_envio {
   width: 100%;
   display: flex;
@@ -70,23 +74,33 @@ form {
   background-color: #f2f2f2;
   transition: 0.3s;
 }
-.item_envio::before{
-  background-color:  #afb7bc ;
-  content: ''; /* Agregamos contenido pseudo-elemento */
-  position: absolute; /* Establecemos una posición absoluta para el borde */
+
+.item_envio::before {
+  background-color: #afb7bc;
+  content: '';
+  /* Agregamos contenido pseudo-elemento */
+  position: absolute;
+  /* Establecemos una posición absoluta para el borde */
   top: 0;
   left: 0;
-  height: 100%; /* Altura igual a la del div padre */
-  width: 7px; /* Ancho del borde izquierdo */
+  height: 100%;
+  /* Altura igual a la del div padre */
+  width: 7px;
+  /* Ancho del borde izquierdo */
 }
+
 .item_envio.seleccionada::before {
   background-color: #28516B;
-  content: ""; /* Agregamos contenido pseudo-elemento */
-  position: absolute; /* Establecemos una posición absoluta para el borde */
+  content: "";
+  /* Agregamos contenido pseudo-elemento */
+  position: absolute;
+  /* Establecemos una posición absoluta para el borde */
   top: 0;
   left: 0;
-  height: 100%; /* Altura igual a la del div padre */
-  width: 7px; /* Ancho del borde izquierdo */
+  height: 100%;
+  /* Altura igual a la del div padre */
+  width: 7px;
+  /* Ancho del borde izquierdo */
   animation: beforeItem 0.2s ease-in-out;
 }
 
@@ -95,42 +109,51 @@ form {
   align-items: flex-start;
   gap: 0 10px;
 }
+
 .izquierda input {
   transform: translateY(7px);
   cursor: pointer;
 }
-.izquierda input::before{
+
+.izquierda input::before {
   border: 2px solid red;
 }
-.cabecera span{
+
+.cabecera span {
   display: none;
 }
-.cabecera span.sinElegir{
+
+.cabecera span.sinElegir {
   display: inline;
   font-weight: 300;
   font-size: 15px;
   color: red;
   transition: ease-in 50ms;
 }
+
 .item_envio.sinElegir {
   border: 1px solid rgba(215, 11, 11, 0.734);
   border-top: none;
 
 }
+
 .informacion {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .informacion h2,
 .derecha h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 20px;
 }
-.derecha.gratis h2{
+
+.derecha.gratis h2 {
   color: #4caf50;
 }
+
 .informacion h3 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -143,6 +166,7 @@ form {
   display: none;
 
 }
+
 .btn button,
 .datos_tranferencias .btn button {
   width: 35%;
@@ -159,6 +183,7 @@ form {
   background-color: #0c2535;
   transition: 0.4s;
 }
+
 .btn button:hover,
 .datos_tranferencias .btn button:hover {
   background-color: #153c54;
@@ -178,47 +203,55 @@ form input.error {
   top: 0px;
   cursor: pointer;
 }
+
 .back svg {
   width: 25px;
   fill: rgb(30, 75, 152);
   transform: translateX(3px);
 }
+
 .back h3 {
   font-size: 15px;
   font-weight: 400;
   color: rgb(30, 75, 152);
   transform: translateY(-2px);
 }
+
 .back:hover h3,
 .back:hover svg {
   color: rgb(9, 9, 67);
 }
-.resumen{
+
+.resumen {
   position: absolute;
   bottom: 0;
   z-index: 1000;
   width: 100%;
   max-width: none;
 }
+
 @media only screen and (min-width:870px) {
-  .back{
+  .back {
     top: -25px;
   }
-  .cardEnvios{
+
+  .cardEnvios {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
     min-height: auto;
     width: auto;
   }
-  .btn{
+
+  .btn {
     width: 100%;
     display: flex;
     margin: 10px 0;
     justify-content: right;
   }
-  .resumen{
+
+  .resumen {
     display: none;
   }
 }
@@ -227,6 +260,7 @@ form input.error {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }

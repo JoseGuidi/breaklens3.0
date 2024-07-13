@@ -37,7 +37,6 @@
         </div>
       </div>
     </div>
-
     <div class="foto_grupal" *ngIf="institucion && institucion?.path_foto_grupal !== 'vacio'">
       <div class="cardGrupal">
         <div class="cardGrupal-img">
@@ -55,81 +54,32 @@
         AHORA SELECCIONE LA FOTO INDIVIDUAL
       </h1>-->
 
-      <div class="galeria_fotos_flex">
+      <div class="galeria_fotos_flex" #galeriaFlex >
 
         <div class="contenedor_loader" *ngIf="cargandoFotos">
           <span class="loaderFotos"></span>
         </div>
         <p class="selecCarp foto" *ngIf="!cargandoFotos">*Seleccione la fotografia</p>
-        <div *ngIf="!institucionVacia&&!cargandoFotos" class="galeria_fotos">
-          <div *ngFor="let foto of listaFotos" class="imgFOR">
-            <!--<app-card-pic
-              [picEntrante]="foto"
-              (click)="agregarFotoCarrito(foto)"
-            ></app-card-pic>-->
-            <img src="../../../assets/img/fotos/individuales/{{
-                  foto?.cod_institucion
-                }}/{{ foto?.ruta }}" alt="" (contextmenu)="prohibirDescarga($event)" (click)="agregarFotoCarrito(foto)"
-              width="100%" />
-          </div>
-
-        </div>
-        <!--
-        <div class="galeria_masonry">
-          <div class="columna">
-            <div class="photo_item" *ngFor="let item of getPicsForColumn(0)">
-              <img
-              loading="lazy"
-                src="../../../assets/img/fotos/individuales/{{
-                  item?.cod_institucion
-                }}/{{ item?.ruta }}"
-                alt=""
-                (contextmenu)="prohibirDescarga($event)"
-                (click)="agregarFotoCarrito(item)"
-              />
+        <div *ngFor="let cont of listaContenedores">
+          <div *ngIf="!institucionVacia&&!cargandoFotos" class="galeria_fotos" >
+            <div *ngFor="let foto of cont" class="imgFOR">
+              <!--<app-card-pic
+                [picEntrante]="foto"
+                (click)="agregarFotoCarrito(foto)"
+              ></app-card-pic>-->
+              <img src="../../../assets/img/fotos/individuales/{{
+                    foto?.cod_institucion
+                  }}/{{ foto?.ruta }}" alt="" (contextmenu)="prohibirDescarga($event)" (click)="agregarFotoCarrito(foto)"
+                width="100%" />
             </div>
-          </div>
-          <div class="columna">
-            <div class="photo_item" *ngFor="let item of getPicsForColumn(1)">
-              <img
-              loading="lazy"
-                src="../../../assets/img/fotos/individuales/{{
-                  item?.cod_institucion
-                }}/{{ item?.ruta }}"
-                alt=""
-                (contextmenu)="prohibirDescarga($event)"
-                (click)="agregarFotoCarrito(item)"
-              />
-            </div>
-          </div>
-          <div class="columna">
-            <div class="photo_item" *ngFor="let item of getPicsForColumn(2)">
-              <img
-              loading="lazy"
-                src="../../../assets/img/fotos/individuales/{{
-                  item?.cod_institucion
-                }}/{{ item?.ruta }}"
-                alt=""
-                (contextmenu)="prohibirDescarga($event)"
-                (click)="agregarFotoCarrito(item)"
-              />
-            </div>
-          </div>
-          <div class="columna">
-            <div class="photo_item" *ngFor="let item of getPicsForColumn(3)">
-              <img
-              loading="lazy"
-                src="../../../assets/img/fotos/individuales/{{
-                  item?.cod_institucion
-                }}/{{ item?.ruta }}"
-                alt=""
-                (contextmenu)="prohibirDescarga($event)"
-                (click)="agregarFotoCarrito(item)"
-              />
-            </div>
+  
           </div>
         </div>
-      </div>-->
+        
+        
+        <div class="contenedor_loader_fotosNuevas" *ngIf="cargandoNuevasFotos">
+          <span class="loaderFotos"></span>
+        </div>
       </div>
     </div>
     <!--

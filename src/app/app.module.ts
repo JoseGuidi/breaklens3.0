@@ -36,6 +36,7 @@ import { MetodoPagoComponent } from './components/pagina-carrito/metodo-pago/met
 import { ResumenPagoComponent } from './components/pagina-carrito/resumen-pago/resumen-pago.component';
 import { TodosComponentesPagoComponent } from './components/pagina-carrito/todos-componentes-pago/todos-componentes-pago.component';
 import { DatosTransferenciaComponent } from './components/pagina-carrito/datos-transferencia/datos-transferencia.component';
+import { ContenedorfotosComponent } from './components/contenedorfotos/contenedorfotos.component';
 
 
 
@@ -70,7 +71,8 @@ import { DatosTransferenciaComponent } from './components/pagina-carrito/datos-t
     MetodoPagoComponent,
     ResumenPagoComponent,
     TodosComponentesPagoComponent,
-    DatosTransferenciaComponent
+    DatosTransferenciaComponent,
+    ContenedorfotosComponent
   ],
   imports: [
     BrowserModule,

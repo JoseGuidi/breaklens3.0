@@ -6,7 +6,7 @@ import { Institution } from 'src/app/interfaces/institution';
 import { Folder } from 'src/app/interfaces/folder';
 import { FolderClass } from 'src/app/class/FolderClass';
 import { Payment } from 'src/app/interfaces/payment';
-const URL = 'https://breaklens.com/api/';
+const URL = 'https://breaklens.com.ar/api/';
 const URL_LOCAL = 'https://localhost/trabajos/breaklens/api-proyecto/api/';
 @Injectable({
   providedIn: 'root',

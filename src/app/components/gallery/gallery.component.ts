@@ -31,6 +31,7 @@ export class GalleryComponent {
     new FolderClass('Gold', 3500, 4, 1),
   ]*/;
   listaFotos: Pic[] = [];
+  listaContenedores: any[] = [];
   institucion?: Institution;
   institucionVacia: boolean = false;
   carritoVisible: boolean = false;
@@ -41,6 +42,8 @@ export class GalleryComponent {
   cargandoNuevasFotos:boolean = false;
   currentPage:number = 0;
   cargandoFotos:boolean = false;
+
+  @ViewChild('galeriaFlex') galeriaFlex: ElementRef | undefined;
   constructor(
     private _dataService: DataService,
     private url: ActivatedRoute,
@@ -51,11 +54,13 @@ export class GalleryComponent {
   ) {}
   ngOnInit(): void {
     this.cargando = true;
+    
     let codigo = this.url.snapshot.paramMap.get('codigo');
     this._loadingState.cambiarEstadoLoading(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       this.cargando = false;
+      
     }, 2000);
     if (codigo) {
       this._dataService.getFolders(codigo).subscribe((carpetas) => {
@@ -67,15 +72,16 @@ export class GalleryComponent {
       this.cargandoFotos = true;
       setTimeout(()=>{
         this.cargandoFotos = false;
-
+        this.cargoInicio = true;
       },5000) // son 2000 del primer cargando y 3000 de este
       if(codigo)
-        this._dataService.getPics(codigo,0,0).subscribe(
+        this._dataService.getPics(codigo,this.currentPage,30).subscribe(
           (fotos) => {
             if (typeof fotos === 'string') {
               this.institucionVacia = true;
             }
-            this.listaFotos = fotos;
+            this.listaContenedores.push(fotos);
+            console.log(this.listaContenedores)
             if (codigo) {
               this._dataService.getInfoInstitution(codigo).subscribe((ins) => {
                 this.institucion = ins;
@@ -187,16 +193,40 @@ export class GalleryComponent {
   loadMore(){
     this.currentPage++;
     let codigo = this.url.snapshot.paramMap.get('codigo');
-
     if(codigo){
-      this._dataService.getPics(codigo,0,0).subscribe(( f)=>{
-        if(typeof f !== 'string'){
-          this.listaFotos = [...this.listaFotos,...f];
+      
+      setTimeout(()=>{
+        this.cargandoNuevasFotos = false;
+
+      },5000) 
+      this._dataService.getPics(codigo,this.currentPage,30).subscribe((f: any[])=>{
+        if(typeof f !== 'string' && f.length > 0){
+         
+          this.listaContenedores.push(f)
+        }else{
+          this.currentPage--;
         }
       })
     }
   }
-
+  size(arr:[]){
+    return arr.length;
+  }
+  cargoInicio:boolean = false;
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    
+    if(this.cargoInicio){
+      if(this.isBottom() ){
+        this.cargandoNuevasFotos = true;
+        this.loadMore();
+        
+      }
+    }
+  }
+  isBottom(){
+    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+  }
 }
 function ngAfterViewInit() {
   throw new Error('Function not implemented.');

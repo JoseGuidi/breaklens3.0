@@ -17,6 +17,7 @@ import { FolderClass } from 'src/app/class/FolderClass';
 import { LoadingService } from 'src/app/services/PicsService/loading.service';
 import { HostListener, ElementRef, ViewChild } from '@angular/core';
 import { timeout } from 'rxjs';
+import { DeviceService } from 'src/app/services/PicsService/device.service';
 
 @Component({
   selector: 'app-gallery',
@@ -42,7 +43,8 @@ export class GalleryComponent {
   cargandoNuevasFotos:boolean = false;
   currentPage:number = 0;
   cargandoFotos:boolean = false;
-
+  cargoTodasFotos:boolean = false;
+  cantidadTotalesFotos:number = 0;
   @ViewChild('galeriaFlex') galeriaFlex: ElementRef | undefined;
   constructor(
     private _dataService: DataService,
@@ -50,11 +52,14 @@ export class GalleryComponent {
     private router: Router,
     private _cartService: CartService,
     private detectorRef: ChangeDetectorRef,
-    private _loadingState: LoadingService
+    private _loadingState: LoadingService,
+    private _deviceService: DeviceService
   ) {}
   ngOnInit(): void {
     this.cargando = true;
-    
+    if (this._deviceService.isIphone()) {
+      this._deviceService.setZoomTo100();
+    }
     let codigo = this.url.snapshot.paramMap.get('codigo');
     this._loadingState.cambiarEstadoLoading(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -95,9 +100,15 @@ export class GalleryComponent {
             this._loadingState.cambiarEstadoLoading(false);
           }
         );
+        this._dataService.getCantidadPics(codigo).subscribe((cant)=>{
+          this.cantidadTotalesFotos = cant.total;
+        })
     }
   }
 
+  getCantidadPaginasTotales(){
+    return Math.ceil(this.cantidadTotalesFotos/30);
+  }
   cambiarVisibilidadCarrito() {
     this.primeraVez = false;
     this._cartService.cambiarVisbilidad();
@@ -193,7 +204,8 @@ export class GalleryComponent {
   loadMore(){
     this.currentPage++;
     let codigo = this.url.snapshot.paramMap.get('codigo');
-    if(codigo){
+    if(codigo && !this.cargoTodasFotos){
+      console.log(this.cargoTodasFotos)
       
       setTimeout(()=>{
         this.cargandoNuevasFotos = false;
@@ -205,6 +217,7 @@ export class GalleryComponent {
           this.listaContenedores.push(f)
         }else{
           this.currentPage--;
+          this.cargoTodasFotos = true
         }
       })
     }
@@ -217,7 +230,7 @@ export class GalleryComponent {
   onWindowScroll() {
     
     if(this.cargoInicio){
-      if(this.isBottom() ){
+      if(this.isBottom() &&  !this.cargoTodasFotos){
         this.cargandoNuevasFotos = true;
         this.loadMore();
         
@@ -225,7 +238,9 @@ export class GalleryComponent {
     }
   }
   isBottom(){
-    return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+    let alturaGaleria = this.galeriaFlex?.nativeElement.offsetHeight;
+    //console.log(window.innerHeight + window.scrollY,document.body.offsetHeight,alturaGaleria)
+    return (window.innerHeight + window.scrollY) >= alturaGaleria;
   }
 }
 function ngAfterViewInit() {

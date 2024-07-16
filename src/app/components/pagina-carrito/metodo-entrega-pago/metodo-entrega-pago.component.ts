@@ -71,7 +71,7 @@ export class MetodoEntregaPagoComponent {
         this.listaDomicilios.push(domicilio);
         this.listaDomicilios.push(new DomicilioClass("Cuba",1498,"Retiro en sucursal","Gratis"));
       }else{
-        this.listaDomicilios.push(new DomicilioClass(this.formDatos.value.email,-1,"Entrega por mail (Plazo de hasta 24hs)","Gratis"));
+        this.listaDomicilios.push(new DomicilioClass(this.formDatos.value.email,-1,"Entrega via email - Plazo de 24hs","Gratis"));
       }
     }
   }

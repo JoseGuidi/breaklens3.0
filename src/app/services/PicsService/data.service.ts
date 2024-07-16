@@ -6,7 +6,7 @@ import { Institution } from 'src/app/interfaces/institution';
 import { Folder } from 'src/app/interfaces/folder';
 import { FolderClass } from 'src/app/class/FolderClass';
 import { Payment } from 'src/app/interfaces/payment';
-const URL = 'https://breaklens.com.ar/api/';
+const URL = 'https://breaklens.com/api/';
 const URL_LOCAL = 'https://localhost/trabajos/breaklens/api-proyecto/api/';
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,9 @@ export class DataService {
   }
   }
 
+  getCantidadPics(code: String): Observable<{total:number}> {
+    return this.http.get<{total:number}>(URL + 'pic/size/' + code)
+  }
   // A CAMBIAR
   getInfoInstitution(code: String): Observable<Institution> {
     return this.http.get<Institution>(URL + 'institution/' + code);

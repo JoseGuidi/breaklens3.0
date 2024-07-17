@@ -61,7 +61,7 @@
         </div>
         <p class="selecCarp foto" *ngIf="!cargandoFotos">*Seleccione la fotografia</p>
         <div *ngFor="let cont of listaContenedores;let i = index" [ngClass]="{'contenedor_de_pagina':!cargandoFotos}">
-          <h4 class="numero_pagina" *ngIf="!cargandoFotos">Pagina {{i+1}} de {{getCantidadPaginasTotales()}}</h4>
+          <h4 class="numero_pagina" *ngIf="!cargandoFotos">Página {{i+1}} de {{getCantidadPaginasTotales()}}</h4>
           <div *ngIf="!institucionVacia&&!cargandoFotos" class="galeria_fotos" >
             <div *ngFor="let foto of cont" class="imgFOR">
               <!--<app-card-pic

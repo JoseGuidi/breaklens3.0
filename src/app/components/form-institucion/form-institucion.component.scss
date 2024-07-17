@@ -35,6 +35,7 @@ button {
   width: 65vw;
   max-width: 350px;
   padding: 1.2vh;
+  padding: 10px;
   display: flex;
   justify-content: center;
   background: var(--primary-color);
@@ -44,6 +45,7 @@ button {
   gap: 0.6em;
   font-weight: bold;
   font-size: 2vh;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -114,11 +116,12 @@ label input {
   color: #1b1b1b;
   background: #f3f3f3;
   border-radius: 12px;
-  padding:  0 1.5vh;
+  padding:  0 13px;
   height: 6vh;
+  height: 43px;
   font-weight: 600;
   transition: 0.2s;
-  font-size: 1.7vh;
+  font-size: 16px;
 }
 
 input[type="password"]::-ms-reveal {

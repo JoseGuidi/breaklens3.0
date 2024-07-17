@@ -20,6 +20,9 @@ div.seguimiento {
   gap: 10px;
   
 }
+.seguimiento p{
+  display: none;
+}
 p{
   text-align: center;
 }
@@ -52,9 +55,9 @@ label input {
   color: black;
   background: none;
   border-radius: 12px;
-  padding: 1.2vh;
+  padding: 10px;
   transition: 0.2s;
-  font-size: 1.4vh;
+  font-size: 14px;
 }
 label input:hover,
 label input:focus {
@@ -74,7 +77,7 @@ label input:valid ~ .close {
 
 .btnCamion{
   position: absolute;
-  right: 0px;
+  right: 1px;
   border: none;
   background: transparent;
   
@@ -159,7 +162,6 @@ label input.codigoErroneo {
 
 @media only screen and (max-width: 586px) {
   label{
-    margin-right: 10px;
   }
   .camion{
     background-color: #eeeeee;
@@ -177,6 +179,9 @@ label input.codigoErroneo {
   div.seguimiento {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .seguimiento p{
+    display: inline;
   }
   .linea{
     display: block;

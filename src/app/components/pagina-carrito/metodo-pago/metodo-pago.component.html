@@ -21,13 +21,13 @@
   </div>
   <form [formGroup]="formMetodoPago">
     <div class="contenedor_metodos">
-      <!--<div class="item primero" [ngClass]="{
+      <div class="item primero" [ngClass]="{
           seleccionada: formMetodoPago.value.pago == 'mercadoPago',
         }" (click)="elegir('mercadoPago')">
         <input type="radio" formControlName="pago" id="" value="mercadoPago" />
         <h2>Mercado Pago</h2>
         <img src="https://img.icons8.com/color/48/mercado-pago.png" alt="" />
-      </div>-->
+      </div>
       <div class="item" [ngClass]="{
           seleccionada: formMetodoPago.value.pago == 'transferencia'
         }" (click)="elegir('transferencia')">

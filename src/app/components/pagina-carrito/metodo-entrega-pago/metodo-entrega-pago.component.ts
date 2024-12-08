@@ -69,7 +69,7 @@ export class MetodoEntregaPagoComponent {
           domicilio = new DomicilioClass(calle,numero,"Enviar a domicilio",this.costoEnvio)
         }
         this.listaDomicilios.push(domicilio);
-        this.listaDomicilios.push(new DomicilioClass("Cuba",1498,"Retiro en sucursal","Gratis"));
+        this.listaDomicilios.push(new DomicilioClass("Mr Book - 9 de Julio",261,"Punto de retiro","Gratis"));
       }else{
         this.listaDomicilios.push(new DomicilioClass(this.formDatos.value.email,-1,"Entrega via email - Plazo de 24hs","Gratis"));
       }

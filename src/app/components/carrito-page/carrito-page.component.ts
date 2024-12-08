@@ -251,8 +251,14 @@ export class CarritoPageComponent {
       arrayDirec[0] + ' ' + arrayDirec[1] + ' ' + arrayDirec[2];
     this.enMetodoEntrega = false;
     this.enResumen = true;
-    this.entregaEnDomicilio =
-      arrayDirec[0] != 'Cuba' && arrayDirec[1] != '1498';
+    if(arrayDirec[0]== 'Mr Book '){
+      this.entregaEnDomicilio = false;
+    }else{
+      this.entregaEnDomicilio =
+        arrayDirec[0] != 'Mr Book - 9 de Julio' && arrayDirec[1] != '261';
+    
+    }
+    console.log(arrayDirec[0],this.entregaEnDomicilio);
     this.entregaEnMail = arrayDirec[0] == this.formDatos.get("email")?.value;
 
   }
@@ -432,9 +438,36 @@ export class CarritoPageComponent {
   }
   redirigirMercadoPago() {
     if (this.listadoItems.length > 0) {
-      let url = this.generateURL('payments');
-      this.http.get(url).subscribe((link_mp) => {
-          window.open(link_mp.toString(), '_self');
+
+      let url = `${this.urlHOSTINGER}payment` 
+      const body = {
+        items: this.listadoItems.map(
+          i => {
+            return {
+              id_institucion: i.i.cod_institucion,
+              id_carpeta: i.f.id_carpeta,
+              id_foto: i.p.id_foto,
+              cantidad: i.q,
+              digital: i.d
+            }
+          }
+        ),
+        description: 'Compra de fotos - Breaklens',
+        payer:{
+          payer_name: this.formDatos.get('name')?.value,
+          payer_surname: this.formDatos.get('apellido')?.value,
+          payer_email: this.formDatos.get('email')?.value,
+          payer_phone: this.formDatos.get('telefono')?.value,
+          payer_direc: this.formDatos.get('direc_calle')?.value + ' ' + this.formDatos.get('direc_numero')?.value + ' ' + this.formDatos.get('direc_piso')?.value
+        },
+        entrega: this.entregaEnMail ? 'email' : this.entregaEnDomicilio ? 'domicilio' : 'retiro'
+      }
+      // this.http.get(url).subscribe((link_mp) => {
+      //     window.open(link_mp.toString(), '_self');
+      // });
+      this.http.post(url, body, { responseType: 'text' }).subscribe((link_mp: string) => {
+        console.log(link_mp);
+        window.open(link_mp, '_self');
       });
     }
   }

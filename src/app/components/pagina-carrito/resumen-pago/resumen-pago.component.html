@@ -25,7 +25,7 @@
     <div *ngIf="!(enMetodoEntrega || enDatosPersonales)">
       <div class="itemSumatoria envio">
         <h3 *ngIf="entregaEnDomicilio&&!entregaEnMail">Envio a domicilio</h3>
-        <h3 *ngIf="!entregaEnDomicilio&&!entregaEnMail">Retiro en sucursal</h3>
+        <h3 *ngIf="!entregaEnDomicilio&&!entregaEnMail">Punto de retiro</h3>
         <h3 *ngIf="entregaEnMail">Envio a mail</h3>
         <h3>{{getCostoEnvio()}}</h3>
       </div>
